@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre Nosotros | J & J LUXURY CLEANING SERVICE LLC</title>
+<meta name="description" content="Conoce a J & J Luxury Cleaning Service LLC: nuestra historia, misión, valores y el equipo detrás de cada servicio de limpieza profesional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --bg-main:#081220;
+    --bg-sec:#0B1724;
+    --bg-card:#101E2C;
+    --bg-card2:#132333;
+    --blue:#2196F3;
+    --blue-bright:#25A7FF;
+    --blue-dark:#0D6EFD;
+    --blue-hover:#168BE6;
+    --green:#22C55E;
+    --white:#FFFFFF;
+    --text-main:#FFFFFF;
+    --text-sec:#A3B0C3;
+    --border:rgba(255,255,255,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;background-color:var(--bg-main);}
+  body{
+    font-family:'Manrope','Inter',sans-serif;
+    background-color:var(--bg-main);
+    color:var(--text-main);
+    min-height:100vh;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit;}
+  button{font-family:'Manrope',sans-serif;cursor:pointer;border:none;background:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .container{width:min(94%, 1200px);margin:0 auto;}
+
+  /* HEADER - Exact copy from ubicacion.html */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(56,189,248,.1);
+  }
+  header nav{
+    max-width:1320px;margin:0 auto;padding:0 22px;height:64px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:12.5px;color:#fff;
+    display:flex;align-items:center;gap:10px;letter-spacing:-0.2px;
+    text-transform:none;min-width:0;line-height:1.15;white-space:nowrap;
+  }
+  .logo .brand-logo-img{height:38px;width:auto;max-width:46px;object-fit:contain;flex-shrink:0;display:block;cursor:pointer;}
+  .logo .logo-text{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:-0.2px;}
+  .logo svg{color:#2196F3;}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .nav-cta a{
+    font-family:'Inter',sans-serif;font-size:13.5px;color:#A3B0C3;
+    padding:6px 10px;border-radius:8px;transition:all .25s ease;white-space:nowrap;
+  }
+  .nav-cta a:hover{color:#fff;background:rgba(56,189,248,.1);}
+  /* Header dropdown (Servicios) */
+  .has-dropdown{position:relative;}
+  .nav-dropdown{
+    position:absolute;
+    top:calc(100% + 6px);
+    left:50%;
+    transform:translateX(-50%) translateY(-6px);
+    min-width:230px;
+    background:rgba(11,18,32,.97);
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:12px;
+    padding:8px;
+    box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 0 1px rgba(56,189,248,.08);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    display:none;
+    z-index:1100;
+  }
+  .nav-dropdown::before{
+    content:'';position:absolute;top:-6px;left:50%;
+    transform:translateX(-50%) rotate(45deg);
+    width:10px;height:10px;
+    background:rgba(11,18,32,.97);
+    border-left:1px solid rgba(56,189,248,.25);
+    border-top:1px solid rgba(56,189,248,.25);
+  }
+  .nav-dropdown a{
+    display:flex !important;align-items:center;gap:10px;
+    padding:10px 14px !important;border-radius:8px;
+    font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+    text-decoration:none;width:100%;text-align:left;
+    background:none !important;border:none !important;position:static !important;
+    white-space:nowrap;transition:all .2s ease;
+  }
+  .nav-dropdown a:hover{color:#fff;background:rgba(56,189,248,.1) !important;}
+  .nav-dropdown a i{color:#38BDF8;font-size:13px;width:16px;text-align:center;}
+  .has-dropdown:hover .nav-dropdown,
+  .has-dropdown:focus-within .nav-dropdown,
+  .has-dropdown.open .nav-dropdown{
+    display:block;
+    animation:navDropdownIn .18s ease forwards;
+  }
+  @keyframes navDropdownIn{
+    from{opacity:0;transform:translateX(-50%) translateY(-10px);}
+    to{opacity:1;transform:translateX(-50%) translateY(0);}
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    padding:9px 16px;border-radius:8px;font-family:'Manrope',sans-serif;
+    font-size:13.5px;font-weight:600;cursor:pointer;transition:all .25s ease;
+    border:none;text-decoration:none;
+  }
+  .header-social{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:36px;height:36px;color:#A3B0C3;font-size:17px;transition:all .3s ease;
+    margin-right:2px;text-decoration:none;background:transparent;border:none;
+  }
+  .header-social:hover{color:#fff;transform:translateY(-2px) scale(1.15);}
+  .header-social:has(.fa-whatsapp):hover{color:#25D366;text-shadow:0 0 12px rgba(37,211,102,.6);}
+  .header-social:has(.fa-facebook-f):hover{color:#1877F2;text-shadow:0 0 12px rgba(24,119,242,.6);}
+  .header-social:has(.fa-instagram):hover{color:#E4405F;text-shadow:0 0 12px rgba(225,48,108,.6);}
+  .header-divider{width:1px;height:22px;background:rgba(56,189,248,.2);margin:0 4px;}
+  .btn-primary{
+    background:linear-gradient(135deg,#2196F3,#25A7FF);
+    color:#0B1220;box-shadow:0 4px 16px rgba(56,189,248,.3);
+  }
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5);}
+  .btn-ghost{background:transparent;color:#A3B0C3;}
+  .btn-ghost:hover{color:#fff;background:rgba(56,189,248,.1);}
+  .mobile-menu-btn{
+    display:none;align-items:center;justify-content:center;
+    width:48px;height:48px;min-width:48px;min-height:48px;
+    background:rgba(11,18,32,.95);border:1px solid rgba(56,189,248,.35);
+    border-radius:10px;color:#fff;cursor:pointer;flex-shrink:0;
+    box-shadow:0 4px 14px rgba(0,0,0,.45);-webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;user-select:none;transition:all .15s ease;
+    position:relative;z-index:1001;
+  }
+  .mobile-menu-btn:hover{background:rgba(56,189,248,.15);border-color:rgba(56,189,248,.6);}
+  .mobile-menu-btn:active{transform:scale(.92);background:rgba(56,189,248,.2);}
+  .mobile-menu-btn svg{width:22px;height:22px;transition:transform .2s ease;}
+  .mobile-menu-btn.active svg{transform:rotate(90deg);}
+  .mobile-social-section{display:none;}
+
+  /* HERO ABOUT */
+  .about-hero{
+    position:relative;
+    padding:140px 0 90px;
+    background:
+      linear-gradient(rgba(8,18,32,.88), rgba(8,18,32,.92)),
+      url('img/Fondo_Como Funciona.webp') center/cover no-repeat;
+    border-bottom:1px solid rgba(56,189,248,.12);
+    overflow:hidden;
+  }
+  .about-hero::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(56,189,248,.35),transparent);
+  }
+  .about-hero-inner{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;
+  }
+  .about-hero-content{max-width:620px;}
+  .about-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+    color:#25A7FF;text-transform:uppercase;letter-spacing:2px;
+    background:rgba(37,167,255,.1);border:1px solid rgba(37,167,255,.3);
+    padding:8px 16px;border-radius:100px;margin-bottom:20px;
+  }
+  .about-title{
+    font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,52px);
+    font-weight:800;line-height:1.1;color:#fff;letter-spacing:-1.5px;margin-bottom:18px;
+  }
+  .about-title .accent{
+    background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    text-shadow:0 0 30px rgba(56,189,248,.3);
+  }
+  .about-lead{
+    font-family:'Inter',sans-serif;font-size:17px;color:rgba(255,255,255,.78);
+    line-height:1.7;margin-bottom:24px;
+  }
+  .about-hero-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;
+  }
+  .about-stat{
+    background:rgba(15,23,42,.6);border:1px solid rgba(56,189,248,.18);
+    border-radius:14px;padding:18px 14px;text-align:center;
+  }
+  .about-stat-num{
+    font-family:'Manrope',sans-serif;font-size:30px;font-weight:800;
+    color:#fff;line-height:1;margin-bottom:6px;
+    background:linear-gradient(135deg,#38BDF8,#25A7FF);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .about-stat-label{
+    font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(255,255,255,.7);
+    text-transform:uppercase;letter-spacing:1px;
+  }
+  .about-hero-visual{
+    position:relative;border-radius:24px;overflow:hidden;
+    border:1px solid rgba(56,189,248,.18);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    aspect-ratio:4/5;max-height:560px;
+  }
+  .about-hero-visual img{width:100%;height:100%;object-fit:cover;object-position:70% 45% !important;}
+  .about-hero-visual::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 50%,rgba(8,18,32,.55) 100%);
+    pointer-events:none;
+  }
+
+  /* SECTION SHARED */
+  .about-section{
+    padding:90px 0;position:relative;
+    background-color:var(--bg-main);
+  }
+  .about-section.alt{background-color:#0B1724;}
+  .about-section::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),transparent);
+  }
+  /* MISSION / VISION - dedicated background image */
+  .about-mv{
+    position:relative;
+    background:
+      linear-gradient(rgba(6,16,30,.88), rgba(6,16,30,.92)),
+      url('img/Fondo_Formulario.webp') center/cover no-repeat;
+    background-attachment:scroll;
+  }
+  .about-mv::after{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(900px 500px at 20% 20%, rgba(37,167,255,.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 80%, rgba(56,189,248,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .about-mv > .container{position:relative;z-index:2;}
+  /* VALUES - same background visual as Mision/Vision for coherence */
+  .about-values{
+    position:relative;
+    background:
+      linear-gradient(rgba(6,16,30,.88), rgba(6,16,30,.92)),
+      url('img/Fondo_Formulario.webp') center/cover no-repeat;
+    background-attachment:scroll;
+  }
+  .about-values::after{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(900px 500px at 15% 20%, rgba(37,167,255,.10), transparent 60%),
+      radial-gradient(900px 500px at 85% 80%, rgba(56,189,248,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .about-values > .container{position:relative;z-index:2;}
+  .section-head{text-align:center;max-width:720px;margin:0 auto 50px;}
+  .section-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+    color:#25A7FF;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;
+  }
+  .section-eyebrow::before, .section-eyebrow::after{
+    content:'';display:inline-block;width:24px;height:1px;background:#25A7FF;
+  }
+  .section-title{
+    font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);
+    font-weight:800;line-height:1.15;color:#fff;letter-spacing:-1px;margin-bottom:14px;
+  }
+  .section-sub{
+    font-family:'Inter',sans-serif;font-size:15.5px;color:rgba(255,255,255,.7);line-height:1.6;
+  }
+
+  /* MISSION / VISION */
+  .mv-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  }
+  .mv-card{
+    position:relative;background:linear-gradient(160deg,#101E2C 0%,#0D1A28 100%);
+    border:1px solid rgba(56,189,248,.15);border-radius:18px;padding:34px 30px;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .mv-card:hover{
+    transform:translateY(-4px);border-color:rgba(56,189,248,.45);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+  }
+  .mv-icon{
+    width:54px;height:54px;border-radius:14px;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(37,167,255,.08));
+    border:1px solid rgba(56,189,248,.3);
+    color:#38BDF8;font-size:24px;margin-bottom:18px;
+  }
+  .mv-title{
+    font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;
+    color:#fff;margin-bottom:10px;letter-spacing:-0.5px;
+  }
+  .mv-text{
+    font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.75);
+    line-height:1.7;
+  }
+
+  /* VALUES - premium redesign */
+  .values-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    position:relative;
+  }
+  .value-card{
+    position:relative;
+    background:rgba(10,20,38,.55);
+    border:1px solid rgba(56,189,248,.18);
+    border-radius:20px;
+    padding:30px 26px 28px;
+    transition:transform .35s cubic-bezier(.2,.9,.3,1.05),
+               border-color .3s ease,
+               box-shadow .35s ease,
+               background .3s ease,
+               backdrop-filter .3s ease;
+    overflow:hidden;
+    isolation:isolate;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+  }
+  .value-card::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(420px 220px at 50% 0%, rgba(56,189,248,.12), transparent 65%);
+    opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:-1;
+  }
+  .value-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(56,189,248,.5);
+    background:rgba(14,28,52,.72);
+    box-shadow:
+      0 22px 50px rgba(0,0,0,.5),
+      0 0 0 1px rgba(56,189,248,.12) inset,
+      0 0 40px rgba(37,167,255,.22);
+  }
+  .value-card:hover::before{opacity:1;}
+  .value-card:hover .value-icon{
+    transform:translateY(-2px) scale(1.04) rotate(-2deg);
+    border-color:rgba(125,211,252,.65);
+    background:linear-gradient(135deg, rgba(56,189,248,.34), rgba(37,167,255,.18));
+    color:#E5F4FF;
+    box-shadow:
+      0 12px 28px rgba(37,167,255,.35),
+      0 0 0 1px rgba(56,189,248,.18) inset,
+      0 0 24px rgba(56,189,248,.3);
+  }
+  .value-card:hover .value-num{color:#7DD3FC;}
+  .value-card:hover .value-title{color:#fff;}
+
+  /* Decorative corner accent (top-right) */
+  .value-corner{
+    position:absolute;top:0;right:0;
+    width:72px;height:72px;
+    pointer-events:none;
+    opacity:.85;
+  }
+  .value-corner::before,
+  .value-corner::after{
+    content:'';position:absolute;
+  }
+  .value-corner::before{
+    top:14px;right:14px;
+    width:36px;height:1px;
+    background:linear-gradient(90deg, transparent, rgba(56,189,248,.55));
+  }
+  .value-corner::after{
+    top:14px;right:14px;
+    width:1px;height:36px;
+    background:linear-gradient(180deg, rgba(56,189,248,.55), transparent);
+  }
+
+  .value-top{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    gap:12px;margin-bottom:20px;
+  }
+  .value-icon{
+    width:68px;height:68px;border-radius:16px;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, rgba(56,189,248,.22), rgba(37,167,255,.08));
+    border:1px solid rgba(56,189,248,.4);
+    color:#7DD3FC;font-size:26px;
+    flex-shrink:0;
+    position:relative;
+    box-shadow:
+      0 10px 24px rgba(37,167,255,.18),
+      0 0 0 1px rgba(56,189,248,.08) inset;
+    transition:all .3s cubic-bezier(.2,.9,.3,1.05);
+  }
+  .value-num{
+    font-family:'Manrope',sans-serif;
+    font-size:12px;font-weight:700;
+    color:#25A7FF;letter-spacing:2.5px;
+    line-height:1;
+    padding-top:8px;
+    transition:color .3s ease;
+  }
+  .value-title{
+    font-family:'Manrope',sans-serif;
+    font-size:19px;font-weight:700;
+    color:#fff;margin-bottom:10px;
+    letter-spacing:-0.3px;
+    transition:color .3s ease;
+  }
+  .values-accent{
+    background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 30px rgba(56,189,248,.25);
+  }
+  .value-text{
+    font-family:'Inter',sans-serif;
+    font-size:14px;color:rgba(255,255,255,.72);
+    line-height:1.65;
+  }
+  /* Custom eyebrow with side lines */
+  .eyebrow-line{
+    display:inline-block;width:28px;height:1px;
+    background:linear-gradient(90deg, transparent, #25A7FF, transparent);
+    vertical-align:middle;
+  }
+
+  /* STORY / NUESTRA HISTORIA - premium redesign */
+  .about-story{
+    position:relative;
+    background:
+      linear-gradient(rgba(6,16,30,.88), rgba(6,16,30,.92)),
+      url('img/Fondo_Formulario.webp') center/cover no-repeat;
+    background-attachment:scroll;
+  }
+  .about-story::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg, transparent, rgba(56,189,248,.3), transparent);
+  }
+  .about-story::after{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(900px 500px at 85% 20%, rgba(37,167,255,.10), transparent 60%),
+      radial-gradient(900px 500px at 15% 80%, rgba(56,189,248,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .about-story > .container{position:relative;z-index:2;}
+
+  .story-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+  }
+  /* Left image */
+  .story-image{
+    position:relative;border-radius:24px;overflow:hidden;
+    border:1px solid rgba(56,189,248,.2);
+    aspect-ratio:5/6;
+    box-shadow:
+      0 30px 80px rgba(0,0,0,.55),
+      0 0 0 1px rgba(56,189,248,.06) inset,
+      0 0 50px rgba(37,167,255,.12);
+    isolation:isolate;
+  }
+  .story-image img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(1.04) contrast(1.02);
+    transform:scale(1.02);
+    transition:transform .6s ease;
+  }
+  .story-image:hover img{transform:scale(1.05);}
+  .story-image-overlay{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(180deg, rgba(8,18,32,0) 55%, rgba(8,18,32,.35) 100%),
+      linear-gradient(135deg, rgba(37,167,255,.06), transparent 40%);
+  }
+  .story-image::after{
+    content:'';position:absolute;inset:-2px;border-radius:26px;
+    background:linear-gradient(135deg, rgba(56,189,248,.45), rgba(37,167,255,.15) 50%, transparent 70%);
+    filter:blur(18px);opacity:.45;z-index:-1;pointer-events:none;
+    animation:storyGlowPulse 6s ease-in-out infinite;
+  }
+  @keyframes storyGlowPulse{
+    0%,100%{opacity:.35;}
+    50%{opacity:.6;}
+  }
+
+  /* Right text */
+  .story-text{max-width:560px;}
+  .story-eyebrow{
+    display:inline-flex;align-items:center;gap:12px;
+    font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+    color:#A6E1FF;text-transform:uppercase;letter-spacing:2.5px;
+    background:rgba(56,189,248,.08);
+    border:1px solid rgba(56,189,248,.3);
+    padding:8px 16px;border-radius:100px;margin-bottom:20px;
+  }
+  .story-eyebrow-line{
+    display:inline-block;width:22px;height:1px;
+    background:linear-gradient(90deg, transparent, #25A7FF, transparent);
+  }
+  .story-title{
+    font-family:'Manrope',sans-serif;
+    font-size:clamp(28px,3.4vw,40px);
+    font-weight:800;line-height:1.15;color:#fff;
+    letter-spacing:-1px;margin-bottom:22px;
+  }
+  .story-accent{
+    background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 30px rgba(56,189,248,.25);
+  }
+  .story-text p{
+    font-family:'Inter',sans-serif;
+    font-size:15.5px;color:rgba(255,255,255,.78);
+    line-height:1.75;margin-bottom:14px;
+  }
+
+  /* 4 mini cards */
+  .story-cards{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+    margin:26px 0 28px;
+  }
+  .story-card{
+    position:relative;
+    background:linear-gradient(160deg, rgba(15,30,52,.65) 0%, rgba(10,20,38,.75) 100%);
+    border:1px solid rgba(56,189,248,.18);
+    border-radius:14px;padding:18px 18px 16px;
+    transition:all .3s ease;
+  }
+  .story-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(56,189,248,.4);
+    box-shadow:0 14px 30px rgba(0,0,0,.35), 0 0 24px rgba(37,167,255,.12);
+  }
+  .story-card-icon{
+    width:38px;height:38px;border-radius:10px;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, rgba(56,189,248,.18), rgba(37,167,255,.06));
+    border:1px solid rgba(56,189,248,.3);
+    color:#7DD3FC;font-size:16px;margin-bottom:10px;
+  }
+  .story-card-title{
+    font-family:'Manrope',sans-serif;
+    font-size:15px;font-weight:700;color:#fff;
+    margin-bottom:4px;letter-spacing:-0.2px;
+  }
+  .story-card-text{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;color:rgba(255,255,255,.7);line-height:1.5;
+  }
+
+  /* Stats bar */
+  .story-stats{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:14px;padding:18px 20px;
+    background:linear-gradient(160deg, rgba(15,30,52,.7) 0%, rgba(10,20,38,.8) 100%);
+    border:1px solid rgba(56,189,248,.2);
+    border-radius:14px;
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .story-stat{flex:1;text-align:center;min-width:0;}
+  .story-stat-num{
+    font-family:'Manrope',sans-serif;
+    font-size:18px;font-weight:800;
+    background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1.1;margin-bottom:4px;letter-spacing:-0.3px;
+  }
+  .story-stat-label{
+    font-family:'Inter',sans-serif;
+    font-size:11.5px;font-weight:500;
+    color:rgba(255,255,255,.65);line-height:1.35;
+  }
+  .story-stat-divider{
+    width:1px;height:38px;
+    background:linear-gradient(180deg, transparent, rgba(56,189,248,.3), transparent);
+    flex-shrink:0;
+  }
+
+  /* Legacy list (kept for compatibility but unused in new HTML) */
+  .story-list{list-style:none;padding:0;margin:18px 0 0;}
+  .story-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);
+    font-family:'Inter',sans-serif;font-size:14.5px;color:rgba(255,255,255,.8);
+  }
+  .story-list li i{
+    color:#25A7FF;margin-top:3px;font-size:14px;flex-shrink:0;
+  }
+
+  /* CTA */
+  .about-cta{
+    padding:80px 0;position:relative;text-align:center;
+    background:
+      linear-gradient(rgba(8,18,32,.85), rgba(8,18,32,.92)),
+      url('img/Fondo_Anuncio.webp') center/cover no-repeat;
+    border-top:1px solid rgba(56,189,248,.12);
+  }
+  .about-cta::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(56,189,248,.35),transparent);
+  }
+  .about-cta h2{
+    font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,38px);
+    font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.2;
+  }
+  .about-cta p{
+    font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.78);
+    max-width:620px;margin:0 auto 26px;line-height:1.6;
+  }
+  .about-cta-buttons{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  }
+
+  /* FOOTER - exact match ubicacion.html */
+  .main-footer{
+    background:rgba(15,23,42,.98);padding:60px 0;
+    border-top:1px solid rgba(56,189,248,.1);width:100%;box-sizing:border-box;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.25fr 1.5fr 1.5fr 1.25fr;gap:50px;
+    width:100%;max-width:1250px;margin:0 auto;padding:0 30px;box-sizing:border-box;
+  }
+  .footer-column{display:flex;flex-direction:column;}
+  .footer-brand{margin-bottom:24px;}
+  .footer-logo{
+    display:flex;align-items:center;gap:10px;margin-bottom:8px;
+  }
+  .footer-logo img{height:38px;width:auto;max-width:48px;object-fit:contain;flex-shrink:0;display:block;}
+  .footer-logo span{
+    font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;
+    color:#fff;letter-spacing:-0.3px;line-height:1.15;
+  }
+  .footer-tagline{
+    font-family:'Inter',sans-serif;font-size:14px;font-weight:600;
+    color:#25A7FF;margin-bottom:4px;
+  }
+  .footer-description{
+    font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;line-height:1.6;
+  }
+  .footer-social{display:flex;gap:12px;margin-top:14px;}
+  .footer-social a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(15,23,42,.7);border:1px solid rgba(56,189,248,.3);
+    color:#A3B0C3;font-size:16px;transition:all .25s ease;
+  }
+  .footer-social a:hover{color:#fff;border-color:#38BDF8;transform:translateY(-2px);}
+  .footer-title{
+    font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;
+    color:#fff;margin-bottom:18px;letter-spacing:.5px;text-transform:uppercase;
+  }
+  .footer-links,.footer-contact{list-style:none;padding:0;margin:0;}
+  .footer-links li,.footer-contact li{margin-bottom:10px;}
+  .footer-links a,.footer-contact a,.footer-contact span{
+    font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+    transition:color .2s ease;
+  }
+  .footer-links a:hover,.footer-contact a:hover{color:#38BDF8;}
+  .footer-contact li{display:flex;align-items:center;gap:10px;}
+  .footer-contact i{color:#38BDF8;width:18px;}
+  .btn-footer-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    margin-top:18px;padding:12px 20px;border-radius:10px;
+    background:linear-gradient(135deg,#2196F3,#25A7FF);color:#0B1220;
+    font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;
+    text-decoration:none;transition:all .25s ease;
+    box-shadow:0 4px 16px rgba(56,189,248,.3);
+  }
+  .btn-footer-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5);}
+
+  .footer-trust{padding:40px 0;background:#0B1724;border-top:1px solid rgba(56,189,248,.08);}
+  .trust-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    max-width:1250px;margin:0 auto;padding:0 30px;
+  }
+  .trust-item{display:flex;align-items:center;gap:14px;position:relative;}
+  .trust-item:not(:last-child)::after{
+    content:'';position:absolute;right:-12px;top:10%;bottom:10%;
+    width:1px;background:rgba(56,189,248,.15);
+  }
+  .trust-icon{
+    width:48px;height:48px;border-radius:12px;flex-shrink:0;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);
+    color:#38BDF8;
+  }
+  .trust-content h4{font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:700;color:#fff;margin-bottom:4px;}
+  .trust-content p{font-family:'Inter',sans-serif;font-size:12.5px;color:#A3B0C3;line-height:1.5;}
+
+  .footer-bottom{background:rgba(5,6,8,.95);padding:18px 0;border-top:1px solid rgba(56,189,248,.08);}
+  .footer-bottom-content{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    max-width:1250px;margin:0 auto;padding:0 30px;flex-wrap:wrap;
+  }
+  .footer-copyright{font-family:'Inter',sans-serif;font-size:13px;color:#A3B0C3;}
+  .footer-bottom-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .footer-bottom-links a{font-family:'Inter',sans-serif;font-size:13px;color:#A3B0C3;transition:color .2s;}
+  .footer-bottom-links a:hover{color:#38BDF8;}
+  .footer-separator{color:rgba(163,176,195,.5);font-size:12px;}
+
+  /* Logo lightbox (same as other pages) */
+  .logo-lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 60%,rgba(0,0,0,.92) 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;animation:logoLightboxFade .2s ease;}
+  .logo-lightbox.open{display:flex;}
+  @keyframes logoLightboxFade{from{opacity:0;}to{opacity:1;}}
+  .logo-lightbox-img{width:min(360px,70vw);height:min(360px,70vw);border-radius:50%;object-fit:cover;cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 6px rgba(56,189,248,.25);animation:logoLightboxPop .25s cubic-bezier(.2,.9,.3,1.2);background:#0B1426;}
+  @keyframes logoLightboxPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+
+  /* RESPONSIVE */
+  @media (max-width:1024px){
+    .about-hero-inner{grid-template-columns:1fr;gap:36px;}
+    .about-hero-visual{max-height:420px;aspect-ratio:4/3;}
+    .story-grid{grid-template-columns:1fr;gap:28px;}
+    .values-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;}
+    .trust-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+    .trust-item:not(:last-child)::after{display:none;}
+  }
+  @media (max-width:600px){
+    .about-hero-visual{max-height:340px;aspect-ratio:16/10;margin:0 auto;max-width:480px;}
+  }
+  @media (max-width:1024px){
+    .header-social,.header-divider{display:none;}
+    .nav-cta{
+      display:none;position:absolute;top:64px;left:0;right:0;
+      background:rgba(5,6,8,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      flex-direction:column;align-items:stretch;padding:16px 20px;gap:8px;
+      border-bottom:1px solid var(--border);
+    }
+    .nav-cta.open{display:flex;}
+    .nav-cta a{padding:14px 16px;width:100%;text-align:center;border-radius:8px;}
+    .nav-cta{align-items:center;}
+    .nav-cta .btn-primary{width:fit-content;margin:0 auto;}
+    .mobile-menu-btn{display:flex;}
+    .mobile-social-section{
+      display:flex;flex-direction:column;align-items:center;gap:12px;
+      margin-top:8px;padding:16px 12px;background:rgba(56,189,248,.04);
+      border:1px solid rgba(56,189,248,.12);border-radius:12px;
+    }
+    .mobile-social-label{
+      font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;
+      color:rgba(255,255,255,.7);letter-spacing:1.5px;text-transform:uppercase;
+      display:flex;align-items:center;gap:8px;
+    }
+    .mobile-social-label::after{
+      content:'';display:inline-block;width:24px;height:2px;
+      background:linear-gradient(90deg,transparent,#38BDF8,transparent);margin-left:8px;
+    }
+    .mobile-social-icons{display:flex;gap:12px;}
+    .mobile-social{
+      display:flex;align-items:center;justify-content:center;
+      width:46px;height:46px;border-radius:50%;
+      background:rgba(15,23,42,.6);border:1px solid rgba(56,189,248,.4);
+      color:#fff;font-size:17px;text-decoration:none;
+    }
+    .nav-cta .header-social,.nav-cta .header-divider{display:none;}
+
+    /* Dropdown en móvil: inline dentro del panel */
+    .has-dropdown{width:100%;}
+    .has-dropdown .btn{width:100%;justify-content:space-between;}
+    .nav-dropdown{
+      position:static !important;
+      transform:none !important;
+      background:rgba(5,6,8,.6) !important;
+      border:1px solid rgba(56,189,248,.15) !important;
+      box-shadow:none !important;
+      border-radius:10px !important;
+      margin:4px 0 6px !important;
+      min-width:0 !important;
+      padding:6px !important;
+      display:none;
+      animation:none !important;
+    }
+    .nav-dropdown::before{display:none !important;}
+    .has-dropdown.open .nav-dropdown{display:block;}
+  }
+  @media (max-width:767px){
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+    .trust-grid{grid-template-columns:1fr;gap:18px;}
+    .main-footer{padding:40px 0;}
+    .footer-bottom-content{flex-direction:column;text-align:center;}
+    .footer-bottom-links{justify-content:center;}
+  }
+  @media (max-width:600px){
+    .container{width:calc(100% - 30px);}
+    .about-hero{padding:120px 0 70px;}
+    .about-hero-stats{grid-template-columns:repeat(3,1fr);gap:10px;}
+    .about-stat{padding:14px 8px;}
+    .about-stat-num{font-size:24px;}
+    .about-section{padding:70px 0;}
+    .about-cta{padding:60px 0;}
+  }
+  @media (max-width:480px){
+    header nav{padding:0 16px;}
+    .logo{font-size:11px;gap:8px;}
+    .logo .brand-logo-img{height:34px;max-width:42px;}
+    .logo .logo-text{font-size:11px;}
+    .footer-grid,.trust-grid,.footer-bottom-content{padding:0 20px;}
+    .footer-logo span{font-size:13px;line-height:1.15;}
+    .footer-title{font-size:16px;}
+    .footer-links a,.footer-contact a,.footer-contact span{font-size:14px;}
+    .btn-footer-cta{width:100%;}
+    .values-grid{grid-template-columns:1fr;}
+    .mv-grid{grid-template-columns:1fr;}
+    .value-icon{width:60px;height:60px;font-size:23px;border-radius:14px;}
+    .value-card{padding:26px 22px 24px;}
+    .story-cards{grid-template-columns:1fr;}
+    .story-stats{flex-direction:column;gap:14px;padding:18px;}
+    .story-stat-divider{width:60%;height:1px;
+      background:linear-gradient(90deg, transparent, rgba(56,189,248,.3), transparent);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+      <div class="logo">
+        <img src="img/logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+        <span class="logo-text">J &amp; J Luxury<br>Cleaning Service LLC</span>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Abrir menú" id="mobileMenuBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-cta" id="mainNav">
+      <a class="btn btn-ghost" href="index.html">Inicio</a>
+      <a class="btn btn-ghost" href="nosotros.html">Sobre nosotros</a>
+      <div class="has-dropdown" id="serviciosDropdown">
+        <div class="has-dropdown-trigger">
+          <a class="btn btn-ghost has-dropdown-label" href="servicios.html" aria-haspopup="true" aria-expanded="false">Servicios</a>
+          <button class="dd-toggle" type="button" aria-label="Abrir menú de servicios" aria-expanded="false"><i class="fa-solid fa-chevron-down dd-caret"></i></button>
+        </div>
+        <div class="nav-dropdown" role="menu">
+          <a href="servicios.html#residencial" role="menuitem"><i class="fa-solid fa-house"></i> Limpieza residencial</a>
+          <a href="servicios.html#comercial" role="menuitem"><i class="fa-solid fa-building"></i> Limpieza comercial</a>
+          <a href="servicios.html#industrial" role="menuitem"><i class="fa-solid fa-industry"></i> Limpieza industrial</a>
+          <a href="servicios.html#vidrios" role="menuitem"><i class="fa-solid fa-window-maximize"></i> Limpieza de vidrios</a>
+          <a href="servicios.html#desinfeccion" role="menuitem"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento" role="menuitem"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+      </div>
+      <a class="btn btn-ghost" href="ubicacion.html">encuentra tu ubicación</a>
+      <button class="btn btn-primary" type="button" onclick="window.location.href='index.html#contacto';">Cotizar</button>
+      <div class="mobile-social-section">
+        <span class="mobile-social-label">SÍGUENOS</span>
+        <div class="mobile-social-icons">
+          <a class="mobile-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="mobile-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="mobile-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="header-divider"></div>
+      <a class="header-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="header-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="header-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero-inner">
+        <div class="about-hero-content">
+          <span class="about-badge"><i class="fa-solid fa-sparkles"></i> Sobre nosotros</span>
+          <h1 class="about-title">Limpieza profesional con un toque de <span class="accent">lujo y detalle</span></h1>
+          <p class="about-lead">En J &amp; J Luxury Cleaning Service LLC creemos que un espacio limpio transforma la vida de las personas. Por eso ofrecemos servicios de limpieza premium para hogares, oficinas y negocios, con un equipo capacitado, productos de calidad y un compromiso real con cada cliente.</p>
+          <div class="about-hero-stats">
+            <div class="about-stat">
+              <div class="about-stat-num">+5</div>
+              <div class="about-stat-label">Años de experiencia</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">+1K</div>
+              <div class="about-stat-label">Clientes felices</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">100%</div>
+              <div class="about-stat-label">Compromiso</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-hero-visual">
+          <img src="img/limpieza_residencial.webp" alt="Servicio premium de limpieza residencial">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION -->
+  <section class="about-section about-mv">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow"><i class="fa-solid fa-sparkles" style="font-size:10px;"></i> NUESTRO PROPÓSITO <i class="fa-solid fa-sparkles" style="font-size:10px;"></i></div>
+        <h2 class="section-title">MISIÓN Y <span class="mv-vision-accent">VISIÓN</span></h2>
+        <p class="section-sub">Dos compromisos que guían cada servicio que entregamos.</p>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card">
+          <div class="mv-image">
+            <img src="img/Tarjeta_Mision.webp" alt="Profesional de limpieza trabajando con uniforme elegante" loading="lazy">
+            <div class="mv-image-overlay"></div>
+          </div>
+          <div class="mv-body">
+            <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h3 class="mv-title">Nuestra <span class="mv-mision-accent">Misión</span></h3>
+            <p class="mv-text">Brindar servicios de limpieza de la más alta calidad, superando las expectativas de nuestros clientes a través de un equipo profesional, productos confiables y una atención cercana, puntual y personalizada en cada visita.</p>
+          </div>
+        </div>
+        <div class="mv-card">
+          <div class="mv-image">
+            <img src="img/Tarjeta_vision.webp" alt="Espacio moderno y premium después de limpieza profesional" loading="lazy">
+            <div class="mv-image-overlay"></div>
+          </div>
+          <div class="mv-body">
+            <div class="mv-icon"><i class="fa-solid fa-eye"></i></div>
+            <h3 class="mv-title">Nuestra <span class="mv-vision-accent">Visión</span></h3>
+            <p class="mv-text">Ser la empresa de limpieza de referencia en cada comunidad donde trabajamos, reconocida por la excelencia, la confianza y la transformación real de los espacios que tocamos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="about-section about-values">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow"><span class="eyebrow-line"></span> LO QUE NOS DEFINE <span class="eyebrow-line"></span></div>
+        <h2 class="section-title">NUESTROS <span class="values-accent">VALORES</span></h2>
+        <p class="section-sub">Los principios que guían a nuestros profesionales en cada servicio.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-corner" aria-hidden="true"></div>
+          <div class="value-top">
+            <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+            <div class="value-num">01</div>
+          </div>
+          <h3 class="value-title">Compromiso</h3>
+          <p class="value-text">Cumplimos lo que prometemos. Cada cita, cada detalle y cada espacio se trata con responsabilidad total.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner" aria-hidden="true"></div>
+          <div class="value-top">
+            <div class="value-icon"><i class="fa-solid fa-gem"></i></div>
+            <div class="value-num">02</div>
+          </div>
+          <h3 class="value-title">Calidad</h3>
+          <p class="value-text">Usamos productos profesionales, equipos adecuados y técnicas probadas para lograr resultados impecables.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner" aria-hidden="true"></div>
+          <div class="value-top">
+            <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="value-num">03</div>
+          </div>
+          <h3 class="value-title">Confianza</h3>
+          <p class="value-text">Personal verificado, comunicación clara y total transparencia desde la cotización hasta la entrega del servicio.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner" aria-hidden="true"></div>
+          <div class="value-top">
+            <div class="value-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="value-num">04</div>
+          </div>
+          <h3 class="value-title">Puntualidad</h3>
+          <p class="value-text">Respetamos tu tiempo. Llegamos cuando acordamos y completamos el trabajo en el tiempo establecido.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner" aria-hidden="true"></div>
+          <div class="value-top">
+            <div class="value-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <div class="value-num">05</div>
+          </div>
+          <h3 class="value-title">Cuidado</h3>
+          <p class="value-text">Tratamos cada espacio como si fuera nuestro, con atención al detalle y respeto por tus pertenencias.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-corner" aria-hidden="true"></div>
+          <div class="value-top">
+            <div class="value-icon"><i class="fa-solid fa-comments"></i></div>
+            <div class="value-num">06</div>
+          </div>
+          <h3 class="value-title">Comunicación</h3>
+          <p class="value-text">Estamos disponibles para escucharte, resolver dudas y adaptarnos a tus necesidades específicas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="about-section about-story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image">
+          <img src="img/Tarjeta_Nuestra historia.webp" alt="Profesional de limpieza trabajando en un interior residencial moderno y lujoso" loading="lazy">
+          <div class="story-image-overlay"></div>
+        </div>
+        <div class="story-text">
+          <div class="story-eyebrow"><span class="story-eyebrow-line"></span> NUESTRA HISTORIA <span class="story-eyebrow-line"></span></div>
+          <h3 class="story-title">Limpieza profesional.<br><span class="story-accent">Compromiso en cada detalle.</span></h3>
+          <p>En J &amp; J Luxury Cleaning Service LLC creemos que un espacio limpio no solo se ve mejor: se siente mejor. Por eso ofrecemos un servicio profesional, detallista y personalizado para hogares y negocios que esperan resultados impecables.</p>
+          <p>Comenzamos con una idea sencilla: hacer las cosas bien. Hoy somos un equipo comprometido con mantener espacios limpios, frescos y presentables, siempre con los más altos estándares de calidad.</p>
+          <p>Nos especializamos en limpieza residencial, comercial e industrial, limpieza de vidrios, desinfección y mantenimiento, adaptando cada servicio a las necesidades de nuestros clientes.</p>
+
+          <div class="story-cards">
+            <div class="story-card">
+              <div class="story-card-icon"><i class="fa-solid fa-user-shield"></i></div>
+              <div class="story-card-title">Personal capacitado</div>
+              <div class="story-card-text">Profesionales preparados y verificados.</div>
+            </div>
+            <div class="story-card">
+              <div class="story-card-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+              <div class="story-card-title">Productos profesionales</div>
+              <div class="story-card-text">Utilizamos productos de calidad para cada superficie.</div>
+            </div>
+            <div class="story-card">
+              <div class="story-card-icon"><i class="fa-solid fa-sliders"></i></div>
+              <div class="story-card-title">Servicio personalizado</div>
+              <div class="story-card-text">Adaptamos nuestros servicios a las necesidades de cada espacio.</div>
+            </div>
+            <div class="story-card">
+              <div class="story-card-icon"><i class="fa-solid fa-star"></i></div>
+              <div class="story-card-title">Resultados impecables</div>
+              <div class="story-card-text">Cuidamos cada detalle para superar tus expectativas.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANUNCIO / CTA (mismo que index.html y servicios.html) -->
+  <section class="footer-cta">
+    <div class="wrap">
+      <div class="cta-banner">
+        <div class="cta-banner-bg"></div>
+        <div class="cta-banner-border"></div>
+        <div class="cta-banner-content">
+          <img src="img/Carrito_Fondo_Anuncio.png" alt="Carrito profesional de limpieza" class="cta-carrito-image">
+          <div class="cta-text">
+            <div class="cta-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>SERVICIO PROFESIONAL</span>
+            </div>
+            <h2>¿LISTO PARA UN<br><span class="accent">ESPACIO IMPECABLE</span>?</h2>
+            <p>Deja tus espacios en las mejores manos.</p>
+            <span>Solicita tu cotización gratuita y déjanos transformar tu espacio.</span>
+          </div>
+          <div class="cta-buttons">
+            <a class="btn btn-cta-primary" href="index.html#contacto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
+              </svg>
+              COTIZAR AHORA
+            </a>
+            <a class="btn btn-cta-whatsapp" href="https://wa.me/5215512345678" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+              CONTACTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="main-footer">
+  <div class="footer-grid">
+    <div class="footer-column">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="img/logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+          <span>J &amp; J LUXURY CLEANING SERVICE LLC</span>
+        </div>
+        <p class="footer-tagline">Servicios Profesionales de Limpieza</p>
+        <p class="footer-description">Soluciones profesionales de limpieza para hogares, empresas e industrias.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/5215512345678" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">ENLACES RÁPIDOS</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Sobre nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">NUESTROS SERVICIOS</h3>
+      <ul class="footer-links">
+        <li><a href="servicios.html">Limpieza residencial</a></li>
+        <li><a href="servicios.html">Limpieza comercial</a></li>
+        <li><a href="servicios.html">Limpieza industrial</a></li>
+        <li><a href="servicios.html">Limpieza de vidrios</a></li>
+        <li><a href="servicios.html">Desinfección</a></li>
+        <li><a href="servicios.html">Mantenimiento</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">CONTACTO</h3>
+      <ul class="footer-contact">
+        <li><i class="fa-solid fa-phone"></i><a href="tel:+5215512345678">+52 1 55 1234 5678</a></li>
+        <li><i class="fa-solid fa-envelope"></i><a href="mailto:contacto@jjluxurycleaning.com">contacto@jjluxurycleaning.com</a></li>
+        <li><i class="fa-solid fa-location-dot"></i><span>Estados Unidos</span></li>
+        <li><i class="fa-solid fa-clock"></i><span>Lun - Dom: 7:00 AM - 8:00 PM</span></li>
+      </ul>
+      <a class="btn-footer-cta" href="index.html#contacto">SOLICITAR COTIZACIÓN</a>
+    </div>
+  </div>
+</footer>
+
+<section class="footer-trust">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
+      <div class="trust-content"><h4>Personal capacitado</h4><p>Profesionales preparados para cada servicio.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="trust-content"><h4>Productos de calidad</h4><p>Utilizamos productos confiables y efectivos.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <div class="trust-content"><h4>Satisfacción garantizada</h4><p>Nuestro compromiso es ofrecer excelentes resultados.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="trust-content"><h4>Atención profesional</h4><p>Servicio responsable y atención personalizada.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-bottom">
+  <div class="footer-bottom-content">
+    <p class="footer-copyright">© 2026 J &amp; J LUXURY CLEANING SERVICE LLC · Todos los derechos reservados.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Política de privacidad</a>
+      <span class="footer-separator">·</span>
+      <a href="#">Términos y condiciones</a>
+      <span class="footer-separator">·</span>
+      <a href="#">Aviso legal</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mainNav = document.getElementById('mainNav');
+  if (mobileBtn && mainNav) {
+    mobileBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      mainNav.classList.toggle('open');
+      mobileBtn.classList.toggle('active');
+      mobileBtn.setAttribute('aria-expanded', mainNav.classList.contains('open'));
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.nav-cta') && !e.target.closest('.mobile-menu-btn')) {
+        mainNav.classList.remove('open');
+        mobileBtn.classList.remove('active');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Logo lightbox
+  document.addEventListener('DOMContentLoaded', function(){
+    // Header dropdown toggle (Servicios)
+    const dd = document.getElementById('serviciosDropdown');
+    if (dd) {
+      const label = dd.querySelector('.has-dropdown-label');
+      const toggleBtn = dd.querySelector('.dd-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dd.classList.toggle('open');
+          toggleBtn.setAttribute('aria-expanded', isOpen);
+          if (label) label.setAttribute('aria-expanded', isOpen);
+        });
+      }
+      document.addEventListener('click', function(e){
+        if (!e.target.closest('#serviciosDropdown')) {
+          dd.classList.remove('open');
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+          if (label) label.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') {
+          dd.classList.remove('open');
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+          if (label) label.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'logo-lightbox';
+    lightbox.id = 'logoLightbox';
+    lightbox.innerHTML = '<img class="logo-lightbox-img" src="img/logo.png" alt="J &amp; J Luxury Cleaning Service LLC">';
+    document.body.appendChild(lightbox);
+
+    document.querySelectorAll('.brand-logo-img').forEach(function(img){
+      img.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightbox.addEventListener('click', function(e){
+      if (e.target === lightbox || (e.target.classList && e.target.classList.contains('logo-lightbox') && !e.target.classList.contains('logo-lightbox-img'))) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+    lightbox.querySelector('.logo-lightbox-img').addEventListener('click', function(e){
+      e.stopPropagation();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

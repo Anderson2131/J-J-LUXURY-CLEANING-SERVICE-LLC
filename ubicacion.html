@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuentra tu Ubicación | J & J LUXURY CLEANING SERVICE LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --bg-main:#081220;
+    --bg-sec:#0B1724;
+    --bg-card:#101E2C;
+    --bg-card2:#132333;
+    --blue:#2196F3;
+    --blue-bright:#25A7FF;
+    --blue-dark:#0D6EFD;
+    --blue-hover:#168BE6;
+    --green:#22C55E;
+    --white:#FFFFFF;
+    --text-main:#FFFFFF;
+    --text-sec:#A3B0C3;
+    --border:rgba(255,255,255,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;background-color:var(--bg-main);}
+  body{
+    font-family:'Poppins',sans-serif;
+    background-color:var(--bg-main);
+    color:var(--text-main);
+    min-height:100vh;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit;}
+  button{font-family:'Poppins',sans-serif;cursor:pointer;border:none;background:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .container{
+    width:min(94%, 1450px);
+    margin:0 auto;
+  }
+
+  /* HEADER */
+  header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(56,189,248,.1);
+  }
+  header nav{
+    max-width:1320px;
+    margin:0 auto;
+    padding:0 22px;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    letter-spacing:-0.2px;
+    text-transform:none;
+    min-width:0;
+    line-height:1.15;
+    white-space:nowrap;
+  }
+  .logo .brand-logo-img{height:38px;width:auto;max-width:46px;object-fit:contain;flex-shrink:0;display:block;}
+  .logo .logo-text{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:-0.2px;}
+  .logo svg{color:#2196F3;}
+  .nav-cta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .nav-cta a{
+    font-family:'Inter',sans-serif;
+    font-size:13.5px;
+    color:#A3B0C3;
+    padding:6px 10px;
+    border-radius:8px;
+    transition:all .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta a:hover{
+    color:#fff;
+    background:rgba(56,189,248,.1);
+  }
+  /* Header dropdown (Servicios) */
+  .has-dropdown{position:relative;}
+  .nav-dropdown{
+    position:absolute;
+    top:calc(100% + 6px);
+    left:50%;
+    transform:translateX(-50%) translateY(-6px);
+    min-width:230px;
+    background:rgba(11,18,32,.97);
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:12px;
+    padding:8px;
+    box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 0 1px rgba(56,189,248,.08);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    display:none;
+    z-index:1100;
+  }
+  .nav-dropdown::before{
+    content:'';position:absolute;top:-6px;left:50%;
+    transform:translateX(-50%) rotate(45deg);
+    width:10px;height:10px;
+    background:rgba(11,18,32,.97);
+    border-left:1px solid rgba(56,189,248,.25);
+    border-top:1px solid rgba(56,189,248,.25);
+  }
+  .nav-dropdown a{
+    display:flex !important;align-items:center;gap:10px;
+    padding:10px 14px !important;border-radius:8px;
+    font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+    text-decoration:none;width:100%;text-align:left;
+    background:none !important;border:none !important;position:static !important;
+    white-space:nowrap;transition:all .2s ease;
+  }
+  .nav-dropdown a:hover{color:#fff;background:rgba(56,189,248,.1) !important;}
+  .nav-dropdown a i{color:#38BDF8;font-size:13px;width:16px;text-align:center;}
+  .has-dropdown:hover .nav-dropdown,
+  .has-dropdown.open .nav-dropdown{
+    display:block;
+    animation:navDropdownIn .18s ease forwards;
+  }
+  /* On touch devices, prevent sticky :hover from re-opening the menu after toggle close */
+  @media (hover: none){
+    .has-dropdown:hover .nav-dropdown{display:none;}
+    .has-dropdown.open .nav-dropdown{display:block;}
+  }
+  @keyframes navDropdownIn{
+    from{opacity:0;transform:translateX(-50%) translateY(-10px);}
+    to{opacity:1;transform:translateX(-50%) translateY(0);}
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:9px 16px;
+    border-radius:8px;
+    font-family:'Manrope',sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .25s ease;
+    border:none;
+    text-decoration:none;
+  }
+  .header-social{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    height:36px;
+    color:#A3B0C3;
+    font-size:17px;
+    transition:all .3s ease;
+    margin-right:2px;
+    text-decoration:none;
+    background:transparent;
+    border:none;
+  }
+  .header-social:hover{
+    color:#fff;
+    transform:translateY(-2px) scale(1.15);
+  }
+  .header-social:has(.fa-whatsapp):hover{
+    color:#25D366;
+    text-shadow:0 0 12px rgba(37,211,102,.6);
+  }
+  .header-social:has(.fa-facebook-f):hover{
+    color:#1877F2;
+    text-shadow:0 0 12px rgba(24,119,242,.6);
+  }
+  .header-social:has(.fa-instagram):hover{
+    color:#E4405F;
+    text-shadow:0 0 12px rgba(225,48,108,.6);
+  }
+  .header-divider{
+    width:1px;
+    height:22px;
+    background:rgba(56,189,248,.2);
+    margin:0 4px;
+  }
+
+  .btn-primary{
+    background:linear-gradient(135deg,#2196F3,#25A7FF);
+    color:#0B1220;
+    box-shadow:0 4px 16px rgba(56,189,248,.3);
+  }
+  .btn-primary:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 20px rgba(56,189,248,.5);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:#A3B0C3;
+  }
+  .btn-ghost:hover{
+    color:#fff;
+    background:rgba(56,189,248,.1);
+  }
+  .mobile-menu-btn{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+    height:48px;
+    min-width:48px;
+    min-height:48px;
+    background:rgba(11,18,32,.95);
+    border:1px solid rgba(56,189,248,.35);
+    border-radius:10px;
+    color:#fff;
+    cursor:pointer;
+    flex-shrink:0;
+    box-shadow:0 4px 14px rgba(0,0,0,.45);
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+    user-select:none;
+    transition:all .15s ease;
+    position:relative;
+    z-index:1001;
+  }
+  .mobile-menu-btn:hover{
+    background:rgba(56,189,248,.15);
+    border-color:rgba(56,189,248,.6);
+  }
+  .mobile-menu-btn:active{
+    transform:scale(.92);
+    background:rgba(56,189,248,.2);
+  }
+  .mobile-menu-btn svg{
+    width:22px;
+    height:22px;
+    transition:transform .2s ease;
+  }
+  .mobile-menu-btn.active svg{
+    transform:rotate(90deg);
+  }
+
+  /* Mobile Social Section (solo se muestra en el menú móvil) */
+  .mobile-social-section{
+    display:none;
+  }
+  .mobile-menu-btn svg{
+    width:20px;
+    height:20px;
+  }
+
+  /* BACKGROUND SECTION */
+  .location-section{
+    position:relative;
+    padding:76px 0 80px;
+    background:
+      linear-gradient(rgba(8,18,32,.88), rgba(8,18,32,.88)),
+      url('img/Fondo_Formulario.webp') center/cover no-repeat;
+    background-attachment:fixed;
+  }
+  @media (max-width:768px){
+    .location-section{background-attachment:scroll;}
+  }
+  .location-section::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(56,189,248,.3), transparent);
+  }
+
+  /* MAIN LAYOUT */
+  .location-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.65fr) minmax(360px,0.85fr);
+    grid-template-areas:
+      "hero panel"
+      "card panel"
+      "map panel"
+      "info panel"
+      "cov panel"
+      "btn .";
+    gap:22px 28px;
+    align-items:stretch;
+  }
+  .hero-content{grid-area:hero;}
+  .location-card{grid-area:card;}
+  .map-container{grid-area:map;}
+  .info-grid{grid-area:info;}
+  .coverage-note{grid-area:cov;}
+  .btn-big-quote{grid-area:btn;}
+  .left-col{display:flex;flex-direction:column;gap:22px;min-width:0;align-items:flex-start;}
+  .right-col{
+    grid-area:panel;
+    display:flex;flex-direction:column;gap:16px;min-width:0;
+    max-height: 1450px;
+  }
+
+  /* HERO CONTENT */
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    background:rgba(33,150,243,.08);
+    border:1px solid rgba(33,150,243,.35);
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--blue-bright);
+    letter-spacing:.5px;
+    margin-bottom:22px;
+  }
+  .hero-title{
+    font-size:clamp(42px,4vw,60px);
+    font-weight:800;
+    line-height:1.05;
+    letter-spacing:-1.5px;
+    margin-bottom:18px;
+  }
+  .hero-title .accent{color:#2196F3;}
+  .hero-desc{
+    font-size:17px;
+    color:#A3B0C3;
+    max-width:540px;
+    line-height:1.7;
+    margin-bottom:10px;
+  }
+  .hero-desc-secondary{
+    font-size:14px;
+    color:rgba(163,176,195,.75);
+    max-width:540px;
+    line-height:1.6;
+  }
+
+  /* LOCATION CARD */
+  .location-card{
+    background:linear-gradient(135deg,#101E2C,#0D1A28);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    box-shadow:0 12px 36px rgba(0,0,0,.25);
+    width:100%;
+  }
+  .location-icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#2196F3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    flex-shrink:0;
+    box-shadow:0 0 20px rgba(33,150,243,.2);
+    font-size:18px;
+  }
+  .location-info{flex:1;min-width:0;}
+  .location-label{
+    font-size:12.5px;
+    color:#25A7FF;
+    margin-bottom:5px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .location-value{
+    font-size:18px;
+    font-weight:700;
+    color:var(--text-main);
+    margin-bottom:4px;
+    line-height:1.2;
+  }
+  .location-sub{
+    font-size:12.5px;
+    color:#A3B0C3;
+    margin-bottom:4px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .location-sub i{color:var(--blue-bright);font-size:11px;}
+  .location-service{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    color:#22C55E;
+    font-weight:500;
+  }
+  .location-service .service-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:#22C55E;
+    box-shadow:0 0 6px #22C55E;
+  }
+  .btn-edit{
+    padding:11px 18px;
+    background:rgba(33,150,243,.08);
+    border:1px solid rgba(33,150,243,.35);
+    color:#25A7FF;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:500;
+    transition:all .25s ease;
+    flex-shrink:0;
+  }
+  .btn-edit:hover{background:#2196F3;color:#fff;border-color:#2196F3;}
+
+  /* MAP */
+  .map-container{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    position:relative;
+    width:100%;
+    height:600px;
+  }
+  #map{
+    width:100%;
+    height:600px;
+    display:block;
+    z-index:1;
+    filter:invert(1) hue-rotate(180deg) brightness(.95) contrast(.9);
+  }
+  .map-radius-label{
+    position:absolute;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:500;
+    background:rgba(11,18,32,.9);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(33,150,243,.4);
+    padding:9px 16px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--blue-bright);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    box-shadow:0 4px 16px rgba(0,0,0,.4);
+  }
+  .map-area-label{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:500;
+    background:rgba(11,18,32,.92);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(33,150,243,.5);
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--blue-bright);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.4);
+    white-space:nowrap;
+  }
+  .map-area-label i{color:var(--blue-bright);font-size:12px;}
+  .map-home-btn{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    z-index:500;
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    background:rgba(11,18,32,.9);
+    border:1px solid rgba(33,150,243,.4);
+    color:var(--blue-bright);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 4px 16px rgba(0,0,0,.4);
+  }
+  .map-home-btn:hover{
+    background:rgba(33,150,243,.2);
+    color:#fff;
+    border-color:rgba(33,150,243,.6);
+  }
+  .leaflet-popup-content-wrapper{
+    background:rgba(11,18,32,.95)!important;
+    color:var(--text-main)!important;
+    border:1px solid var(--border)!important;
+    border-radius:14px!important;
+    box-shadow:0 10px 30px rgba(0,0,0,.5)!important;
+  }
+  .leaflet-popup-tip{background:rgba(11,18,32,.95)!important;}
+  .leaflet-popup-content{margin:14px 18px!important;font-family:'Poppins',sans-serif!important;line-height:1.5;}
+  .leaflet-popup-content h4{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--blue-bright);}
+  .leaflet-popup-content p{font-size:12px;color:var(--text-sec);margin:2px 0;}
+  .leaflet-popup-content .pop-info{font-size:12px;color:var(--blue-bright);font-weight:600;margin-top:4px;}
+  .leaflet-popup-content .pop-status{
+    display:inline-flex;align-items:center;gap:5px;
+    margin-top:6px;padding:4px 10px;border-radius:20px;
+    background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);
+    font-size:11px;color:#22C55E;font-weight:500;
+  }
+  .leaflet-popup-content .pop-btn{
+    display:inline-block;margin-top:8px;padding:7px 14px;
+    background:#2196F3;color:#fff;border-radius:8px;
+    font-size:11px;font-weight:700;text-transform:uppercase;
+    text-decoration:none;cursor:pointer;border:none;
+  }
+  .custom-marker{
+    width:54px;height:54px;border-radius:50%;
+    background:linear-gradient(135deg,#2196F3,#0D6EFD);
+    border:4px solid #fff;
+    box-shadow:0 8px 26px rgba(33,150,243,.7);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:22px;
+    position:relative;
+  }
+  .custom-marker::before{
+    content:'';position:absolute;inset:-12px;border-radius:50%;
+    border:2px solid #25A7FF;
+    animation:markerPulse 2.2s ease-out infinite;
+  }
+  @keyframes markerPulse{
+    0%{transform:scale(1);opacity:1;}
+    100%{transform:scale(1.8);opacity:0;}
+  }
+  .city-marker{
+    width:34px;height:34px;border-radius:50%;
+    background:#101E2C;border:2.5px solid #25A7FF;
+    display:flex;align-items:center;justify-content:center;
+    color:#25A7FF;
+    box-shadow:0 4px 14px rgba(0,0,0,.6);
+    font-size:13px;
+  }
+
+  /* INFO TILES */
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    width:100%;
+  }
+  .info-tile{
+    background:#101E2C;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    padding:18px 16px;
+    min-height:120px;
+    box-shadow:0 10px 28px rgba(0,0,0,.25);
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .info-tile:hover{
+    transform:translateY(-3px);
+    border-color:rgba(33,150,243,.35);
+    box-shadow:0 14px 36px rgba(0,0,0,.4);
+  }
+  .info-tile-icon{
+    width:42px;height:42px;border-radius:11px;
+    background:rgba(33,150,243,.14);color:var(--blue-bright);
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;margin-bottom:12px;
+  }
+  .info-tile-title{font-size:11.5px;color:var(--text-sec);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px;}
+  .info-tile-value{font-size:14px;font-weight:600;color:var(--text-main);line-height:1.45;}
+
+  /* COVERAGE NOTE */
+  .coverage-note{
+    background:#101E2C;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    padding:18px 20px;
+    width:100%;
+  }
+  .coverage-title{
+    font-size:13px;font-weight:700;color:var(--blue-bright);
+    text-transform:uppercase;letter-spacing:1px;
+    margin-bottom:10px;display:flex;align-items:center;gap:8px;
+  }
+  .coverage-note p{
+    font-size:14px;color:var(--text-sec);line-height:1.6;margin-bottom:8px;
+  }
+  .coverage-note p:last-child{margin-bottom:0;}
+  .coverage-disclaimer{
+    font-size:12px!important;color:rgba(163,176,195,.6)!important;font-style:italic;margin-top:6px;
+  }
+
+  /* QUOTE BUTTON */
+  .btn-big-quote{
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+    padding:15px 28px;
+    background:linear-gradient(90deg,#0D6EFD,#2196F3);
+    color:#fff;
+    font-size:15.5px;font-weight:700;
+    letter-spacing:.5px;text-transform:uppercase;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(33,150,243,.4);
+    transition:all .3s ease;
+    width:auto;
+  }
+  .btn-big-quote:hover{
+    background:linear-gradient(90deg,#2196F3,#25A7FF);
+    transform:translateY(-2px);
+    box-shadow:0 14px 40px rgba(33,150,243,.6);
+  }
+  .btn-big-quote i{font-size:18px;}
+
+  /* RIGHT COLUMN */
+  .panel-title{
+    font-size:21px;font-weight:700;
+    display:flex;align-items:center;gap:10px;
+  }
+  .panel-title i{color:var(--blue-bright);font-size:21px;}
+  .panel-subtitle{
+    font-size:13.5px;color:var(--text-sec);
+    line-height:1.5;
+    margin-top:-4px;
+  }
+  .panel-controls{
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  }
+  .search-box{position:relative;flex:1;min-width:180px;}
+  .search-box input{
+    width:100%;padding:12px 14px 12px 42px;
+    background:rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+    color:var(--text-main);
+    font-family:'Poppins',sans-serif;
+    font-size:13.5px;
+    transition:all .25s ease;
+  }
+  .search-box input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(33,150,243,.15);}
+  .search-box i{
+    position:absolute;left:15px;top:50%;transform:translateY(-50%);
+    color:var(--text-sec);font-size:13px;
+  }
+  .filter-box{position:relative;flex-shrink:0;}
+  .filter-box select{
+    padding:12px 32px 12px 14px;
+    background:rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+    color:var(--text-main);
+    font-family:'Poppins',sans-serif;
+    font-size:13.5px;
+    cursor:pointer;
+    appearance:none;-webkit-appearance:none;
+  }
+  .filter-box::after{
+    content:'\f078';font-family:'Font Awesome 6 Free';font-weight:900;
+    position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    color:var(--text-sec);font-size:10px;pointer-events:none;
+  }
+  .places-list{
+    display:flex;flex-direction:column;gap:14px;
+    flex:1;min-height:0;
+    overflow-y:auto;padding-right:6px;
+  }
+  .places-list::-webkit-scrollbar{width:6px;}
+  .places-list::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:3px;}
+  .places-list::-webkit-scrollbar-thumb{background:#2196F3;border-radius:3px;}
+  .places-list::-webkit-scrollbar-thumb:hover{background:#25A7FF;}
+
+  .place-card{
+    background:#101E2C;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    padding:12px 14px;
+    min-height:110px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .place-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(33,150,243,.4);
+    box-shadow:0 10px 26px rgba(0,0,0,.4);
+  }
+  .place-image{
+    width:90px;height:75px;flex-shrink:0;
+    background:linear-gradient(135deg,#0D6EFD,#2196F3);
+    border-radius:10px;overflow:hidden;position:relative;
+  }
+  .place-image img{width:100%;height:100%;object-fit:cover;}
+  .place-image i{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    color:rgba(255,255,255,.5);font-size:30px;
+  }
+  .place-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;}
+  .place-head{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .place-name{font-size:16px;font-weight:700;color:var(--text-main);line-height:1.2;}
+  .place-status{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:11.5px;color:#22C55E;font-weight:500;
+    flex-shrink:0;
+  }
+  .place-status::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:#22C55E;
+    box-shadow:0 0 6px #22C55E;
+  }
+  .place-area{font-size:12px;color:var(--text-sec);}
+  .place-distance{
+    display:flex;align-items:center;gap:12px;
+    font-size:12px;color:var(--text-sec);flex-wrap:wrap;
+  }
+  .place-distance span{display:inline-flex;align-items:center;gap:4px;}
+  .place-distance i{font-size:11px;color:var(--blue-bright);}
+  .place-time{color:var(--blue-bright);font-weight:600;}
+  .btn-cotizar-place{
+    padding:9px 16px;
+    background:#2196F3;
+    color:#fff;
+    border-radius:9px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    display:flex;align-items:center;justify-content:center;gap:5px;
+    transition:all .25s ease;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+  .btn-cotizar-place:hover{
+    background:#25A7FF;
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(33,150,243,.5);
+  }
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(5,8,15,.78);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    z-index:999;
+    display:none;align-items:flex-start;justify-content:center;
+    padding:20px;
+    overflow-y:auto;
+    animation:fadeIn .25s ease;
+  }
+  .modal-overlay.active{display:flex;}
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+  .modal-box{
+    background:linear-gradient(160deg,var(--bg-card) 0%,var(--bg-card2) 100%);
+    border:1px solid var(--border);
+    border-radius:20px;
+    width:100%;max-width:540px;
+    margin:auto 0;
+    max-height:calc(100vh - 40px);
+    display:flex;flex-direction:column;
+    box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(33,150,243,.15);
+    animation:slideUp .35s cubic-bezier(.16,1,.3,1);
+  }
+  @keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .modal-header{
+    padding:22px 26px;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-shrink:0;
+    position:sticky;top:0;background:rgba(16,30,44,.95);
+    backdrop-filter:blur(10px);
+    z-index:2;
+  }
+  .modal-title{font-size:18px;font-weight:700;}
+  .modal-title i{color:var(--blue-bright);margin-right:8px;}
+  .modal-close-btn{
+    width:38px;height:38px;border-radius:10px;
+    background:rgba(255,255,255,.06);
+    color:var(--text-sec);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .25s ease;
+    font-size:15px;
+  }
+  .modal-close-btn:hover{background:rgba(239,68,68,.15);color:#EF4444;}
+  .modal-body{padding:24px 26px;overflow-y:auto;flex:1 1 auto;min-height:0;}
+  .modal-place-info{
+    background:rgba(33,150,243,.08);
+    border:1px solid rgba(33,150,243,.25);
+    border-radius:14px;
+    padding:14px 16px;
+    margin-bottom:22px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .modal-place-info i{color:var(--blue-bright);font-size:18px;}
+  .modal-place-info strong{color:var(--text-main);font-weight:600;}
+  .form-group{margin-bottom:16px;}
+  .form-label{
+    display:block;font-size:12px;font-weight:500;
+    color:var(--text-sec);margin-bottom:6px;
+    text-transform:uppercase;letter-spacing:.5px;
+  }
+  .form-control{
+    width:100%;padding:13px 14px;
+    background:var(--bg-main);
+    border:1px solid var(--border);
+    border-radius:10px;
+    color:var(--text-main);
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
+    transition:all .25s ease;
+  }
+  .form-control:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(33,150,243,.15);}
+  select.form-control{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23A3B0C3' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:10px;padding-right:36px;}
+  textarea.form-control{min-height:90px;resize:vertical;font-family:'Poppins',sans-serif;}
+  .btn-submit{
+    width:100%;padding:14px;margin-top:8px;
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:#fff;
+    border-radius:10px;
+    font-size:14px;font-weight:600;
+    letter-spacing:.5px;text-transform:uppercase;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:all .3s ease;
+  }
+  .btn-submit:hover{background:linear-gradient(135deg,var(--blue-hover),var(--blue));box-shadow:0 6px 20px rgba(33,150,243,.5);}
+
+  /* Custom Phone Field */
+  .phone-input-wrapper{
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    width:100%;
+  }
+  .country-selector{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:0 14px;
+    background:rgba(15,23,42,.5);
+    border:1px solid rgba(56,189,248,.2);
+    border-radius:8px 0 0 8px;
+    cursor:pointer;
+    transition:all .3s ease;
+    flex-shrink:0;
+    min-width:110px;
+  }
+  .country-selector:hover{
+    background:rgba(56,189,248,.1);
+  }
+  .country-selector .flag{
+    font-size:18px;
+  }
+  .country-selector .dial-code{
+    color:rgba(255,255,255,.7);
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:600;
+  }
+  .country-selector .arrow{
+    font-size:10px;
+    color:rgba(56,189,248,.7);
+    transition:transform .3s ease;
+  }
+  .country-selector.open .arrow{
+    transform:rotate(180deg);
+  }
+  .phone-input-wrapper input[type="tel"]{
+    flex:1;
+    padding:14px 16px;
+    background:rgba(15,23,42,.5);
+    border:1px solid rgba(56,189,248,.2);
+    border-left:none;
+    border-radius:0 8px 8px 0;
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    transition:all .3s ease;
+    outline:none;
+  }
+  .phone-input-wrapper input::placeholder{
+    color:rgba(255,255,255,.4);
+  }
+  .phone-input-wrapper input:focus{
+    border-color:rgba(56,189,248,.6);
+    background:rgba(15,23,42,.7);
+    box-shadow:0 0 20px rgba(56,189,248,.2);
+  }
+  .country-dropdown{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    width:320px;
+    background:rgba(15,23,42,.98);
+    border:1px solid rgba(56,189,248,.3);
+    border-radius:12px;
+    box-shadow:0 10px 40px rgba(0,0,0,.6), 0 0 20px rgba(56,189,248,.1);
+    z-index:100;
+    display:none;
+  }
+  .country-dropdown.open{
+    display:block;
+  }
+  .country-dropdown .search-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    border-bottom:1px solid rgba(56,189,248,.1);
+    position:relative;
+  }
+  .country-dropdown .search-box i{
+    position:absolute;
+    left:22px;
+    top:50%;
+    transform:translateY(-50%);
+    color:rgba(56,189,248,.5);
+    font-size:14px;
+    pointer-events:none;
+  }
+  .country-dropdown .search-box input{
+    flex:1;
+    background:rgba(15,23,42,.8);
+    border:1px solid rgba(56,189,248,.3);
+    border-radius:6px;
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    padding:8px 12px 8px 36px;
+    outline:none;
+  }
+  .country-dropdown .search-box input::placeholder{
+    color:rgba(255,255,255,.4);
+  }
+  .country-dropdown .search-box input:focus{
+    border-color:rgba(56,189,248,.6);
+  }
+  .country-list{
+    max-height:250px;
+    overflow-y:auto;
+  }
+  .country-list::-webkit-scrollbar{
+    width:6px;
+  }
+  .country-list::-webkit-scrollbar-track{
+    background:rgba(15,23,42,.5);
+    border-radius:3px;
+  }
+  .country-list::-webkit-scrollbar-thumb{
+    background:rgba(56,189,248,.3);
+    border-radius:3px;
+  }
+  .country-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    border-bottom:1px solid rgba(56,189,248,.1);
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .country-item:hover{
+    background:rgba(56,189,248,.15);
+    padding-left:18px;
+  }
+  .country-item:last-child{
+    border-bottom:none;
+  }
+  .country-flag{
+    font-size:18px;
+  }
+  .country-name{
+    flex:1;
+    color:rgba(255,255,255,.8);
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:500;
+  }
+  .country-dial{
+    color:rgba(56,189,248,.7);
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+  }
+
+  /* MAIN FOOTER */
+  .main-footer{
+    background:rgba(15,23,42,.98);
+    padding:60px 0;
+    border-top:1px solid rgba(56,189,248,.1);
+    width:100%;
+    box-sizing:border-box;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.25fr 1.5fr 1.5fr 1.25fr;
+    gap:50px;
+    width:100%;
+    max-width:1250px;
+    margin:0 auto;
+    padding:0 30px;
+    box-sizing:border-box;
+  }
+  .footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .footer-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .footer-logo svg{
+    color:#38BDF8;
+    flex-shrink:0;
+  }
+  .footer-logo .brand-logo-img{height:38px;width:auto;max-width:48px;object-fit:contain;flex-shrink:0;display:block;}
+  .footer-logo span{
+    font-family:'Manrope',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:-0.3px;
+    line-height:1.15;
+  }
+  .footer-tagline{
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    color:var(--blue-bright);
+    margin-bottom:4px;
+  }
+  .footer-description{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    color:#A3B0C3;
+    line-height:1.6;
+    margin-bottom:8px;
+  }
+  .footer-social{
+    display:flex;
+    gap:10px;
+    margin-top:4px;
+  }
+  .footer-social a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(56,189,248,.1);
+    color:#38BDF8;
+    font-size:16px;
+    transition:all .25s ease;
+  }
+  .footer-social a:hover{
+    background:rgba(56,189,248,.2);
+    transform:translateY(-2px);
+  }
+  .footer-title{
+    font-family:'Manrope',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#fff;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:6px;
+  }
+  .footer-links{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .footer-links li{
+    margin-bottom:10px;
+  }
+  .footer-links a{
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    color:#A3B0C3;
+    transition:color .2s ease;
+  }
+  .footer-links a:hover{
+    color:#38BDF8;
+  }
+  .footer-contact{
+    list-style:none;
+    padding:0;
+    margin:0 0 16px 0;
+  }
+  .footer-contact li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+    font-size:14px;
+  }
+  .footer-contact i{
+    color:#38BDF8;
+    font-size:14px;
+    width:18px;
+    text-align:center;
+  }
+  .footer-contact a,
+  .footer-contact span{
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    color:#A3B0C3;
+    transition:color .2s ease;
+  }
+  .footer-contact a:hover{
+    color:#38BDF8;
+  }
+  .btn-footer-cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:11px 20px;
+    background:linear-gradient(135deg,#38BDF8,#0D6EFD);
+    color:#fff;
+    border-radius:10px;
+    font-family:'Manrope',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    transition:all .3s ease;
+    box-shadow:0 4px 16px rgba(56,189,248,.3);
+  }
+  .btn-footer-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 24px rgba(56,189,248,.5);
+  }
+  .footer-trust{
+    background:rgba(8,18,32,.95);
+    border-top:1px solid rgba(56,189,248,.08);
+    padding:28px 0;
+  }
+  .trust-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    max-width:1250px;
+    margin:0 auto;
+    padding:0 30px;
+  }
+  .trust-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    position:relative;
+    padding:0 12px;
+  }
+  .trust-item:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:1px;
+    height:60%;
+    background:rgba(56,189,248,.15);
+  }
+  .trust-item:hover{opacity:0.9;}
+  .trust-icon{flex-shrink:0;color:#38BDF8;}
+  .trust-icon svg{width:36px;height:36px;}
+  .trust-content{flex:1;min-width:0;}
+  .trust-content h4{
+    font-family:'Manrope',sans-serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:2px;
+  }
+  .trust-content p{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    color:#A3B0C3;
+    line-height:1.4;
+  }
+  .footer-bottom{
+    background:rgba(15,23,42,1);
+    border-top:1px solid rgba(56,189,248,.08);
+    padding:18px 30px;
+  }
+  .footer-bottom-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1250px;
+    margin:0 auto;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-copyright{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    color:#A3B0C3;
+  }
+  .footer-bottom-links{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .footer-bottom-links a{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    color:#A3B0C3;
+    transition:color .2s ease;
+  }
+  .footer-bottom-links a:hover{color:#38BDF8;}
+  .footer-separator{color:rgba(163,176,195,.5);font-size:12px;}
+
+  /* RESPONSIVE */
+  @media (max-width:1200px){
+    .location-layout{
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "hero"
+        "card"
+        "map"
+        "panel"
+        "info"
+        "cov"
+        "btn";
+      gap:24px;
+    }
+    .right-col{position:static;max-height:none;min-height:auto;grid-row:auto;}
+    #map{height:480px;}
+    .map-container{height:480px;}
+  }
+  @media (max-width:1024px){
+    .header-social,.header-divider{display:none;}
+    .nav-cta{
+      display:none;
+      position:absolute;
+      top:64px;
+      left:0;
+      right:0;
+      background:rgba(5,6,8,.98);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      flex-direction:column;align-items:stretch;
+      padding:16px 20px;
+      gap:8px;
+      border-bottom:1px solid var(--border);
+    }
+    .nav-cta.open{
+      display:flex;
+    }
+    .nav-cta a{padding:14px 16px;width:100%;text-align:center;border-radius:8px;}
+    .mobile-menu-btn{display:flex;}
+    .nav-cta{align-items:center;}
+
+    /* Mostrar sección de redes sociales en móvil */
+    .mobile-social-section{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+      margin-top:8px;
+      padding:16px 12px;
+      background:rgba(56,189,248,.04);
+      border:1px solid rgba(56,189,248,.12);
+      border-radius:12px;
+    }
+    .mobile-social-label{
+      font-family:'Manrope',sans-serif;
+      font-size:12px;
+      font-weight:600;
+      color:rgba(255,255,255,.7);
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .mobile-social-label::after{
+      content:'';
+      display:inline-block;
+      width:24px;
+      height:2px;
+      background:linear-gradient(90deg,transparent,#38BDF8,transparent);
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    .mobile-social-icons{
+      display:flex;
+      gap:12px;
+    }
+    .mobile-social{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:rgba(15,23,42,.6);
+      border:1px solid rgba(56,189,248,.4);
+      color:#fff;
+      font-size:17px;
+      transition:all .2s ease;
+      text-decoration:none;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+    }
+    .mobile-social:hover{
+      transform:scale(1.08);
+      border-color:#38BDF8;
+      box-shadow:0 0 14px rgba(56,189,248,.5);
+    }
+    .mobile-social:active{
+      transform:scale(.95);
+    }
+    .mobile-social:has(.fa-whatsapp):hover{
+      background:rgba(37,211,102,.2);
+      color:#25D366;
+      border-color:#25D366;
+    }
+    .mobile-social:has(.fa-facebook-f):hover{
+      background:rgba(24,119,242,.2);
+      color:#1877F2;
+      border-color:#1877F2;
+    }
+    .mobile-social:has(.fa-instagram):hover{
+      background:rgba(225,48,108,.2);
+      color:#E4405F;
+      border-color:#E4405F;
+    }
+
+    /* Ocultar los header-social originales en móvil (ya están en la sección móvil) */
+    .nav-cta .header-social,.nav-cta .header-divider{display:none;}
+
+    /* Dropdown en móvil: inline dentro del panel */
+    .has-dropdown{width:100%;display:block;}
+    .has-dropdown-trigger{display:flex;align-items:center;justify-content:center;gap:6px;width:fit-content;margin:0 auto;}
+    .dd-toggle{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:32px;height:32px;flex-shrink:0;
+      background:rgba(56,189,248,.08);
+      border:1px solid rgba(56,189,248,.25);
+      border-radius:8px;
+      color:#7DD3FC;
+      font-size:11px;cursor:pointer;
+      margin-left:2px;
+      transition:all .25s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .dd-toggle .dd-caret{transition:transform .3s cubic-bezier(.2,.9,.3,1.05);display:inline-block;transform-origin:center;}
+    .has-dropdown.open .dd-toggle .dd-caret{transform:rotate(180deg);}
+    .nav-dropdown{
+      position:static !important;
+      transform:none !important;
+      background:rgba(5,6,8,.6) !important;
+      border:1px solid rgba(56,189,248,.15) !important;
+      box-shadow:none !important;
+      border-radius:10px !important;
+      margin:6px auto 6px !important;
+      min-width:0 !important;
+      padding:6px !important;
+      display:none;
+      animation:none !important;
+      width:100% !important;
+    }
+    .nav-dropdown::before{display:none !important;}
+    .has-dropdown.open .nav-dropdown{display:block;}
+    .nav-dropdown a{justify-content:center !important;text-align:center !important;}
+
+    .hero-title{font-size:clamp(32px,5vw,42px);}
+    .hero-desc{font-size:15px;}
+    .info-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .places-list{max-height:520px;flex:none;}
+    .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;}
+    .trust-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+    .trust-item{padding:0;}
+    .trust-item:not(:last-child)::after{display:none;}
+  }
+  @media (max-width:767px){
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+    .trust-grid{grid-template-columns:1fr;gap:18px;}
+    .main-footer{padding:40px 0;}
+    .footer-bottom-content{flex-direction:column;text-align:center;}
+    .footer-bottom-links{justify-content:center;}
+  }
+  @media (max-width:600px){
+    .container{width:calc(100% - 30px);}
+    .location-section{padding:72px 0 40px;}
+    .location-card{padding:14px 16px;gap:12px;flex-wrap:wrap;}
+    .location-icon{width:40px;height:40px;font-size:16px;}
+    .location-value{font-size:16px;}
+    .location-sub{font-size:11.5px;}
+    .location-service{font-size:11.5px;}
+    .btn-edit{padding:7px 12px;font-size:11px;}
+    .info-grid{grid-template-columns:1fr;gap:10px;}
+    .info-tile{padding:16px;min-height:auto;}
+    .place-card{min-height:auto;}
+    .place-image{width:70px;height:60px;}
+    .place-name{font-size:14px;}
+    .panel-controls{flex-direction:column;align-items:stretch;}
+    .search-box,.filter-box{width:100%;}
+    .btn-big-quote{padding:13px 22px;font-size:13.5px;width:100%;}
+  }
+  @media (max-width:480px){
+    .footer-grid,.trust-grid,.footer-bottom-content{padding:0 20px;}
+    .footer-logo span{font-size:13px;line-height:1.15;}
+    .footer-title{font-size:16px;}
+    .footer-links a,.footer-contact a,.footer-contact span{font-size:14px;}
+    .btn-footer-cta{width:100%;}
+    .logo{font-size:11px;gap:8px;}
+    .logo .brand-logo-img{height:34px;max-width:42px;}
+    .logo .logo-text{font-size:11px;}
+    .trust-icon{width:32px;height:32px;}
+    .trust-icon svg{width:32px;height:32px;}
+    .trust-content h4{font-size:13px;}
+    .trust-content p{font-size:11px;}
+    .footer-bottom-links{flex-direction:column;gap:6px;}
+  }
+  /* Logo lightbox styles (inline because this page does not load styles.css) */
+  .logo-lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 60%,rgba(0,0,0,.92) 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;animation:logoLightboxFade .2s ease;}
+  .logo-lightbox.open{display:flex;}
+  @keyframes logoLightboxFade{from{opacity:0;}to{opacity:1;}}
+  .logo-lightbox-img{width:min(360px,70vw);height:min(360px,70vw);border-radius:50%;object-fit:cover;cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 6px rgba(56,189,248,.25);animation:logoLightboxPop .25s cubic-bezier(.2,.9,.3,1.2);background:#0B1426;}
+  @keyframes logoLightboxPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+  .brand-logo-img{cursor:pointer;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+      <div class="logo">
+        <img src="img/logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+        <span class="logo-text">J &amp; J Luxury<br>Cleaning Service LLC</span>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Abrir menú" id="mobileMenuBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-cta" id="mainNav">
+      <a class="btn btn-ghost" href="index.html">Inicio</a>
+      <a class="btn btn-ghost" href="nosotros.html">Sobre nosotros</a>
+      <div class="has-dropdown" id="serviciosDropdown">
+        <div class="has-dropdown-trigger">
+          <a class="btn btn-ghost has-dropdown-label" href="servicios.html" aria-haspopup="true" aria-expanded="false">Servicios</a>
+          <button class="dd-toggle" type="button" aria-label="Abrir menú de servicios" aria-expanded="false"><i class="fa-solid fa-chevron-down dd-caret"></i></button>
+        </div>
+        <div class="nav-dropdown" role="menu">
+          <a href="servicios.html#residencial" role="menuitem"><i class="fa-solid fa-house"></i> Limpieza residencial</a>
+          <a href="servicios.html#comercial" role="menuitem"><i class="fa-solid fa-building"></i> Limpieza comercial</a>
+          <a href="servicios.html#industrial" role="menuitem"><i class="fa-solid fa-industry"></i> Limpieza industrial</a>
+          <a href="servicios.html#vidrios" role="menuitem"><i class="fa-solid fa-window-maximize"></i> Limpieza de vidrios</a>
+          <a href="servicios.html#desinfeccion" role="menuitem"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento" role="menuitem"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+      </div>
+      <a class="btn btn-ghost" href="ubicacion.html">encuentra tu ubicación</a>
+      <button class="btn btn-primary" type="button" onclick="openQuoteModal('')">Cotizar</button>
+      <div class="mobile-social-section">
+        <span class="mobile-social-label">SÍGUENOS</span>
+        <div class="mobile-social-icons">
+          <a class="mobile-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="mobile-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="mobile-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="header-divider"></div>
+      <a class="header-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="header-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="header-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="location-section">
+    <div class="container">
+      <div class="location-layout">
+        <div class="left-col">
+          <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-location-dot"></i> UBICACIÓN Y COBERTURA</span>
+            <h1 class="hero-title">ENCUENTRA NUESTRO<br><span class="accent">SERVICIO CERCA DE TI</span></h1>
+            <p class="hero-desc">Descubre nuestra cobertura y encuentra los lugares donde podemos llevar nuestros servicios de limpieza profesional.</p>
+            <p class="hero-desc-secondary">Estamos ubicados en Lakewood, Washington, y atendemos clientes en ciudades y zonas cercanas.</p>
+          </div>
+
+          <div class="location-card">
+            <div class="location-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="location-info">
+              <div class="location-label">Tu ubicación actual</div>
+              <div class="location-value">Lakewood, Washington, USA</div>
+              <div class="location-sub"><i class="fa-solid fa-thumbtack"></i>Centro de cobertura de J &amp; J Luxury Cleaning Service LLC</div>
+              <div class="location-service"><span class="service-dot"></span>Área de servicio</div>
+            </div>
+            <button class="btn-edit" onclick="goToBusinessLocation()"><i class="fa-solid fa-location-crosshairs" style="margin-right:6px;"></i>Dónde nos encontramos</button>
+          </div>
+
+          <div class="map-container">
+            <div class="map-radius-label"><i class="fa-solid fa-circle-dot"></i> J &amp; J LUXURY CLEANING SERVICE LLC</div>
+            <div class="map-area-label"><i class="fa-solid fa-bullseye"></i> Área de servicio · 6 km</div>
+            <div id="map"></div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-tile">
+              <div class="info-tile-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <div class="info-tile-title">Radio Inmediato</div>
+              <div class="info-tile-value">2 km a la redonda<br><span style="font-size:11px;color:var(--text-sec);font-weight:400">Zona inmediata de atención</span></div>
+            </div>
+            <div class="info-tile">
+              <div class="info-tile-icon"><i class="fa-solid fa-broom"></i></div>
+              <div class="info-tile-title">Servicios Disponibles</div>
+              <div class="info-tile-value">Residencial, Comercial, Industrial<br><span style="font-size:11px;color:var(--text-sec);font-weight:400">Soluciones profesionales</span></div>
+            </div>
+            <div class="info-tile">
+              <div class="info-tile-icon"><i class="fa-solid fa-clock"></i></div>
+              <div class="info-tile-title">Atención Estimada</div>
+              <div class="info-tile-value">Mismo día<br><span style="font-size:11px;color:var(--text-sec);font-weight:400">Sujeto a disponibilidad</span></div>
+            </div>
+            <div class="info-tile">
+              <div class="info-tile-icon"><i class="fa-solid fa-map"></i></div>
+              <div class="info-tile-title">Cobertura</div>
+              <div class="info-tile-value">Lakewood y ciudades cercanas<br><span style="font-size:11px;color:var(--text-sec);font-weight:400">Hasta 2 horas aprox.</span></div>
+            </div>
+          </div>
+
+          <div class="coverage-note">
+            <h4 class="coverage-title"><i class="fa-solid fa-map-location-dot"></i> ÁREA DE COBERTURA</h4>
+            <p>Atendemos hogares, oficinas, comercios e instalaciones en Lakewood y ciudades cercanas de Washington.</p>
+            <p class="coverage-disclaimer">Los tiempos de desplazamiento son aproximados y pueden variar según tráfico y condiciones de carretera.</p>
+          </div>
+
+          <button class="btn-big-quote" onclick="openQuoteModal('')">
+            <i class="fa-brands fa-whatsapp"></i> SOLICITAR COTIZACIÓN AHORA
+          </button>
+        </div>
+
+        <aside class="right-col">
+          <div class="panel-title"><i class="fa-solid fa-map-pin"></i> LUGARES CERCANOS</div>
+          <p class="panel-subtitle">Zonas de servicio a menos de 2 horas aproximadamente</p>
+          <div class="panel-controls">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchInput" placeholder="Buscar ciudad o zona...">
+            </div>
+            <div class="filter-box">
+              <select id="filterSelect">
+                <option value="closest">Más cercanos</option>
+                <option value="farthest">Más lejanos</option>
+                <option value="name">Nombre A-Z</option>
+                <option value="time">Tiempo de viaje</option>
+              </select>
+            </div>
+          </div>
+          <div class="places-list" id="placesList"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="main-footer">
+  <div class="footer-grid">
+    <div class="footer-column">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="img/logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+          <span>J &amp; J LUXURY CLEANING SERVICE LLC</span>
+        </div>
+        <p class="footer-tagline">Servicios Profesionales de Limpieza</p>
+        <p class="footer-description">Soluciones profesionales de limpieza para hogares, empresas e industrias.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/5215512345678" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">ENLACES RÁPIDOS</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">NUESTROS SERVICIOS</h3>
+      <ul class="footer-links">
+        <li><a href="servicios.html">Limpieza residencial</a></li>
+        <li><a href="servicios.html">Limpieza comercial</a></li>
+        <li><a href="servicios.html">Limpieza industrial</a></li>
+        <li><a href="servicios.html">Limpieza de vidrios</a></li>
+        <li><a href="servicios.html">Desinfección</a></li>
+        <li><a href="servicios.html">Mantenimiento</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">CONTACTO</h3>
+      <ul class="footer-contact">
+        <li><i class="fa-solid fa-phone"></i><a href="tel:+5215512345678">+52 1 55 1234 5678</a></li>
+        <li><i class="fa-solid fa-envelope"></i><a href="mailto:contacto@limpiezatotal.com">contacto@limpiezatotal.com</a></li>
+        <li><i class="fa-solid fa-location-dot"></i><span>Estados Unidos</span></li>
+        <li><i class="fa-solid fa-clock"></i><span>Lun - Dom: 7:00 AM - 8:00 PM</span></li>
+      </ul>
+      <a class="btn btn-footer-cta" href="index.html#contacto">SOLICITAR COTIZACIÓN</a>
+    </div>
+  </div>
+</footer>
+
+<section class="footer-trust">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
+      <div class="trust-content"><h4>Personal capacitado</h4><p>Profesionales preparados para cada servicio.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="trust-content"><h4>Productos de calidad</h4><p>Utilizamos productos confiables y efectivos.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <div class="trust-content"><h4>Satisfacción garantizada</h4><p>Nuestro compromiso es ofrecer excelentes resultados.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="trust-content"><h4>Atención profesional</h4><p>Servicio responsable y atención personalizada.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-bottom">
+  <div class="footer-bottom-content">
+    <p class="footer-copyright">© 2026 J &amp; J LUXURY CLEANING SERVICE LLC · Todos los derechos reservados.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Política de privacidad</a>
+      <span class="footer-separator">·</span>
+      <a href="#">Términos y condiciones</a>
+      <span class="footer-separator">·</span>
+      <a href="#">Aviso legal</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fa-solid fa-file-invoice"></i> SOLICITAR COTIZACIÓN</div>
+      <button class="modal-close-btn" onclick="closeQuoteModal()" aria-label="Cerrar modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-place-info" id="modalPlaceInfo" style="display:none;">
+        <i class="fa-solid fa-location-dot"></i>
+        <div><span style="font-size:11px;color:var(--text-sec);text-transform:uppercase;letter-spacing:.5px;">Lugar seleccionado</span><br><strong id="modalPlaceName"></strong></div>
+      </div>
+      <form id="quoteForm" onsubmit="event.preventDefault(); submitQuote();">
+        <div class="form-group">
+          <label class="form-label" for="qf-name">Nombre completo</label>
+          <input class="form-control" type="text" id="qf-name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-phone">Teléfono / WhatsApp</label>
+          <div class="phone-input-wrapper">
+            <div class="country-selector" id="countrySelector">
+              <span class="flag">🇺🇸</span>
+              <span class="dial-code">+1</span>
+              <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+            <input class="form-control" type="tel" id="qf-phone" placeholder="(555) 654-789" required>
+            <div class="country-dropdown" id="countryDropdown">
+              <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Buscar país..." id="countrySearch">
+              </div>
+              <div class="country-list" id="countryList">
+                <div class="country-item" data-country="co" data-dial="+57" data-flag="🇨🇴">
+                  <span class="country-flag">🇨🇴</span>
+                  <span class="country-name">Colombia</span>
+                  <span class="country-dial">+57</span>
+                </div>
+                <div class="country-item" data-country="mx" data-dial="+52" data-flag="🇲🇽">
+                  <span class="country-flag">🇲🇽</span>
+                  <span class="country-name">México</span>
+                  <span class="country-dial">+52</span>
+                </div>
+                <div class="country-item" data-country="ar" data-dial="+54" data-flag="🇦🇷">
+                  <span class="country-flag">🇦🇷</span>
+                  <span class="country-name">Argentina</span>
+                  <span class="country-dial">+54</span>
+                </div>
+                <div class="country-item" data-country="pe" data-dial="+51" data-flag="🇵🇪">
+                  <span class="country-flag">🇵🇪</span>
+                  <span class="country-name">Perú</span>
+                  <span class="country-dial">+51</span>
+                </div>
+                <div class="country-item" data-country="cl" data-dial="+56" data-flag="🇨🇱">
+                  <span class="country-flag">🇨🇱</span>
+                  <span class="country-name">Chile</span>
+                  <span class="country-dial">+56</span>
+                </div>
+                <div class="country-item" data-country="es" data-dial="+34" data-flag="🇪🇸">
+                  <span class="country-flag">🇪🇸</span>
+                  <span class="country-name">España</span>
+                  <span class="country-dial">+34</span>
+                </div>
+                <div class="country-item" data-country="us" data-dial="+1" data-flag="🇺🇸">
+                  <span class="country-flag">🇺🇸</span>
+                  <span class="country-name">Estados Unidos</span>
+                  <span class="country-dial">+1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-email">Correo electrónico</label>
+          <input class="form-control" type="email" id="qf-email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-service">Tipo de servicio</label>
+          <select class="form-control" id="qf-service" required>
+            <option value="">Selecciona un servicio</option>
+            <option>Limpieza residencial</option>
+            <option>Limpieza comercial</option>
+            <option>Limpieza industrial</option>
+            <option>Limpieza profunda</option>
+            <option>Limpieza de oficinas</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-date">Fecha deseada</label>
+          <input class="form-control" type="date" id="qf-date" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-message">Mensaje</label>
+          <textarea class="form-control" id="qf-message" placeholder="Cuéntanos más sobre tu solicitud..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fa-brands fa-whatsapp"></i> SOLICITAR COTIZACIÓN</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = "TU_NUMERO_AQUI";
+
+const BUSINESS = {
+  lat: 47.1710,
+  lng: -122.1290,
+  radiusKm: 6
+};
+
+const lugares = [
+  {id:1,nombre:"Lakewood",estado:"WA",lat:47.1710,lng:-122.1290,km:0,tiempoMin:0,imagen:"https://picsum.photos/seed/lakewood/400/300"},
+  {id:2,nombre:"Tacoma",estado:"WA",lat:47.2529,lng:-122.4443,km:24,tiempoMin:20,imagen:"https://picsum.photos/seed/tacoma/400/300"},
+  {id:3,nombre:"Puyallup",estado:"WA",lat:47.1854,lng:-122.2929,km:28,tiempoMin:25,imagen:"https://picsum.photos/seed/puyallup/400/300"},
+  {id:4,nombre:"Gig Harbor",estado:"WA",lat:47.3259,lng:-122.5874,km:35,tiempoMin:30,imagen:"https://picsum.photos/seed/gigharbor/400/300"},
+  {id:5,nombre:"Federal Way",estado:"WA",lat:47.3223,lng:-122.3126,km:36,tiempoMin:32,imagen:"https://picsum.photos/seed/federalway/400/300"},
+  {id:6,nombre:"Kent",estado:"WA",lat:47.3809,lng:-122.2348,km:38,tiempoMin:35,imagen:"https://picsum.photos/seed/kent/400/300"},
+  {id:7,nombre:"Auburn",estado:"WA",lat:47.3073,lng:-122.2284,km:42,tiempoMin:40,imagen:"https://picsum.photos/seed/auburn/400/300"},
+  {id:8,nombre:"Olympia",estado:"WA",lat:47.0379,lng:-122.9007,km:60,tiempoMin:55,imagen:"https://picsum.photos/seed/olympia/400/300"},
+  {id:9,nombre:"Lacey",estado:"WA",lat:47.0343,lng:-122.8232,km:58,tiempoMin:50,imagen:"https://picsum.photos/seed/lacey/400/300"},
+  {id:10,nombre:"Tumwater",estado:"WA",lat:46.9881,lng:-122.9004,km:62,tiempoMin:60,imagen:"https://picsum.photos/seed/tumwater/400/300"},
+  {id:11,nombre:"Renton",estado:"WA",lat:47.4829,lng:-122.2171,km:60,tiempoMin:55,imagen:"https://picsum.photos/seed/renton/400/300"},
+  {id:12,nombre:"Seattle",estado:"WA",lat:47.6062,lng:-122.3321,km:65,tiempoMin:65,imagen:"https://picsum.photos/seed/seattle/400/300"},
+  {id:13,nombre:"Bellevue",estado:"WA",lat:47.6101,lng:-122.2015,km:70,tiempoMin:70,imagen:"https://picsum.photos/seed/bellevue/400/300"},
+  {id:14,nombre:"Bremerton",estado:"WA",lat:47.5673,lng:-122.6329,km:75,tiempoMin:85,imagen:"https://picsum.photos/seed/bremerton/400/300"},
+  {id:15,nombre:"Issaquah",estado:"WA",lat:47.5301,lng:-122.0326,km:78,tiempoMin:80,imagen:"https://picsum.photos/seed/issaquah/400/300"},
+  {id:16,nombre:"Centralia",estado:"WA",lat:46.7162,lng:-122.9543,km:85,tiempoMin:95,imagen:"https://picsum.photos/seed/centralia/400/300"},
+  {id:17,nombre:"Everett",estado:"WA",lat:47.9790,lng:-122.2021,km:95,tiempoMin:100,imagen:"https://picsum.photos/seed/everett/400/300"},
+  {id:18,nombre:"Mount Vernon",estado:"WA",lat:48.4212,lng:-122.3341,km:120,tiempoMin:115,imagen:"https://picsum.photos/seed/mountvernon/400/300"},
+  {id:19,nombre:"Bellingham",estado:"WA",lat:48.7519,lng:-122.4787,km:160,tiempoMin:140,imagen:"https://picsum.photos/seed/bellingham/400/300"},
+  {id:20,nombre:"Wenatchee",estado:"WA",lat:47.4235,lng:-120.3103,km:180,tiempoMin:155,imagen:"https://picsum.photos/seed/wenatchee/400/300"},
+  {id:21,nombre:"Yakima",estado:"WA",lat:46.6021,lng:-120.5059,km:190,tiempoMin:165,imagen:"https://picsum.photos/seed/yakima/400/300"},
+  {id:22,nombre:"Spokane",estado:"WA",lat:47.6588,lng:-117.4260,km:380,tiempoMin:240,imagen:"https://picsum.photos/seed/spokane/400/300"},
+  {id:23,nombre:"Pullman",estado:"WA",lat:46.7311,lng:-117.1797,km:430,tiempoMin:270,imagen:"https://picsum.photos/seed/pullman/400/300"},
+  {id:24,nombre:"Vancouver",estado:"WA",lat:45.6312,lng:-122.6710,km:200,tiempoMin:170,imagen:"https://picsum.photos/seed/vancouver/400/300"},
+  {id:25,nombre:"Portland",estado:"OR",lat:45.5152,lng:-122.6784,km:210,tiempoMin:180,imagen:"https://picsum.photos/seed/portland/400/300"},
+  {id:26,nombre:"Salem",estado:"OR",lat:44.9429,lng:-123.0351,km:270,tiempoMin:210,imagen:"https://picsum.photos/seed/salem/400/300"},
+  {id:27,nombre:"Eugene",estado:"OR",lat:44.0521,lng:-123.0868,km:330,tiempoMin:240,imagen:"https://picsum.photos/seed/eugene/400/300"},
+  {id:28,nombre:"Boise",estado:"ID",lat:43.6150,lng:-116.2023,km:520,tiempoMin:300,imagen:"https://picsum.photos/seed/boise/400/300"}
+];
+
+function formatearTiempo(min){
+  const h=Math.floor(min/60);
+  const m=min%60;
+  if(h===0)return `${m} min`;
+  if(m===0)return `${h} h`;
+  return `${h} h ${m} min`;
+}
+
+let map,businessMarker,radiusCircle,cityMarkers=[];
+function initMap(){
+  map=L.map('map',{
+    zoomControl:true,
+    scrollWheelZoom:true,
+    attributionControl:true
+  }).setView([BUSINESS.lat,BUSINESS.lng],10);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom:19
+  }).addTo(map);
+
+  const mainIcon=L.divIcon({html:`<div class="custom-marker"><i class="fa-solid fa-broom"></i></div>`,iconSize:[54,54],className:''});
+  businessMarker=L.marker([BUSINESS.lat,BUSINESS.lng],{icon:mainIcon}).addTo(map);
+  businessMarker.bindPopup(`<h4>J &amp; J LUXURY CLEANING SERVICE LLC</h4><p style="color:var(--blue-bright);font-weight:600;">Centro de cobertura</p><p>Lakewood, Washington</p><p style="color:rgba(255,255,255,.6);font-size:11px;margin-top:4px;">Servicios residenciales, comerciales e industriales</p><div class="pop-status"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Servicios disponibles</div>`);
+
+  radiusCircle=L.circle([BUSINESS.lat,BUSINESS.lng],{
+    radius:BUSINESS.radiusKm*1000,
+    color:'#2196F3',fillColor:'#2196F3',fillOpacity:0.08,
+    weight:2,dashArray:'8,8',interactive:false
+  }).addTo(map);
+
+  lugares.forEach(l=>{
+    if(l.id===1)return;
+    const placeIcon=L.divIcon({html:`<div class="city-marker"><i class="fa-solid fa-city"></i></div>`,iconSize:[34,34],className:''});
+    const m=L.marker([l.lat,l.lng],{icon:placeIcon}).addTo(map);
+    m.bindPopup(`<h4>${l.nombre.toUpperCase()}, ${l.estado}</h4><p>Área de servicio</p><p class="pop-info">🚗 ${l.km} km · 🕐 Aprox. ${formatearTiempo(l.tiempoMin)}</p><div class="pop-status"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Área disponible</div><button class="pop-btn" onclick="openQuoteModal('${l.nombre}, ${l.estado}')">COTIZAR</button>`);
+    cityMarkers.push(m);
+  });
+
+  const homeBtn=document.createElement('button');
+  homeBtn.className='map-home-btn';
+  homeBtn.innerHTML='<i class="fa-solid fa-location-crosshairs"></i>';
+  homeBtn.title='Volver a Lakewood';
+  homeBtn.onclick=function(){map.setView([BUSINESS.lat,BUSINESS.lng],10,{animate:true,duration:1});};
+  document.querySelector('.map-container').appendChild(homeBtn);
+}
+
+// Go to business location on map
+function goToBusinessLocation(){
+  const mapContainer=document.querySelector('.map-container');
+  if(mapContainer){
+    mapContainer.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  if(map&&businessMarker){
+    map.setView([BUSINESS.lat,BUSINESS.lng],11,{animate:true,duration:1});
+    setTimeout(function(){
+      businessMarker.openPopup();
+    },600);
+  }
+}
+
+function renderPlaces(sort='closest',search=''){
+  const list=document.getElementById('placesList');
+  let data=[...lugares];
+  if(search){
+    const s=search.toLowerCase();
+    data=data.filter(l=>l.nombre.toLowerCase().includes(s)||l.estado.toLowerCase().includes(s));
+  }
+  if(sort==='closest'){
+    data=data.filter(l=>l.tiempoMin<=120&&l.tiempoMin>0);
+    data.sort((a,b)=>a.tiempoMin-b.tiempoMin);
+  }else if(sort==='farthest'){
+    data=data.filter(l=>l.tiempoMin>=180&&l.tiempoMin<=300);
+    data.sort((a,b)=>b.tiempoMin-a.tiempoMin);
+  }else if(sort==='name'){
+    data.sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  }else if(sort==='time'){
+    data.sort((a,b)=>a.tiempoMin-b.tiempoMin);
+  }
+
+  if(data.length===0){
+    list.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--text-sec);"><i class="fa-solid fa-magnifying-glass" style="font-size:30px;margin-bottom:12px;display:block;color:var(--blue-bright);"></i><p>No se encontraron ciudades.</p></div>`;
+    return;
+  }
+  list.innerHTML=data.map(l=>`
+    <div class="place-card">
+      <div class="place-image">
+        <img src="${l.imagen}" alt="${l.nombre}" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\\'fa-solid fa-city\\'></i>';">
+      </div>
+      <div class="place-content">
+        <div class="place-head">
+          <div class="place-name">${l.nombre}, ${l.estado}</div>
+          <div class="place-status">Área disponible</div>
+        </div>
+        <div class="place-area">Área de servicio</div>
+        <div class="place-distance">
+          <span><i class="fa-solid fa-car"></i> ${l.km} km</span>
+          <span class="place-time"><i class="fa-solid fa-clock"></i> Aprox. ${formatearTiempo(l.tiempoMin)}</span>
+        </div>
+        <button class="btn-cotizar-place" onclick="openQuoteModal('${l.nombre}, ${l.estado}')">
+          <i class="fa-brands fa-whatsapp"></i> COTIZAR
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+let selectedPlace='';
+function openQuoteModal(placeName){
+  selectedPlace=placeName||'';
+  const modal=document.getElementById('quoteModal');
+  const info=document.getElementById('modalPlaceInfo');
+  const name=document.getElementById('modalPlaceName');
+  if(placeName){info.style.display='flex';name.textContent=placeName;}
+  else{info.style.display='none';}
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{const fi=document.getElementById('qf-name');if(fi)fi.focus();},100);
+}
+function closeQuoteModal(){
+  document.getElementById('quoteModal').classList.remove('active');
+  document.body.style.overflow='';
+  document.getElementById('quoteForm').reset();
+}
+document.getElementById('quoteModal').addEventListener('click',function(e){if(e.target===this)closeQuoteModal();});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){const m=document.getElementById('quoteModal');if(m.classList.contains('active'))closeQuoteModal();}
+});
+
+// Custom Phone Field
+const countrySelector = document.getElementById('countrySelector');
+const countryDropdown = document.getElementById('countryDropdown');
+const countryList = document.getElementById('countryList');
+const countrySearch = document.getElementById('countrySearch');
+const phoneInput = document.getElementById('qf-phone');
+
+let selectedCountry = {
+  code: 'us',
+  dial: '+1',
+  flag: '🇺🇸',
+  placeholder: '(555) 654-789'
+};
+
+countrySelector.addEventListener('click', function(e) {
+  e.stopPropagation();
+  countryDropdown.classList.toggle('open');
+  countrySelector.classList.toggle('open');
+});
+
+countryList.addEventListener('click', function(e) {
+  const countryItem = e.target.closest('.country-item');
+  if (countryItem) {
+    selectedCountry = {
+      code: countryItem.dataset.country,
+      dial: countryItem.dataset.dial,
+      flag: countryItem.dataset.flag,
+      placeholder: countryItem.dataset.placeholder || '(555) 123-4567'
+    };
+    countrySelector.querySelector('.flag').textContent = selectedCountry.flag;
+    countrySelector.querySelector('.dial-code').textContent = selectedCountry.dial;
+    phoneInput.placeholder = selectedCountry.placeholder;
+    countryDropdown.classList.remove('open');
+    countrySelector.classList.remove('open');
+    phoneInput.focus();
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.phone-input-wrapper')) {
+    countryDropdown.classList.remove('open');
+    countrySelector.classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    countryDropdown.classList.remove('open');
+    countrySelector.classList.remove('open');
+  }
+});
+
+countrySearch.addEventListener('input', function(e) {
+  const search = e.target.value.toLowerCase();
+  const items = countryList.querySelectorAll('.country-item');
+  items.forEach(function(item) {
+    const name = item.querySelector('.country-name').textContent.toLowerCase();
+    const dial = item.querySelector('.country-dial').textContent;
+    if (name.includes(search) || dial.includes(search)) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+});
+
+function getPhoneNumber() {
+  const value = phoneInput.value.replace(/\D/g, '');
+  return selectedCountry.dial + value;
+}
+
+function submitQuote(){
+  const name=document.getElementById('qf-name').value.trim();
+  const phone=getPhoneNumber();
+  const email=document.getElementById('qf-email').value.trim();
+  const service=document.getElementById('qf-service').value;
+  const date=document.getElementById('qf-date').value;
+  const message=document.getElementById('qf-message').value.trim();
+  if(!name||!phone||!email||!service||!date||!message){alert('Por favor completa todos los campos.');return;}
+  const formattedDate=date.split('-').reverse().join('/');
+  let texto=`Hola, quiero solicitar una cotización de J & J Luxury Cleaning Service LLC.\n\n`;
+  if(selectedPlace){texto+=`Lugar:\n${selectedPlace}\n\n`;}
+  texto+=`Nombre:\n${name}\n\n`;
+  texto+=`Teléfono:\n${phone}\n\n`;
+  texto+=`Correo:\n${email}\n\n`;
+  texto+=`Servicio:\n${service}\n\n`;
+  texto+=`Fecha:\n${formattedDate}\n\n`;
+  texto+=`Mensaje:\n${message}`;
+  const url=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+  if(WHATSAPP_NUMBER==='TU_NUMERO_AQUI'||!WHATSAPP_NUMBER){alert('Por favor configura tu número de WhatsApp en la variable WHATSAPP_NUMBER dentro del archivo ubicacion.html');return;}
+  window.open(url,'_blank');
+  closeQuoteModal();
+}
+
+document.getElementById('searchInput').addEventListener('input',function(e){renderPlaces(document.getElementById('filterSelect').value,e.target.value);});
+document.getElementById('filterSelect').addEventListener('change',function(e){renderPlaces(e.target.value,document.getElementById('searchInput').value);});
+
+document.getElementById('mobileMenuBtn').addEventListener('click',function(){
+  const nav=document.getElementById('mainNav');
+  const isOpen=nav.classList.toggle('open');
+  this.setAttribute('aria-expanded',String(isOpen));
+  this.classList.toggle('active',isOpen);
+});
+document.querySelectorAll('#mainNav a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    document.getElementById('mainNav').classList.remove('open');
+  });
+});
+document.addEventListener('click',function(e){
+  const nav=document.getElementById('mainNav');
+  const toggle=document.getElementById('mobileMenuBtn');
+  if(!nav.contains(e.target)&&e.target!==toggle&&!toggle.contains(e.target)){
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }
+});
+
+window.addEventListener('DOMContentLoaded',function(){
+  initMap();
+  setTimeout(function(){if(map){map.invalidateSize();}},200);
+  renderPlaces();
+});
+
+// Logo lightbox: click on any .brand-logo-img opens the logo in a round overlay
+document.addEventListener('DOMContentLoaded', function(){
+  // Header dropdown toggle (Servicios)
+  const dd = document.getElementById('serviciosDropdown');
+  if (dd) {
+    const label = dd.querySelector('.has-dropdown-label');
+    const toggleBtn = dd.querySelector('.dd-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dd.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+        if (label) label.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('#serviciosDropdown')) {
+        dd.classList.remove('open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+        if (label) label.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') {
+        dd.classList.remove('open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+        if (label) label.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'logo-lightbox';
+  lightbox.id = 'logoLightbox';
+  lightbox.innerHTML = '<img class="logo-lightbox-img" src="img/logo.png" alt="J &amp; J Luxury Cleaning Service LLC">';
+  document.body.appendChild(lightbox);
+
+  document.querySelectorAll('.brand-logo-img').forEach(function(img){
+    img.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lightbox.addEventListener('click', function(e){
+    if (e.target === lightbox || (e.target.classList && e.target.classList.contains('logo-lightbox') && !e.target.classList.contains('logo-lightbox-img'))) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+  lightbox.querySelector('.logo-lightbox-img').addEventListener('click', function(e){
+    e.stopPropagation();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
