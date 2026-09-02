@@ -513,52 +513,73 @@
 </head>
 <body>
 
-<header>
-  <nav>
-      <div class="logo">
-        <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
-        <span class="logo-text">J &amp; J Luxury<br>Cleaning Service LLC</span>
-      </div>
-      <button class="mobile-menu-btn" aria-label="Abrir menú" id="mobileMenuBtn" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-      <div class="nav-cta" id="mainNav">
-      <a class="btn btn-ghost" href="index.html">Inicio</a>
-      <a class="btn btn-ghost" href="nosotros.html">Sobre nosotros</a>
-      <div class="has-dropdown" id="serviciosDropdown">
-        <div class="has-dropdown-trigger">
-          <a class="btn btn-ghost has-dropdown-label" href="servicios.html" aria-haspopup="true" aria-expanded="false">Servicios</a>
-          <button class="dd-toggle" type="button" aria-label="Abrir menú de servicios" aria-expanded="false"><i class="fa-solid fa-chevron-down dd-caret"></i></button>
-        </div>
-        <div class="nav-dropdown" role="menu">
-          <a href="servicios.html#residencial" role="menuitem"><i class="fa-solid fa-house"></i> Limpieza residencial</a>
-          <a href="servicios.html#comercial" role="menuitem"><i class="fa-solid fa-building"></i> Limpieza comercial</a>
-          <a href="servicios.html#industrial" role="menuitem"><i class="fa-solid fa-industry"></i> Limpieza industrial</a>
-          <a href="servicios.html#vidrios" role="menuitem"><i class="fa-solid fa-window-maximize"></i> Limpieza de vidrios</a>
-          <a href="servicios.html#desinfeccion" role="menuitem"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
-          <a href="servicios.html#mantenimiento" role="menuitem"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
-        </div>
-      </div>
-      <a class="btn btn-ghost" href="ubicacion.html">encuentra tu ubicación</a>
-      <button class="btn btn-primary" type="button" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'});">Cotizar</button>
-      <div class="mobile-social-section">
-        <span class="mobile-social-label">SÍGUENOS</span>
-        <div class="mobile-social-icons">
-          <a class="mobile-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a class="mobile-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a class="mobile-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="header-divider"></div>
-      <a class="header-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a class="header-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a class="header-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<header class="site-header">
+  <nav class="header-nav">
+    <a href="index.html" class="brand">
+      <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+      <span class="brand-text">J &amp; J Luxury<br>Cleaning Service LLC</span>
+    </a>
+
+    <div class="header-desktop-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="nosotros.html" class="nav-link">Sobre nosotros</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="ubicacion.html" class="nav-link">Ubicación</a>
+      <a href="#contacto" class="nav-link nav-cta">Cotizar</a>
+      <span class="nav-divider"></span>
+      <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="nav-social" href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="nav-social" href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
     </div>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" id="menuToggleBtn" aria-expanded="false">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="menu-logo">
+        <h3>J &amp; J LUXURY CLEANING</h3>
+        <span>MENÚ PREMIUM</span>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="index.html" class="menu-btn"><i class="fa-solid fa-house"></i> INICIO</a>
+        <a href="nosotros.html" class="menu-btn"><i class="fa-regular fa-circle-user"></i> SOBRE NOSOTROS</a>
+        <div class="services-accordion-wrapper">
+          <a href="servicios.html" class="menu-btn service-link"><i class="fa-solid fa-broom"></i> SERVICIOS</a>
+          <button class="accordion-toggle-btn" type="button" id="toggleServices" aria-label="Ver subcategorías" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="services-dropdown" id="servicesDropdown">
+          <a href="servicios.html#residencial"><i class="fa-solid fa-house"></i> Limpieza Residencial</a>
+          <a href="servicios.html#comercial"><i class="fa-solid fa-building"></i> Limpieza Comercial</a>
+          <a href="servicios.html#industrial"><i class="fa-solid fa-industry"></i> Limpieza Industrial</a>
+          <a href="servicios.html#vidrios"><i class="fa-solid fa-window-maximize"></i> Limpieza de Vidrios</a>
+          <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+      </nav>
+      <div class="mobile-menu-cta">
+        <a href="#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
+      </div>
+      <div class="mobile-menu-divider"></div>
+      <div class="mobile-menu-footer">
+        <p>SÍGUENOS</p>
+        <div class="social-icons">
+          <a href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <section id="servicios">
@@ -1767,15 +1788,59 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// Mobile menu elements
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mainNav = document.getElementById('mainNav');
+// Mobile menu toggle (clean system)
+(function(){
+  const toggleBtn = document.getElementById('menuToggleBtn');
+  const closeBtn = document.getElementById('mobileMenuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!toggleBtn || !mobileMenu) return;
 
-mobileMenuBtn?.addEventListener('click', () => {
-  const isOpen = mainNav.classList.toggle('open');
-  mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
-  mobileMenuBtn.classList.toggle('active', isOpen);
-});
+  function openMenu(){
+    mobileMenu.setAttribute('aria-hidden','false');
+    toggleBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    mobileMenu.setAttribute('aria-hidden','true');
+    toggleBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  function isOpen(){ return mobileMenu.getAttribute('aria-hidden') === 'false'; }
+
+  toggleBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (isOpen()) closeMenu(); else openMenu();
+  });
+  closeBtn?.addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
+
+  const servicesToggle = mobileMenu.querySelector('.accordion-toggle-btn');
+  const servicesList = mobileMenu.querySelector('.services-dropdown');
+  servicesToggle?.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    const expanded = servicesToggle.getAttribute('aria-expanded') === 'true';
+    servicesToggle.setAttribute('aria-expanded', String(!expanded));
+    servicesList?.classList.toggle('open', !expanded);
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ closeMenu(); });
+  });
+
+  mobileMenu.addEventListener('click', function(e){
+    if (e.target === mobileMenu) closeMenu();
+  });
+
+  document.addEventListener('click', function(e){
+    if (!isOpen()) return;
+    const insidePanel = e.target.closest('.mobile-menu-content');
+    const onToggle = e.target.closest('.menu-toggle') || e.target.closest('.mobile-menu-close');
+    if (!insidePanel && !onToggle) closeMenu();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && isOpen()) closeMenu();
+  });
+})();
 
 // Cotizar Servicio - scroll to form on same page and preselect service type
 function cotizarServicio(serviceName) {
@@ -1821,22 +1886,7 @@ modalCloseBtn?.addEventListener('click', function(e) {
   closeServiceDetailsModal();
 });
 
-// Close modal on outside click (consolidated with mobile menu)
-document.addEventListener('click', function(e) {
-  // Mobile menu: close when clicking outside
-  if (mainNav && mobileMenuBtn && !mainNav.contains(e.target) && !e.target.closest('.mobile-menu-btn')) {
-    mainNav.classList.remove('open');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    mobileMenuBtn.classList.remove('active');
-  }
-});
-
-mainNav?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mainNav.classList.remove('open');
-    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
-  });
-});
+// (Mobile menu listener consolidated in the IIFE above)
 
 const locationInput = document.getElementById('ubicacion');
 const locationDropdown = document.getElementById('locationDropdown');

@@ -1492,56 +1492,501 @@
   .logo-lightbox-img{width:min(360px,70vw);height:min(360px,70vw);border-radius:50%;object-fit:cover;cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 6px rgba(56,189,248,.25);animation:logoLightboxPop .25s cubic-bezier(.2,.9,.3,1.2);background:#0B1426;}
   @keyframes logoLightboxPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
   .brand-logo-img{cursor:pointer;}
+
+  /* ==========================================================================
+     HEADER + MOBILE MENU (clean system, only here because this page
+     does not load styles.css)
+     ========================================================================== */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(5,6,8,.7);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(56,189,248,.1);
+  }
+  .header-nav{
+    max-width:1180px;margin:0 auto;padding:0 28px;
+    height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;color:#fff;
+    letter-spacing:-0.3px;text-transform:uppercase;text-decoration:none;
+    min-width:0;flex-shrink:0;
+  }
+  .brand-logo-img{height:42px;width:auto;max-width:52px;object-fit:contain;flex-shrink:0;display:block;}
+  .brand-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.1;}
+  .header-desktop-nav{display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;}
+  .nav-link{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;
+    color:#A3B0C3;text-decoration:none;padding:8px 14px;border-radius:8px;
+    transition:all .25s ease;white-space:nowrap;
+  }
+  .nav-link:hover{color:#fff;background:rgba(56,189,248,.1);}
+  .nav-link.nav-cta{
+    background:linear-gradient(135deg,#2196F3,#25A7FF);
+    color:#0B1220;box-shadow:0 4px 16px rgba(56,189,248,.3);margin-left:6px;
+  }
+  .nav-link.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5);background:linear-gradient(135deg,#25A7FF,#2196F3);}
+  .nav-divider{width:1px;height:24px;background:rgba(56,189,248,.2);margin:0 6px;flex-shrink:0;}
+  .nav-social{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:36px;height:36px;color:#A3B0C3;font-size:17px;
+    text-decoration:none;background:transparent;border:none;
+    transition:all .3s ease;flex-shrink:0;
+  }
+  .nav-social:hover{color:#fff;transform:translateY(-2px) scale(1.15);}
+  .nav-social:has(.fa-whatsapp):hover{color:#25D366;text-shadow:0 0 12px rgba(37,211,102,.6);}
+  .nav-social:has(.fa-facebook-f):hover{color:#1877F2;text-shadow:0 0 12px rgba(24,119,242,.6);}
+  .nav-social:has(.fa-instagram):hover{color:#E4405F;text-shadow:0 0 12px rgba(225,48,108,.6);}
+  .menu-toggle{
+    display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+    width:48px;height:48px;min-width:48px;min-height:48px;
+    background:rgba(11,18,32,.95);border:1px solid rgba(56,189,248,.35);
+    border-radius:10px;cursor:pointer;padding:0;
+    box-shadow:0 4px 14px rgba(0,0,0,.45);
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+    transition:all .15s ease;
+  }
+  .menu-toggle-bar{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s ease;}
+  .menu-toggle:hover{background:rgba(56,189,248,.15);border-color:rgba(56,189,248,.6);}
+  .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2){opacity:0;}
+  .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu,
+  .mobile-menu-overlay{
+    position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;
+    background:url('img/Fondo_Menu.webp') no-repeat center center / cover;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    z-index:9999;display:none;align-items:flex-start;justify-content:center;
+    overflow-y:auto;animation:mobileMenuFade .35s ease;
+  }
+  .mobile-menu[aria-hidden="false"],
+  .mobile-menu-overlay[aria-hidden="false"],
+  .mobile-menu-overlay.open{display:flex;}
+  @keyframes mobileMenuFade{from{opacity:0}to{opacity:1}}
+  .mobile-menu-close,
+  .close-menu-btn{
+    position:fixed;top:16px;right:16px;z-index:10000;
+    width:48px;height:48px;display:none;align-items:center;justify-content:center;
+    background:rgba(11,18,32,.85);border:1px solid rgba(56,189,248,.45);border-radius:50%;
+    color:#fff;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    box-shadow:0 4px 18px rgba(0,0,0,.5),0 0 14px rgba(56,189,248,.25);
+    transition:all .25s ease;font-size:20px;line-height:1;padding:0;
+  }
+  .mobile-menu[aria-hidden="false"] .mobile-menu-close,
+  .mobile-menu-overlay[aria-hidden="false"] .mobile-menu-close,
+  .mobile-menu-overlay.open .close-menu-btn{display:flex;}
+  .mobile-menu-close:hover,
+  .close-menu-btn:hover{background:rgba(56,189,248,.2);border-color:rgba(56,189,248,.8);transform:rotate(90deg);}
+  .mobile-menu-content{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:16px !important;
+    width:100% !important;
+    max-width:460px !important;
+    height:auto !important;
+    min-height:100% !important;
+    padding:60px 20px 30px 20px !important;
+    margin:0 auto !important;
+    box-sizing:border-box !important;
+    overflow-y:auto !important;
+    position:relative !important;
+  }
+  .mobile-menu-header,
+  .mobile-menu-nav,
+  .mobile-menu-nav a,
+  .mobile-menu-cta,
+  .btn-cotizar-mobile,
+  .mobile-menu-footer{
+    position:relative !important;
+    top:auto !important;
+    bottom:auto !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+    margin:0 !important;
+  }
+  .mobile-menu-header{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    text-align:center;width:100%;
+  }
+  .mobile-menu-header .menu-logo{
+    width:62px;height:62px;border-radius:16px;
+    background:rgba(11,18,32,.7);border:1px solid rgba(56,189,248,.4);
+    box-shadow:0 0 24px rgba(56,189,248,.3),inset 0 0 18px rgba(56,189,248,.12);
+    padding:6px;object-fit:contain;
+  }
+  .mobile-menu-header h3{margin:0;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;color:#fff;letter-spacing:.5px;text-transform:uppercase;text-shadow:0 0 16px rgba(56,189,248,.35);}
+  .mobile-menu-header span{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(56,189,248,.85);letter-spacing:1.8px;text-transform:uppercase;}
+  .mobile-menu-nav{
+    display:flex;flex-direction:column;gap:12px;width:100%;max-width:320px;align-items:center;
+    list-style:none;padding:0;
+  }
+  .menu-btn,
+  .mobile-menu-link{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    padding:14px 18px;width:100%;
+    font-family:'Manrope',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.92);
+    text-decoration:none;text-transform:uppercase;letter-spacing:1.2px;
+    background:rgba(15,23,42,.55);border:1px solid rgba(56,189,248,.18);border-radius:14px;
+    transition:all .25s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .menu-btn i,.mobile-menu-link i{color:rgba(56,189,248,.85);font-size:15px;width:18px;text-align:center;transition:all .25s ease;}
+  .menu-btn:hover,.menu-btn:active,
+  .mobile-menu-link:hover,.mobile-menu-link:active{
+    color:#fff;background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.65);
+    box-shadow:0 0 0 1px rgba(56,189,248,.4),0 0 26px rgba(56,189,248,.35),inset 0 0 18px rgba(56,189,248,.18);
+    text-shadow:0 0 12px rgba(56,189,248,.55);
+  }
+  .menu-btn:hover i,.menu-btn:active i,
+  .mobile-menu-link:hover i,.mobile-menu-link:active i{color:#7DD3FC;text-shadow:0 0 10px rgba(56,189,248,.7);}
+  .services-accordion-wrapper,
+  .mobile-menu-services{display:flex;gap:8px;width:100%;justify-content:center;align-items:stretch;}
+  .services-accordion-wrapper .service-link,
+  .services-accordion-wrapper .menu-btn,
+  .mobile-menu-services .mobile-menu-link{flex:1;}
+  .services-accordion-wrapper .accordion-toggle-btn,
+  .mobile-menu-services-toggle{
+    flex-shrink:0;width:48px;
+    display:flex;align-items:center;justify-content:center;padding:0;
+    background:rgba(15,23,42,.55);border:1px solid rgba(56,189,248,.3);border-radius:14px;
+    color:rgba(125,211,252,.9);cursor:pointer;font-size:13px;
+    transition:all .25s ease;
+  }
+  .services-accordion-wrapper .accordion-toggle-btn i,
+  .mobile-menu-services-toggle i{transition:transform .3s ease;}
+  .services-accordion-wrapper .accordion-toggle-btn[aria-expanded="true"] i,
+  .mobile-menu-services-toggle[aria-expanded="true"] i{transform:rotate(180deg);}
+  .services-accordion-wrapper .accordion-toggle-btn:hover,
+  .mobile-menu-services-toggle:hover{background:rgba(56,189,248,.18);border-color:rgba(56,189,248,.7);color:#fff;box-shadow:0 0 18px rgba(56,189,248,.4);}
+  .services-dropdown,
+  .mobile-menu-sublist{
+    list-style:none;padding:6px;
+    display:none;flex-direction:column;gap:4px;width:100%;
+    background:rgba(5,8,15,.45);border:1px solid rgba(56,189,248,.1);border-radius:12px;
+  }
+  .services-dropdown.open,
+  .mobile-menu-sublist.open{display:flex;}
+  .services-dropdown a,
+  .mobile-menu-sublist a{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;
+    color:rgba(255,255,255,.85);text-decoration:none;
+    background:transparent;border:1px solid transparent;border-radius:10px;
+    letter-spacing:.8px;transition:all .2s ease;
+  }
+  .services-dropdown a:hover,
+  .mobile-menu-sublist a:hover{background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.35);color:#fff;}
+  .services-dropdown a i,
+  .mobile-menu-sublist a i{color:rgba(56,189,248,.85);font-size:13px;}
+  .mobile-menu-cta{
+    display:flex;align-items:center;justify-content:center;width:100%;max-width:320px;
+    margin-top:8px !important;
+  }
+  .btn-cotizar-mobile,
+  .mobile-menu-cta a{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;padding:16px 36px;
+    background:linear-gradient(135deg,#0EA5E9 0%,#2563EB 100%);
+    color:#fff;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;
+    letter-spacing:1.5px;text-transform:uppercase;
+    border:none;border-radius:999px;cursor:pointer;text-decoration:none;
+    box-shadow:0 8px 26px rgba(14,165,233,.45),0 0 0 1px rgba(56,189,248,.55),inset 0 1px 0 rgba(255,255,255,.25);
+    transition:all .25s ease;text-shadow:0 1px 1px rgba(0,0,0,.25);
+  }
+  .btn-cotizar-mobile:hover,
+  .mobile-menu-cta a:hover{transform:translateY(-2px);background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);box-shadow:0 12px 32px rgba(14,165,233,.65),0 0 0 1px rgba(125,211,252,.85),0 0 36px rgba(56,189,248,.55),inset 0 1px 0 rgba(255,255,255,.35);}
+  .mobile-menu-divider{width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.55),transparent);margin:6px auto 10px;box-shadow:0 0 8px rgba(56,189,248,.4);}
+  .mobile-menu-footer{
+    display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:320px;
+    margin-top:15px !important;
+  }
+  .mobile-menu-footer p,
+  .mobile-menu-socials-label{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:rgba(125,211,252,.85);letter-spacing:2.5px;text-transform:uppercase;text-shadow:0 0 12px rgba(56,189,248,.45);margin:0;}
+  .social-icons,
+  .mobile-menu-socials-icons{display:flex;gap:14px;}
+  .social-icons a,
+  .mobile-menu-socials-icons a{
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(15,23,42,.6);border:1px solid rgba(56,189,248,.4);
+    color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;
+    text-decoration:none;transition:all .25s ease;box-shadow:0 0 0 1px rgba(56,189,248,.1);
+    position:static !important;
+  }
+  .social-icons a:hover,
+  .mobile-menu-socials-icons a:hover{transform:translateY(-3px) scale(1.06);border-color:rgba(56,189,248,.85);box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(56,189,248,.55);color:#7DD3FC;}
+  .social-icons a:has(.fa-whatsapp):hover,
+  .mobile-menu-socials-icons a:has(.fa-whatsapp):hover{border-color:#25D366;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(37,211,102,.55);color:#25D366;}
+  .social-icons a:has(.fa-facebook-f):hover,
+  .mobile-menu-socials-icons a:has(.fa-facebook-f):hover{border-color:#1877F2;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(24,119,242,.55);color:#1877F2;}
+  .social-icons a:has(.fa-instagram):hover,
+  .mobile-menu-socials-icons a:has(.fa-instagram):hover{border-color:#E4405F;box-shadow:0 6px 18 rgba(225,48,108,.55);color:#E4405F;}
+  @media (max-width:991px){
+    .header-nav{padding:0 16px;}
+    .brand{font-size:11px;gap:8px;}
+    .brand-logo-img{height:34px;max-width:42px;}
+    .brand-text{font-size:11px;}
+    .header-desktop-nav{display:none;}
+    .menu-toggle{display:flex;}
+    .menu-btn,
+    .mobile-menu-link{font-size:14px;}
+    .mobile-menu,
+    .mobile-menu-overlay{background:url('img/Fondo_Menu.webp') no-repeat center center / cover;}
+  }
+
+  /* Ocultar en escritorio */
+  @media (min-width: 992px) {
+    .mobile-menu-overlay, #mobileMenu {
+      display: none !important;
+    }
+  }
+  /* Estilos de menú móvil */
+  @media (max-width: 991px) {
+    .mobile-menu-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: url('img/Fondo_Menu.webp') no-repeat center center / cover !important;
+      z-index: 99999 !important;
+      display: none;
+      overflow-y: auto !important;
+      overscroll-behavior: contain !important;
+      touch-action: pan-y !important;
+    }
+    .mobile-menu-overlay.active,
+    .mobile-menu-overlay.is-open,
+    .mobile-menu-overlay[aria-hidden="false"] {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding: 70px 20px 30px 20px !important;
+      box-sizing: border-box !important;
+    }
+    .mobile-menu-content,
+    .mobile-menu-nav,
+    .mobile-menu-header,
+    .mobile-menu-footer,
+    .mobile-menu-cta {
+      position: static !important;
+      transform: none !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      width: 100% !important;
+      max-width: 300px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      height: auto !important;
+    }
+    .mobile-menu-header{margin-bottom:14px !important;gap:8px;}
+    .mobile-menu-nav{gap:8px;margin-bottom:14px !important;}
+    .mobile-menu-cta{margin-top:6px !important;margin-bottom:14px !important;}
+    .mobile-menu-footer{margin-top:18px !important;gap:10px;}
+    .mobile-menu-nav a,
+    .mobile-menu-nav .menu-btn,
+    .btn-cotizar-mobile {
+      position: static !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 46px !important;
+      margin: 0 !important;
+      padding: 0 16px !important;
+      box-sizing: border-box !important;
+      text-decoration: none !important;
+      flex-shrink: 0 !important;
+      text-align: center !important;
+      letter-spacing: 1px !important;
+    }
+    /* Los 4 links de navegacion con texto a la IZQUIERDA (lista vertical) */
+    .mobile-menu-nav a,
+    .mobile-menu-nav .menu-btn {
+      justify-content: flex-start !important;
+      text-align: left !important;
+      padding: 0 14px 0 16px !important;
+    }
+    .mobile-menu-nav a > i,
+    .mobile-menu-nav .menu-btn > i,
+    .mobile-menu-nav .menu-btn > .menu-icon {
+      flex: 0 0 18px !important;
+      width: 18px !important;
+      min-width: 18px !important;
+      margin-right: 12px !important;
+      text-align: center !important;
+      line-height: 1 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .mobile-menu-nav a > i + *,
+    .mobile-menu-nav .menu-btn > i + * {
+      flex: 0 0 auto !important;
+      text-align: left !important;
+      margin-left: 0 !important;
+    }
+    .btn-cotizar-mobile > i{
+      flex: 0 0 18px !important;
+      width: 18px !important;
+      min-width: 18px !important;
+      margin-right: 10px !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+    .services-accordion-wrapper {
+      position: static !important;
+      display: flex !important;
+      flex-direction: row !important;
+      width: 100% !important;
+      gap: 8px !important;
+      margin: 0 !important;
+      align-items: stretch !important;
+      flex-shrink: 0 !important;
+      height: 46px !important;
+    }
+    .services-accordion-wrapper .menu-btn,
+    .services-accordion-wrapper .service-link {
+      flex: 1 !important;
+      margin: 0 !important;
+      padding: 0 16px !important;
+    }
+    .accordion-toggle-btn {
+      position: static !important;
+      width: 46px !important;
+      height: 46px !important;
+      min-width: 46px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex-shrink: 0 !important;
+    }
+    .services-dropdown{
+      width:100% !important;
+      margin: 6px 0 0 0 !important;
+    }
+    .close-menu-btn, #closeMenu, .mobile-menu-close {
+      position: absolute !important;
+      top: 18px !important;
+      right: 18px !important;
+      z-index: 100000 !important;
+    }
+    body.menu-open{
+      overflow: hidden !important;
+      touch-action: none !important;
+    }
+    body.menu-open .leaflet-pane,
+    body.menu-open .leaflet-control-container,
+    body.menu-open .leaflet-popup-pane,
+    body.menu-open .leaflet-tooltip-pane,
+    body.menu-open .map-radius-label,
+    body.menu-open .map-area-label,
+    body.menu-open .map-container,
+    body.menu-open #map{
+      visibility: hidden !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+    }
+    body.menu-open .header-nav{
+      visibility: hidden !important;
+    }
+  }
+  /* Leaflet: limitar z-index global para que no se filtre por encima
+     del header sticky al hacer scroll en la pagina. */
+  .leaflet-pane,
+  .leaflet-control-container,
+  .leaflet-popup-pane,
+  .leaflet-tooltip-pane,
+  .map-radius-label,
+  .map-area-label{
+    z-index: 1 !important;
+  }
+  @media (max-width:480px){
+    .header-nav{padding:0 14px;}
+    .brand-logo-img{height:32px;max-width:40px;}
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <nav>
-      <div class="logo">
-        <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
-        <span class="logo-text">J &amp; J Luxury<br>Cleaning Service LLC</span>
-      </div>
-      <button class="mobile-menu-btn" aria-label="Abrir menú" id="mobileMenuBtn" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-      <div class="nav-cta" id="mainNav">
-      <a class="btn btn-ghost" href="index.html">Inicio</a>
-      <a class="btn btn-ghost" href="nosotros.html">Sobre nosotros</a>
-      <div class="has-dropdown" id="serviciosDropdown">
-        <div class="has-dropdown-trigger">
-          <a class="btn btn-ghost has-dropdown-label" href="servicios.html" aria-haspopup="true" aria-expanded="false">Servicios</a>
-          <button class="dd-toggle" type="button" aria-label="Abrir menú de servicios" aria-expanded="false"><i class="fa-solid fa-chevron-down dd-caret"></i></button>
-        </div>
-        <div class="nav-dropdown" role="menu">
-          <a href="servicios.html#residencial" role="menuitem"><i class="fa-solid fa-house"></i> Limpieza residencial</a>
-          <a href="servicios.html#comercial" role="menuitem"><i class="fa-solid fa-building"></i> Limpieza comercial</a>
-          <a href="servicios.html#industrial" role="menuitem"><i class="fa-solid fa-industry"></i> Limpieza industrial</a>
-          <a href="servicios.html#vidrios" role="menuitem"><i class="fa-solid fa-window-maximize"></i> Limpieza de vidrios</a>
-          <a href="servicios.html#desinfeccion" role="menuitem"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
-          <a href="servicios.html#mantenimiento" role="menuitem"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
-        </div>
-      </div>
-      <a class="btn btn-ghost" href="ubicacion.html">encuentra tu ubicación</a>
-      <button class="btn btn-primary" type="button" onclick="openQuoteModal('')">Cotizar</button>
-      <div class="mobile-social-section">
-        <span class="mobile-social-label">SÍGUENOS</span>
-        <div class="mobile-social-icons">
-          <a class="mobile-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a class="mobile-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a class="mobile-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="header-divider"></div>
-      <a class="header-social" href="https://wa.me/5215512345678" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a class="header-social" href="https://www.facebook.com/" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a class="header-social" href="https://www.instagram.com/" target="_blank" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<header class="site-header">
+  <nav class="header-nav">
+    <a href="index.html" class="brand">
+      <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+      <span class="brand-text">J &amp; J Luxury<br>Cleaning Service LLC</span>
+    </a>
+
+    <div class="header-desktop-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="nosotros.html" class="nav-link">Sobre nosotros</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="ubicacion.html" class="nav-link">Ubicación</a>
+      <a href="#" class="nav-link nav-cta" onclick="openQuoteModal('');return false;">Cotizar</a>
+      <span class="nav-divider"></span>
+      <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="nav-social" href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="nav-social" href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
     </div>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" id="menuToggleBtn" aria-expanded="false">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="menu-logo">
+        <h3>J &amp; J LUXURY CLEANING</h3>
+        <span>MENÚ PREMIUM</span>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="index.html" class="menu-btn"><i class="fa-solid fa-house"></i> INICIO</a>
+        <a href="nosotros.html" class="menu-btn"><i class="fa-regular fa-circle-user"></i> SOBRE NOSOTROS</a>
+        <div class="services-accordion-wrapper">
+          <a href="servicios.html" class="menu-btn service-link"><i class="fa-solid fa-broom"></i> SERVICIOS</a>
+          <button class="accordion-toggle-btn" type="button" id="toggleServices" aria-label="Ver subcategorías" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="services-dropdown" id="servicesDropdown">
+          <a href="servicios.html#residencial"><i class="fa-solid fa-house"></i> Limpieza Residencial</a>
+          <a href="servicios.html#comercial"><i class="fa-solid fa-building"></i> Limpieza Comercial</a>
+          <a href="servicios.html#industrial"><i class="fa-solid fa-industry"></i> Limpieza Industrial</a>
+          <a href="servicios.html#vidrios"><i class="fa-solid fa-window-maximize"></i> Limpieza de Vidrios</a>
+          <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+      </nav>
+      <div class="mobile-menu-cta">
+        <a href="#" class="btn-cotizar-mobile" id="mobileCtaUbicacion"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
+      </div>
+      <div class="mobile-menu-divider"></div>
+      <div class="mobile-menu-footer">
+        <p>SÍGUENOS</p>
+        <div class="social-icons">
+          <a href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <main>
@@ -2081,25 +2526,81 @@ function submitQuote(){
 document.getElementById('searchInput').addEventListener('input',function(e){renderPlaces(document.getElementById('filterSelect').value,e.target.value);});
 document.getElementById('filterSelect').addEventListener('change',function(e){renderPlaces(e.target.value,document.getElementById('searchInput').value);});
 
-document.getElementById('mobileMenuBtn').addEventListener('click',function(){
-  const nav=document.getElementById('mainNav');
-  const isOpen=nav.classList.toggle('open');
-  this.setAttribute('aria-expanded',String(isOpen));
-  this.classList.toggle('active',isOpen);
-});
-document.querySelectorAll('#mainNav a').forEach(link=>{
-  link.addEventListener('click',()=>{
-    document.getElementById('mainNav').classList.remove('open');
-  });
-});
-document.addEventListener('click',function(e){
-  const nav=document.getElementById('mainNav');
-  const toggle=document.getElementById('mobileMenuBtn');
-  if(!nav.contains(e.target)&&e.target!==toggle&&!toggle.contains(e.target)){
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded','false');
+// Mobile menu toggle (clean system)
+(function(){
+  const toggleBtn = document.getElementById('menuToggleBtn');
+  const closeBtn = document.getElementById('mobileMenuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!toggleBtn || !mobileMenu) return;
+
+  function openMenu(){
+    mobileMenu.setAttribute('aria-hidden','false');
+    mobileMenu.classList.add('active','is-open');
+    toggleBtn.setAttribute('aria-expanded','true');
+    document.body.classList.add('menu-open');
+    document.body.style.overflow='hidden';
+    // Ocultar elementos del mapa que se filtran al overlay del menu
+    document.querySelectorAll('.map-container, .map-radius-label, .map-area-label, .leaflet-pane, .leaflet-control-container, .leaflet-popup-pane').forEach(function(el){
+      el.setAttribute('data-menu-hidden','true');
+      el.style.visibility='hidden';
+    });
   }
-});
+  function closeMenu(){
+    mobileMenu.setAttribute('aria-hidden','true');
+    mobileMenu.classList.remove('active','is-open');
+    toggleBtn.setAttribute('aria-expanded','false');
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow='';
+    // Restaurar visibilidad del mapa
+    document.querySelectorAll('[data-menu-hidden="true"]').forEach(function(el){
+      el.style.visibility='';
+      el.removeAttribute('data-menu-hidden');
+    });
+  }
+  function isOpen(){ return mobileMenu.getAttribute('aria-hidden') === 'false'; }
+
+  toggleBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (isOpen()) closeMenu(); else openMenu();
+  });
+  closeBtn?.addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
+
+  const servicesToggle = mobileMenu.querySelector('.accordion-toggle-btn');
+  const servicesList = mobileMenu.querySelector('.services-dropdown');
+  servicesToggle?.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    const expanded = servicesToggle.getAttribute('aria-expanded') === 'true';
+    servicesToggle.setAttribute('aria-expanded', String(!expanded));
+    servicesList?.classList.toggle('open', !expanded);
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ closeMenu(); });
+  });
+
+  // CTA Cotizar en menu movil de ubicacion: abre el modal de cotizacion
+  const ctaUbicacion = document.getElementById('mobileCtaUbicacion');
+  ctaUbicacion?.addEventListener('click', function(e){
+    e.preventDefault();
+    closeMenu();
+    setTimeout(function(){ openQuoteModal(''); }, 220);
+  });
+
+  mobileMenu.addEventListener('click', function(e){
+    if (e.target === mobileMenu) closeMenu();
+  });
+
+  document.addEventListener('click', function(e){
+    if (!isOpen()) return;
+    const insidePanel = e.target.closest('.mobile-menu-content');
+    const onToggle = e.target.closest('.menu-toggle') || e.target.closest('.mobile-menu-close');
+    if (!insidePanel && !onToggle) closeMenu();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && isOpen()) closeMenu();
+  });
+})();
 
 window.addEventListener('DOMContentLoaded',function(){
   initMap();
