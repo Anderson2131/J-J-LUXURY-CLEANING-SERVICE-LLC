@@ -103,6 +103,22 @@
   }
   /* Header dropdown (Servicios) */
   .has-dropdown{position:relative;}
+  .dd-toggle{
+    display:none;
+    align-items:center;justify-content:center;
+    width:32px;height:32px;flex-shrink:0;
+    background:rgba(56,189,248,.08);
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:8px;
+    color:#fff;
+    font-size:12px;
+    cursor:pointer;
+    transition:all .25s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .dd-toggle:hover{background:rgba(56,189,248,.18);border-color:rgba(56,189,248,.5);}
+  .dd-toggle .dd-caret{transition:transform .3s cubic-bezier(.2,.9,.3,1.05);display:inline-block;transform-origin:center;}
+  .has-dropdown.open .dd-toggle .dd-caret{transform:rotate(180deg);}
   .nav-dropdown{
     position:absolute;
     top:calc(100% + 6px);
@@ -763,9 +779,9 @@
     background:rgba(5,8,15,.78);
     backdrop-filter:blur(8px);
     -webkit-backdrop-filter:blur(8px);
-    z-index:999;
+    z-index:1100;
     display:none;align-items:flex-start;justify-content:center;
-    padding:20px;
+    padding:80px 20px 24px;
     overflow-y:auto;
     animation:fadeIn .25s ease;
   }
@@ -777,7 +793,7 @@
     border-radius:20px;
     width:100%;max-width:540px;
     margin:auto 0;
-    max-height:calc(100vh - 40px);
+    max-height:calc(100vh - 104px);
     display:flex;flex-direction:column;
     box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(33,150,243,.15);
     animation:slideUp .35s cubic-bezier(.16,1,.3,1);
@@ -832,6 +848,8 @@
   }
   .form-control:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(33,150,243,.15);}
   select.form-control{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23A3B0C3' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:10px;padding-right:36px;}
+  input[type="date"].form-control,input[type="time"].form-control{min-height:46px;color-scheme:dark;-webkit-appearance:none;appearance:none;display:flex;align-items:center;}
+  input[type="date"].form-control::-webkit-calendar-picker-indicator,input[type="time"].form-control::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.7);cursor:pointer;margin-left:6px;}
   textarea.form-control{min-height:90px;resize:vertical;font-family:'Poppins',sans-serif;}
   .btn-submit{
     width:100%;padding:14px;margin-top:8px;
@@ -1354,21 +1372,10 @@
     /* Ocultar los header-social originales en móvil (ya están en la sección móvil) */
     .nav-cta .header-social,.nav-cta .header-divider{display:none;}
 
-    /* Dropdown en móvil: inline dentro del panel */
+/* Dropdown en móvil: inline dentro del panel */
     .has-dropdown{width:100%;display:block;}
     .has-dropdown-trigger{display:flex;align-items:center;justify-content:center;gap:6px;width:fit-content;margin:0 auto;}
-    .dd-toggle{
-      display:inline-flex;align-items:center;justify-content:center;
-      width:32px;height:32px;flex-shrink:0;
-      background:rgba(56,189,248,.08);
-      border:1px solid rgba(56,189,248,.25);
-      border-radius:8px;
-      color:#7DD3FC;
-      font-size:11px;cursor:pointer;
-      margin-left:2px;
-      transition:all .25s ease;
-      -webkit-tap-highlight-color:transparent;
-    }
+    .dd-toggle{display:inline-flex;}
     .dd-toggle .dd-caret{transition:transform .3s cubic-bezier(.2,.9,.3,1.05);display:inline-block;transform-origin:center;}
     .has-dropdown.open .dd-toggle .dd-caret{transform:rotate(180deg);}
     .nav-dropdown{
@@ -1422,6 +1429,14 @@
     .panel-controls{flex-direction:column;align-items:stretch;}
     .search-box,.filter-box{width:100%;}
     .btn-big-quote{padding:13px 22px;font-size:13.5px;width:100%;}
+
+    /* Modal formulario: evitar recortes por el header fijo */
+    .modal-overlay{padding:72px 14px 20px;}
+    .modal-box{max-height:calc(100vh - 92px);border-radius:16px;}
+    .modal-header{padding:16px 18px;}
+    .modal-title{font-size:16px;}
+    .modal-body{padding:18px;}
+    .modal-place-info{padding:12px 14px;margin-bottom:16px;}
   }
   @media (max-width:480px){
     .footer-grid,.trust-grid,.footer-bottom-content{padding:0 20px;}
@@ -1437,6 +1452,38 @@
     .trust-content h4{font-size:13px;}
     .trust-content p{font-size:11px;}
     .footer-bottom-links{flex-direction:column;gap:6px;}
+
+    /* Modal formulario: tamaño compacto sin dañar diseño */
+    .modal-overlay{padding:64px 10px 14px;}
+    .modal-box{max-width:100%;max-height:calc(100vh - 78px);border-radius:14px;}
+    .modal-header{padding:12px 14px;gap:8px;}
+    .modal-title{font-size:14px;letter-spacing:.2px;}
+    .modal-title i{font-size:13px;margin-right:6px;}
+    .modal-close-btn{width:30px;height:30px;font-size:12px;border-radius:8px;}
+    .modal-body{padding:14px;}
+    .modal-place-info{padding:10px 12px;margin-bottom:12px;border-radius:10px;gap:8px;font-size:12px;}
+    .modal-place-info i{font-size:14px;}
+    .form-group{margin-bottom:10px;}
+    .form-label{font-size:10.5px;margin-bottom:4px;letter-spacing:.3px;}
+    .form-control{padding:9px 11px;font-size:13px;border-radius:8px;line-height:1.35;}
+    input[type="date"].form-control,input[type="time"].form-control{min-height:38px;}
+    textarea.form-control{min-height:64px;padding:10px 11px;}
+    select.form-control{padding-right:30px;background-position:right 10px center;background-size:8px;}
+    .btn-submit{padding:11px;font-size:12.5px;border-radius:8px;margin-top:4px;letter-spacing:.3px;}
+    .country-selector{min-width:84px;padding:0 10px;border-radius:8px 0 0 8px;}
+    .country-selector .flag{font-size:15px;}
+    .country-selector .dial-code{font-size:12px;}
+    .country-selector .arrow{font-size:8px;}
+    .phone-input-wrapper input[type="tel"]{padding:9px 11px;font-size:13px;border-radius:0 8px 8px 0;}
+    .phone-input-wrapper input::placeholder{font-size:12px;}
+    .phone-error{font-size:11px;}
+    .country-dropdown{width:calc(100vw - 20px);left:-10px;border-radius:10px;}
+    .country-dropdown .search-box{padding:10px;}
+    .country-dropdown .search-box input{font-size:12px;padding:7px 10px 7px 32px;}
+    .country-item{padding:9px 12px;font-size:12px;}
+    .country-flag{font-size:15px;}
+    .country-name{font-size:12px;}
+    .country-dial{font-size:12px;}
   }
   /* Logo lightbox styles (inline because this page does not load styles.css) */
   .logo-lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 60%,rgba(0,0,0,.92) 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;animation:logoLightboxFade .2s ease;}

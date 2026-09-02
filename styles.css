@@ -1164,6 +1164,7 @@ section.hero{padding:120px 0 100px !important;margin-top:0 !important;}
   border-right:1px solid rgba(56,189,248,.1);
   overflow:hidden;
   min-height:0;
+  align-self:stretch;
 }
 .service-details-modal .modal-image-container{
   position:relative;
@@ -1176,7 +1177,7 @@ section.hero{padding:120px 0 100px !important;margin-top:0 !important;}
 .service-details-modal .modal-image{
   width:100%;
   height:100%;
-  min-height:100%;
+  min-height:0;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -1297,6 +1298,8 @@ section.hero{padding:120px 0 100px !important;margin-top:0 !important;}
   overflow-x:hidden;
   display:flex;
   flex-direction:column;
+  min-height:0;
+  position:relative;
   background:linear-gradient(180deg, #0B1220 0%, #070C18 100%);
 }
 .service-details-modal .modal-right::-webkit-scrollbar{
@@ -1320,6 +1323,9 @@ section.hero{padding:120px 0 100px !important;margin-top:0 !important;}
   align-items:center;
   gap:16px;
   margin-bottom:18px;
+  position:static;
+  top:auto;
+  flex-shrink:0;
 }
 .service-details-modal .modal-icon{
   width:54px;
@@ -2180,6 +2186,21 @@ select.form-control{
   background-position:right 14px center;
   background-size:10px;
   padding-right:36px;
+}
+input[type="date"].form-control,
+input[type="time"].form-control{
+  min-height:46px;
+  color-scheme:dark;
+  -webkit-appearance:none;
+  appearance:none;
+  display:flex;
+  align-items:center;
+}
+input[type="date"].form-control::-webkit-calendar-picker-indicator,
+input[type="time"].form-control::-webkit-calendar-picker-indicator{
+  filter:invert(1) opacity(.7);
+  cursor:pointer;
+  margin-left:6px;
 }
 textarea.form-control{
   min-height:90px;
@@ -5989,7 +6010,7 @@ textarea.form-control{
   background:#0B1426;
 }
 @keyframes logoLightboxPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
-.brand-logo-img{cursor:pointer;}
+.brand-logo-img,.whatsapp-profile{cursor:pointer;}
 
 /* ==========================================================================
    UNIFIED HEADER (mirrors ubicacion.html exactly)

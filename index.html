@@ -251,6 +251,8 @@
   .form-control:focus{outline:none;border-color:#2196F3;box-shadow:0 0 0 3px rgba(33,150,243,.15);}
   .form-control::placeholder{color:rgba(255,255,255,.4);}
   select.form-control{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23A3B0C3' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:10px;padding-right:36px;}
+  input[type="date"].form-control,input[type="time"].form-control{min-height:46px;color-scheme:dark;-webkit-appearance:none;appearance:none;display:flex;align-items:center;}
+  input[type="date"].form-control::-webkit-calendar-picker-indicator,input[type="time"].form-control::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.7);cursor:pointer;margin-left:6px;}
   textarea.form-control{min-height:90px;resize:vertical;font-family:'Inter',sans-serif;}
   .btn-submit{
     width:100%;padding:14px;margin-top:8px;
@@ -2100,7 +2102,7 @@ document.addEventListener('DOMContentLoaded', function(){
   lightbox.innerHTML = '<img class="logo-lightbox-img" src="img/Logo.png" alt="J &amp; J Luxury Cleaning Service LLC">';
   document.body.appendChild(lightbox);
 
-  document.querySelectorAll('.brand-logo-img').forEach(function(img){
+  document.querySelectorAll('.brand-logo-img, .whatsapp-profile').forEach(function(img){
     img.addEventListener('click', function(e){
       e.preventDefault();
       e.stopPropagation();
