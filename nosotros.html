@@ -665,13 +665,14 @@
   .footer-contact i{color:#38BDF8;width:18px;}
   .btn-footer-cta{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    margin-top:18px;padding:12px 20px;border-radius:10px;
-    background:linear-gradient(135deg,#2196F3,#25A7FF);color:#0B1220;
-    font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;
+    margin-top:18px;padding:12px 24px;border-radius:10px;
+    background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);color:#fff;
+    font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;
     text-decoration:none;transition:all .25s ease;
-    box-shadow:0 4px 16px rgba(56,189,248,.3);
+    box-shadow:0 4px 16px rgba(56,189,248,.3),0 0 12px rgba(56,189,248,.25);
+    letter-spacing:.5px;text-transform:uppercase;
   }
-  .btn-footer-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5);}
+  .btn-footer-cta:hover{transform:translateY(-2px);background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);box-shadow:0 8px 24px rgba(56,189,248,.5),0 0 20px rgba(56,189,248,.4);}
 
   .footer-trust{padding:40px 0;background:#0B1724;border-top:1px solid rgba(56,189,248,.08);}
   .trust-grid{
@@ -844,6 +845,9 @@
   </nav>
 
   <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
+    <video class="mobile-menu-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="videos/Fondo_Menu.mp4" type="video/mp4">
+    </video>
     <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
       <i class="fa-solid fa-xmark"></i>
     </button>

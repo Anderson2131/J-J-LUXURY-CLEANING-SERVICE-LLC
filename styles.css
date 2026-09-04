@@ -5437,7 +5437,7 @@ textarea.form-control{
   gap:10px;
   padding:14px 28px;
   background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
-  color:#0f172a;
+  color:#fff;
   font-family:'Inter',sans-serif;
   font-size:14px;
   font-weight:700;
@@ -5446,12 +5446,15 @@ textarea.form-control{
   transition:all .3s ease;
   border:none;
   cursor:pointer;
-  box-shadow:0 4px 20px rgba(56,189,248,.3);
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  box-shadow:0 4px 20px rgba(56,189,248,.3),0 0 12px rgba(56,189,248,.25);
 }
 
 .btn-cta-primary:hover{
   transform:translateY(-2px);
-  box-shadow:0 6px 30px rgba(56,189,248,.5);
+  background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
+  box-shadow:0 8px 30px rgba(56,189,248,.5),0 0 22px rgba(56,189,248,.45);
 }
 
 .btn-cta-primary svg{
@@ -5785,21 +5788,26 @@ textarea.form-control{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  gap:8px;
   padding:12px 24px;
   background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
   color:#fff;
-  font-family:'Inter',sans-serif;
+  font-family:'Manrope',sans-serif;
   font-size:14px;
-  font-weight:600;
-  border-radius:8px;
+  font-weight:700;
+  border-radius:10px;
   border:none;
   cursor:pointer;
   transition:all .3s ease;
   text-decoration:none;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  box-shadow:0 4px 20px rgba(56,189,248,.3),0 0 14px rgba(56,189,248,.3);
 }
 .btn-footer-cta:hover{
   transform:translateY(-2px);
-  box-shadow:0 10px 30px rgba(56,189,248,.3);
+  background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
+  box-shadow:0 6px 24px rgba(56,189,248,.5),0 0 20px rgba(56,189,248,.45);
 }
 
 /* Footer Trust Bar */
@@ -6546,4 +6554,405 @@ header .nav-cta .has-dropdown.open .nav-dropdown{
   body.menu-open .header-nav{
     visibility: hidden !important;
   }
+}
+
+/* =============================================================================
+   RESPONSIVE FIX PACK (mobile only — desktop untouched)
+   Breakpoints: 768px, 430px, 414px, 390px, 375px, 360px, 320px
+   Goal: eliminar overflow horizontal y ajustar elementos que se desbordan.
+   ============================================================================= */
+
+/* Bloqueo global de overflow horizontal solo en mobile */
+@media (max-width: 768px){
+  html, body{
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  body > *{ max-width: 100%; }
+  img, svg, video, iframe{ max-width: 100%; height: auto; }
+
+  /* Header brand: el texto multi-línea puede forzar ancho en pantallas muy
+     pequeñas. Permitir wrap y limitar ancho del contenedor del logo. */
+  .brand-text{
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    font-size: 11px;
+    line-height: 1.15;
+  }
+  .brand-logo-img{ max-width: 38px; }
+
+  /* Hero: títulos largos no deben expandir la página */
+  .hero h1{ letter-spacing: -1px; }
+  .hero p.lead{ max-width: 100%; }
+
+  /* WhatsApp widget del hero: que no se salga del card */
+  .whatsapp-widget{ width: 100%; max-width: 100%; }
+  .whatsapp-input{ min-width: 0; }
+  .whatsapp-input-area{ flex-wrap: wrap; }
+  .emoji-picker{ max-width: calc(100vw - 32px); }
+
+  /* Form columns en una sola columna para que no se corten */
+  .form-row{ grid-template-columns: 1fr !important; gap: 14px; }
+
+  /* Footer: 4 columnas -> 2 columnas en tablet, 1 en móvil más pequeño */
+  .footer-grid{ grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .footer-column{ min-width: 0; }
+  .footer-links, .footer-contact{ padding: 0; }
+
+  /* CTA Final / banners: que el padding no rompa */
+  .cta-content, .cta-banner-content{ padding: 16px !important; }
+  .cta-title, .form-title{ letter-spacing: -0.5px; }
+
+  /* Inputs teléfono: country dropdown ancho fijo puede desbordar */
+  .country-dropdown{ width: calc(100vw - 40px); max-width: 320px; }
+
+  /* Modal: ocupar ancho seguro en pantallas pequeñas */
+  .modal-overlay{ padding: 12px; }
+  .modal-box{ width: 100%; max-width: 100%; }
+  .modal-header, .modal-body{ padding-left: 16px; padding-right: 16px; }
+
+  /* Beneficios / grids: 1 columna si están en 2 */
+  .cta-benefits{ grid-template-columns: 1fr; }
+
+  /* Confianza (4 items) -> 2 columnas */
+  .trust-grid{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+  /* Botones en columna ya, asegurar que no excedan */
+  .hero-ctas .btn, .cta-buttons .btn{ width: 100%; min-width: 0; }
+
+  /* Imágenes grandes responsivas */
+  .cta-image, .cta-carrito-image{ max-width: 100%; height: auto; }
+
+  /* Sección contact form: grid a 1 columna */
+  .form-container{ grid-template-columns: 1fr !important; gap: 20px; }
+}
+
+/* 430px (iPhone 14 Pro Max / Pixel 7 Plus) */
+@media (max-width: 430px){
+  .header-nav{ padding: 0 12px; gap: 8px; }
+  .brand-text{ font-size: 10.5px; }
+  .brand-logo-img{ height: 30px; max-width: 36px; }
+  .menu-toggle{ width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+  .hero h1{ font-size: clamp(1.7rem, 8vw, 2.2rem); }
+  .hero-card{ padding: 12px 14px; }
+  .hero-card-text{ font-size: 12px; }
+  .footer-grid{ gap: 18px; }
+  .trust-grid{ gap: 12px; }
+  .trust-content h4{ font-size: 13px; }
+  .trust-content p{ font-size: 12px; }
+}
+
+/* 414px (iPhone Plus) */
+@media (max-width: 414px){
+  .container, .wrap{ padding-left: 14px; padding-right: 14px; }
+  .hero h1{ font-size: clamp(1.6rem, 8vw, 2.1rem); letter-spacing: -1px; }
+  .hero p.lead{ font-size: 14.5px; line-height: 1.6; }
+  .cta-title, .form-title{ font-size: clamp(1.4rem, 7vw, 1.9rem); }
+  .footer-title{ font-size: 13px; }
+  .footer-tagline, .footer-description{ font-size: 12.5px; }
+}
+
+/* 390px (iPhone 13/14) */
+@media (max-width: 390px){
+  .brand-text{ font-size: 10px; }
+  .brand-logo-img{ height: 28px; max-width: 32px; }
+  .hero h1{ font-size: 1.85rem; }
+  .hero-ctas .btn{ font-size: 13px; padding: 0 12px; }
+  .cta-button{ padding: 12px 18px; font-size: 13px; }
+  .btn-cta-primary, .btn-cta-whatsapp{ padding: 10px 14px; font-size: 12.5px; }
+  .form-control{ padding: 11px 12px; font-size: 13px; }
+}
+
+/* 375px (iPhone SE / mini) */
+@media (max-width: 375px){
+  .header-nav{ padding: 0 10px; }
+  .brand-text{ font-size: 9.5px; }
+  .menu-toggle{ width: 42px; height: 42px; min-width: 42px; min-height: 42px; }
+  .hero h1{ font-size: 1.7rem; line-height: 1.1; }
+  .hero-cards{ gap: 10px; }
+  .hero-card{ padding: 10px 12px; gap: 10px; }
+  .hero-card-icon{ width: 32px; height: 32px; }
+  .hero-card-text{ font-size: 11.5px; }
+  .footer-grid{ grid-template-columns: 1fr; gap: 20px; }
+  .trust-grid{ grid-template-columns: 1fr; }
+  .country-selector{ min-width: 90px; padding: 0 10px; }
+  .phone-input-wrapper input[type="tel"]{ padding: 12px 12px; font-size: 13px; }
+  .cta-banner-content, .cta-content{ padding: 14px !important; }
+}
+
+/* 360px (Android común) */
+@media (max-width: 360px){
+  .brand-text{ font-size: 9px; line-height: 1.1; }
+  .brand-logo-img{ height: 26px; max-width: 30px; }
+  .hero h1{ font-size: 1.55rem; letter-spacing: -0.5px; }
+  .hero p.lead{ font-size: 13.5px; }
+  .hero-card-text{ font-size: 11px; }
+  .footer-tagline{ font-size: 12px; }
+  .form-control{ padding: 10px 11px; font-size: 12.5px; }
+  .form-label{ font-size: 11px; }
+  .country-selector{ min-width: 80px; padding: 0 8px; }
+  .country-selector .dial-code{ font-size: 13px; }
+  .modal-overlay{ padding: 8px; }
+  .modal-header, .modal-body{ padding-left: 12px; padding-right: 12px; }
+}
+
+/* 320px (mínimo) */
+@media (max-width: 320px){
+  html, body{ overflow-x: hidden !important; }
+  .header-nav{ padding: 0 8px; }
+  .brand-text{ font-size: 8.5px; }
+  .brand-logo-img{ height: 24px; max-width: 28px; }
+  .menu-toggle{ width: 40px; height: 40px; min-width: 40px; min-height: 40px; }
+  .hero h1{ font-size: 1.35rem; }
+  .hero p.lead{ font-size: 12.5px; line-height: 1.5; }
+  .hero-cards{ grid-template-columns: 1fr; }
+  .hero-card{ padding: 9px 10px; }
+  .hero-card-icon{ width: 28px; height: 28px; }
+  .hero-card-icon svg{ width: 16px; height: 16px; }
+  .hero-card-text{ font-size: 10.5px; }
+  .country-dropdown{ width: calc(100vw - 24px); left: 0; }
+  .modal-overlay{ padding: 6px; }
+  .modal-box{ border-radius: 14px; }
+  .form-control{ padding: 9px 10px; font-size: 12px; }
+  .cta-title, .form-title{ font-size: 1.25rem; }
+  .footer-title{ font-size: 12px; }
+}
+
+/* =============================================================================
+   MENÚ HAMBURGUESA — Fondo de video (videos/Fondo_Menu.mp4)
+   Reemplaza el fondo estático anterior. El video queda detrás de todos los
+   elementos del menú. No se modifican botones, textos, logo ni animaciones.
+   ============================================================================= */
+/* Neutralizar el background-image estático previo (regla !important existente)
+   para que el video sea el fondo visible. La imagen webp se conserva como
+   fallback dentro del <video> (background) por si el video no carga. */
+.mobile-menu-overlay.mobile-menu-overlay{
+  background-image: none !important;
+  background-color: #050810 !important;
+}
+.mobile-menu-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  background: url('img/Fondo_Menu.webp') no-repeat center center / cover;
+}
+/* Asegurar que el contenido del menú quede por encima del video */
+.mobile-menu-overlay > .mobile-menu-close,
+.mobile-menu-overlay > .mobile-menu-content{
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive del video en los breakpoints solicitados:
+   - object-fit: cover mantiene proporción sin deformar.
+   - En pantallas muy pequeñas, se centra y limita para no desbordar. */
+@media (max-width: 768px){
+  .mobile-menu-video{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
+@media (max-width: 430px){
+  .mobile-menu-video{ object-position: center center; }
+}
+@media (max-width: 414px){
+  .mobile-menu-video{ object-position: center center; }
+}
+@media (max-width: 390px){
+  .mobile-menu-video{ object-fit: cover; }
+}
+@media (max-width: 375px){
+  .mobile-menu-video{ object-fit: cover; }
+}
+@media (max-width: 360px){
+  .mobile-menu-video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+@media (max-width: 320px){
+  .mobile-menu-video{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* =============================================================================
+   RESPONSIVE SOURCE FIXES (Android overflow root causes)
+   Cada regla corrige UN elemento que provoca desbordamiento horizontal en
+   Android (donde el text-rendering es más estricto que en iPhone).
+   No se rediseña nada: solo se limitan anchos, se quita nowrap abusivo y
+   se permite box-sizing para que los elementos respeten su contenedor.
+   ============================================================================= */
+
+/* Permitir que los contenedores flex/grid reduzcan su contenido por debajo
+   del tamaño intrínseco. Sin esto, los textos largos fuerzan el ancho. */
+@media (max-width: 768px){
+  .hero-content, .hero-right, .hero-ctas, .hero-cards, .hero-card,
+  .whatsapp-widget, .whatsapp-header, .whatsapp-header-content,
+  .whatsapp-chat-area, .whatsapp-input-area,
+  .services-grid, .service-card, .service-body, .service-features,
+  .footer-cta, .cta-banner, .cta-banner-content, .cta-buttons,
+  .cta-text, .form-container, .form-row, .form-field{
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Hero WhatsApp widget: el max-width fijo de 380px más la animación de
+     translateY no es el problema; el problema es que el header tiene un
+     nombre largo con nowrap. Permitimos wrap a partir de 768px. */
+  .whatsapp-name{
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.25;
+    font-size: 14px;
+  }
+
+  /* Hero CTAs: el botón "COTIZAR POR WHATSAPP" tiene nowrap heredado y
+     un icono + texto largo. Forzamos box-sizing y permitimos wrap interno
+     para que no se extienda fuera del viewport. */
+  .hero-ctas{ box-sizing: border-box; }
+  .hero-ctas .btn{
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    padding: 12px 14px;
+    height: auto;
+    min-height: 48px;
+  }
+
+  /* Hero cards: textos largos como "Servicio Programado" empujaban la
+     celda grid. Permitimos wrap y min-width 0 en cada celda. */
+  .hero-cards > *{ min-width: 0; }
+  .hero-card{ box-sizing: border-box; }
+  .hero-card-text{
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    line-height: 1.3;
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* WhatsApp input area: el input + emoji + send (40+flex+44 = >100%) podían
+     desbordar en Android. Forzamos box-sizing y min-width 0 en el input. */
+  .whatsapp-input-area{
+    box-sizing: border-box;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .whatsapp-input{
+    box-sizing: border-box;
+    min-width: 0;
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  /* Emoji picker ancho fijo de 320px → desbordaba en <360px. */
+  .emoji-picker{
+    width: calc(100% - 8px);
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+
+  /* Service cards: grid de 1 columna en móvil pero la celda puede exceder
+     si su contenido tiene min-width intrínseco. */
+  .service-card{ box-sizing: border-box; }
+  .service-body, .service-features{ min-width: 0; max-width: 100%; }
+  .service-feature-text{
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+  }
+
+  /* Footer CTA buttons: asegurar que no excedan la columna */
+  .cta-buttons > *{
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .btn-cta-primary, .btn-cta-whatsapp{
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    padding: 12px 16px;
+    height: auto;
+    min-height: 48px;
+  }
+}
+
+/* 430px (Pixel 7 Plus / iPhone 14 Pro Max) */
+@media (max-width: 430px){
+  .whatsapp-name{ font-size: 13px; }
+  .hero-ctas .btn{ font-size: 13px; padding: 10px 12px; }
+  .hero-card-text{ font-size: 12px; }
+  .btn-cta-primary, .btn-cta-whatsapp{ font-size: 13px; }
+}
+
+/* 414px / 412px / 393px (rango Android común) */
+@media (max-width: 414px){
+  .whatsapp-widget{
+    /* Quitar min-height agresivo en pantallas estrechas para que no
+       fuerce altura que combine con paddings del grid. */
+    min-height: 380px;
+  }
+  .whatsapp-name{ font-size: 12.5px; }
+  .hero-card{ padding: 11px 12px; gap: 10px; }
+}
+
+/* 390px / 393px (Pixel 7 / iPhone 13) */
+@media (max-width: 393px){
+  .whatsapp-input{ font-size: 13px; padding: 10px 14px; }
+  .whatsapp-emoji-btn, .whatsapp-send-btn{ width: 38px; height: 38px; }
+}
+
+/* 375px (iPhone SE / mini) */
+@media (max-width: 375px){
+  .whatsapp-widget{ min-height: 360px; }
+  .whatsapp-name{ font-size: 12px; }
+  .whatsapp-message{ max-width: 88%; }
+  .hero-card-text{ font-size: 11.5px; }
+}
+
+/* 360px (Android común) */
+@media (max-width: 360px){
+  .whatsapp-widget{ min-height: 340px; max-width: 100%; }
+  .whatsapp-header{ padding: 12px 14px; gap: 10px; }
+  .whatsapp-profile{ width: 38px; height: 38px; }
+  .whatsapp-input{ font-size: 12.5px; padding: 10px 12px; }
+  .hero-card-text{ font-size: 11px; }
+  .emoji-picker{ width: calc(100vw - 32px); max-width: 280px; left: -4px; }
+}
+
+/* 320px (mínimo absoluto) */
+@media (max-width: 320px){
+  .whatsapp-widget{ min-height: 320px; }
+  .whatsapp-header{ padding: 10px 12px; gap: 8px; }
+  .whatsapp-profile{ width: 34px; height: 34px; }
+  .whatsapp-name{ font-size: 11.5px; line-height: 1.2; }
+  .whatsapp-input-area{ gap: 6px; padding: 10px 12px; }
+  .whatsapp-input{ font-size: 12px; padding: 8px 12px; }
+  .whatsapp-emoji-btn, .whatsapp-send-btn{ width: 34px; height: 34px; }
+  .hero-card{ padding: 8px 10px; gap: 8px; }
+  .hero-card-icon{ width: 26px; height: 26px; }
+  .hero-card-text{ font-size: 10.5px; }
 }
