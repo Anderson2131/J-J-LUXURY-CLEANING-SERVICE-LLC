@@ -166,7 +166,10 @@
         /* HERO SECTION */
         .checklist-hero{
             position:relative;
-            padding:140px 0 100px;
+            min-height:90vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
             border-bottom:1px solid rgba(56,189,248,.12);
             overflow:hidden;
         }
@@ -187,18 +190,24 @@
         }
         .hero-inner{
             position:relative;z-index:2;max-width:800px;
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:24px;
         }
         .hero-badge{
             display:inline-flex;align-items:center;gap:8px;
-            font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
-            color:#25A7FF;text-transform:uppercase;letter-spacing:2px;
-            background:rgba(0,0,0,.7);border:1px solid rgba(37,167,255,.5);
-            padding:8px 16px;border-radius:100px;margin-bottom:24px;
-            backdrop-filter:blur(10px);
+            font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+            color:#fff;text-transform:uppercase;letter-spacing:1.5px;
+            background:rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.15);
+            padding:6px 14px;border-radius:20px;
+            backdrop-filter:blur(12px);
+            box-shadow:0 4px 16px rgba(0,0,0,.3);
         }
         .hero-title{
-            font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,52px);
-            font-weight:800;line-height:1.1;color:#fff;letter-spacing:-1.5px;margin-bottom:20px;
+            font-family:'Manrope',sans-serif;font-size:clamp(36px,6vw,64px);
+            font-weight:800;line-height:1.05;color:#fff;letter-spacing:-1.5px;
             text-shadow:0 2px 20px rgba(0,0,0,.8), 0 0 40px rgba(0,0,0,.6);
         }
         .hero-title .accent{
@@ -208,21 +217,52 @@
             text-shadow:0 0 30px rgba(56,189,248,.3);
         }
         .hero-lead{
-            font-family:'Inter',sans-serif;font-size:17px;color:rgba(255,255,255,.95);
-            line-height:1.7;margin-bottom:32px;max-width:600px;
+            font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,20px);
+            color:rgba(255,255,255,.95);
+            line-height:1.6;margin-bottom:16px;max-width:650px;
             text-shadow:0 1px 10px rgba(0,0,0,.8);
+        }
+        .hero-checklist-text{
+            font-family:'Inter',sans-serif;font-size:clamp(14px,2vw,18px);
+            color:rgba(255,255,255,.85);
+            line-height:1.5;margin-bottom:32px;max-width:600px;
+            text-shadow:0 1px 10px rgba(0,0,0,.8);
+            font-style:italic;
+        }
+        .hero-buttons{
+            display:flex;
+            gap:16px;
+            align-items:center;
+            justify-content:center;
+            flex-wrap:wrap;
         }
         .hero-cta{
             display:inline-flex;align-items:center;gap:12px;
-            padding:14px 28px;background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
+            padding:16px 32px;background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
             color:#fff;border-radius:12px;font-family:'Manrope',sans-serif;
-            font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+            font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
             transition:all .3s ease;box-shadow:0 4px 20px rgba(56,189,248,.3);
+            cursor:pointer;
+            border:none;
         }
         .hero-cta:hover{
             transform:translateY(-2px);
             background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
             box-shadow:0 8px 30px rgba(56,189,248,.5);
+        }
+        .hero-secondary{
+            display:inline-flex;align-items:center;gap:10px;
+            padding:14px 28px;background:transparent;
+            border:2px solid rgba(56,189,248,.5);
+            color:#fff;border-radius:12px;font-family:'Manrope',sans-serif;
+            font-size:14px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+            transition:all .3s ease;cursor:pointer;
+            text-decoration:none;
+        }
+        .hero-secondary:hover{
+            background:rgba(56,189,248,.15);
+            border-color:#38BDF8;
+            transform:translateY(-2px);
         }
 
         /* WHAT'S INCLUDED SECTION */
@@ -803,6 +843,262 @@
         .social-icons a:has(.fa-instagram):hover,
         .mobile-menu-socials-icons a:has(.fa-instagram):hover{border-color:#E4405F;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(225,48,108,.55);color:#E4405F;}
 
+    /* MODAL DE COTIZACIÓN - Desde ubicacion.html */
+    .modal-overlay{
+        position:fixed;inset:0;
+        background:rgba(5,8,15,.78);
+        backdrop-filter:blur(8px);
+        -webkit-backdrop-filter:blur(8px);
+        z-index:1100;
+        display:none;align-items:flex-start;justify-content:center;
+        padding:80px 20px 24px;
+        overflow-y:auto;
+        animation:fadeIn .25s ease;
+    }
+    .modal-overlay.active{display:flex;}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    .modal-box{
+        background:linear-gradient(160deg,var(--bg-card) 0%,var(--bg-card2) 100%);
+        border:1px solid var(--border);
+        border-radius:20px;
+        width:100%;max-width:540px;
+        margin:auto 0;
+        max-height:calc(100vh - 104px);
+        display:flex;flex-direction:column;
+        box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(33,150,243,.15);
+        animation:slideUp .35s cubic-bezier(.16,1,.3,1);
+    }
+    @keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+    .modal-header{
+        padding:22px 26px;
+        border-bottom:1px solid var(--border);
+        display:flex;align-items:center;justify-content:space-between;gap:12px;
+        flex-shrink:0;
+        position:sticky;top:0;background:rgba(16,30,44,.95);
+        backdrop-filter:blur(10px);
+        z-index:2;
+    }
+    .modal-title{font-size:18px;font-weight:700;color:#fff;}
+    .modal-title i{color:var(--blue-bright);margin-right:8px;}
+    .modal-close-btn{
+        width:38px;height:38px;border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:var(--text-sec);
+        display:flex;align-items:center;justify-content:center;
+        transition:all .25s ease;
+        font-size:15px;
+        border:none;cursor:pointer;
+    }
+    .modal-close-btn:hover{background:rgba(239,68,68,.15);color:#EF4444;}
+    .modal-body{padding:24px 26px;overflow-y:auto;flex:1 1 auto;min-height:0;}
+    .modal-place-info{
+        background:rgba(33,150,243,.08);
+        border:1px solid rgba(33,150,243,.25);
+        border-radius:14px;
+        padding:14px 16px;
+        margin-bottom:22px;
+        display:flex;align-items:center;gap:12px;
+    }
+    .modal-place-info i{color:var(--blue-bright);font-size:18px;}
+    .modal-place-info strong{color:var(--text-main);font-weight:600;}
+    .form-group{margin-bottom:16px;}
+    .form-label{
+        display:block;font-size:12px;font-weight:500;
+        color:var(--text-sec);margin-bottom:6px;
+        text-transform:uppercase;letter-spacing:.5px;
+    }
+    .form-control{
+        width:100%;padding:13px 14px;
+        background:var(--bg-main);
+        border:1px solid var(--border);
+        border-radius:10px;
+        color:var(--text-main);
+        font-family:'Inter',sans-serif;
+        font-size:14px;
+        transition:all .25s ease;
+    }
+    .form-control:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(33,150,243,.15);}
+    .form-control::placeholder{color:rgba(255,255,255,.4);}
+    select.form-control{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23A3B0C3' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:10px;padding-right:36px;}
+    textarea.form-control{min-height:90px;resize:vertical;font-family:'Inter',sans-serif;}
+    .btn-submit{
+        width:100%;padding:14px;margin-top:8px;
+        background:linear-gradient(135deg,#2196F3,#0D6EFD);
+        color:#fff;
+        border-radius:10px;
+        font-size:14px;font-weight:600;
+        letter-spacing:.5px;text-transform:uppercase;
+        display:flex;align-items:center;justify-content:center;gap:8px;
+        transition:all .3s ease;
+        border:none;
+        cursor:pointer;
+        box-shadow:0 4px 20px rgba(33,150,243,.3);
+    }
+    .btn-submit:hover{background:linear-gradient(135deg,#168BE6,#2196F3);box-shadow:0 6px 20px rgba(33,150,243,.5);}
+
+    /* Custom Phone Field */
+    .phone-input-wrapper{
+        position:relative;
+        display:flex;
+        align-items:stretch;
+        width:100%;
+    }
+    .country-selector{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        padding:0 14px;
+        background:var(--bg-sec);
+        border:1px solid var(--border);
+        border-radius:8px 0 0 8px;
+        cursor:pointer;
+        transition:all .3s ease;
+        flex-shrink:0;
+        min-width:110px;
+    }
+    .country-selector:hover{background:rgba(56,189,248,.1);}
+    .country-selector .flag{font-size:18px;}
+    .country-selector .dial-code{
+        color:rgba(255,255,255,.7);
+        font-family:'Inter',sans-serif;
+        font-size:14px;
+        font-weight:600;
+    }
+    .country-selector .arrow{
+        font-size:10px;
+        color:rgba(56,189,248,.7);
+        transition:transform .3s ease;
+    }
+    .country-selector.open .arrow{transform:rotate(180deg);}
+    .phone-input-wrapper input[type="tel"]{
+        flex:1;
+        padding:14px 16px;
+        background:var(--bg-sec);
+        border:1px solid var(--border);
+        border-left:none;
+        border-radius:0 8px 8px 0;
+        color:var(--text-main);
+        font-family:'Inter',sans-serif;
+        font-size:14px;
+        transition:all .3s ease;
+        outline:none;
+    }
+    .phone-input-wrapper input::placeholder{color:rgba(255,255,255,.4);}
+    .phone-input-wrapper input:focus{
+        border-color:rgba(56,189,248,.6);
+        background:var(--bg-sec);
+        box-shadow:0 0 20px rgba(56,189,248,.2);
+    }
+    .country-dropdown{
+        position:absolute;
+        top:calc(100% + 8px);
+        left:0;
+        width:320px;
+        background:var(--bg-sec);
+        border:1px solid var(--border);
+        border-radius:12px;
+        box-shadow:0 10px 40px rgba(0,0,0,.6), 0 0 20px rgba(56,189,248,.1);
+        z-index:100;
+        display:none;
+    }
+    .country-dropdown.open{display:block;}
+    .country-dropdown .search-box{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        padding:12px;
+        border-bottom:1px solid var(--border);
+        position:relative;
+    }
+    .country-dropdown .search-box i{
+        position:absolute;
+        left:22px;
+        top:50%;
+        transform:translateY(-50%);
+        color:rgba(56,189,248,.5);
+        font-size:14px;
+        pointer-events:none;
+    }
+    .country-dropdown .search-box input{
+        flex:1;
+        background:var(--bg-main);
+        border:1px solid var(--border);
+        border-radius:6px;
+        color:var(--text-main);
+        font-family:'Inter',sans-serif;
+        font-size:13px;
+        padding:8px 12px 8px 36px;
+        outline:none;
+    }
+    .country-dropdown .search-box input::placeholder{color:rgba(255,255,255,.4);}
+    .country-dropdown .search-box input:focus{border-color:rgba(56,189,248,.6);}
+    .country-list{
+        max-height:250px;
+        overflow-y:auto;
+    }
+    .country-list::-webkit-scrollbar{width:6px;}
+    .country-list::-webkit-scrollbar-track{background:var(--bg-sec);border-radius:3px;}
+    .country-list::-webkit-scrollbar-thumb{background:rgba(56,189,248,.3);border-radius:3px;}
+    .country-item{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:12px 14px;
+        border-bottom:1px solid var(--border);
+        cursor:pointer;
+        transition:all .15s ease;
+    }
+    .country-item:hover{
+        background:rgba(56,189,248,.15);
+        padding-left:18px;
+    }
+    .country-item:last-child{border-bottom:none;}
+    .country-flag{font-size:18px;}
+    .country-name{
+        flex:1;
+        color:rgba(255,255,255,.8);
+        font-family:'Inter',sans-serif;
+        font-size:13px;
+        font-weight:500;
+    }
+    .country-dial{
+        color:rgba(56,189,248,.7);
+        font-family:'Inter',sans-serif;
+        font-size:13px;
+        font-weight:600;
+    }
+
+    /* Responsive modal */
+    @media (max-width:767px){
+        .modal-overlay{padding:72px 14px 20px;}
+        .modal-box{max-height:calc(100vh - 92px);border-radius:16px;}
+        .modal-header{padding:16px 18px;}
+        .modal-title{font-size:16px;}
+        .modal-body{padding:18px;}
+        .modal-place-info{padding:12px 14px;margin-bottom:16px;}
+    }
+    @media (max-width:480px){
+        .modal-overlay{padding:64px 10px 14px;}
+        .modal-box{max-width:100%;max-height:calc(100vh - 78px);border-radius:14px;}
+        .modal-header{padding:12px 14px;gap:8px;}
+        .modal-title{font-size:14px;letter-spacing:.2px;}
+        .modal-title i{font-size:13px;margin-right:6px;}
+        .modal-close-btn{width:30px;height:30px;font-size:12px;border-radius:8px;}
+        .modal-body{padding:14px;}
+        .modal-place-info{padding:10px 12px;margin-bottom:12px;border-radius:10px;gap:8px;font-size:12px;}
+        .modal-place-info i{font-size:14px;}
+        .form-group{margin-bottom:10px;}
+        .form-label{font-size:10.5px;margin-bottom:4px;letter-spacing:.3px;}
+        .form-control{padding:9px 11px;font-size:13px;border-radius:8px;line-height:1.35;}
+        input[type="date"].form-control,input[type="time"].form-control{min-height:38px;}
+        textarea.form-control{min-height:64px;padding:10px 11px;}
+        select.form-control{padding-right:30px;background-position:right 10px center;background-size:8px;}
+        .btn-submit{padding:11px;font-size:12.5px;border-radius:8px;margin-top:4px;letter-spacing:.3px;}
+        .country-selector{min-width:84px;padding:0 10px;border-radius:8px 0 0 8px;}
+        .country-selector .flag{font-size:15px;}
+        .country-selector .dial-code{font-size:12px;}
+    }
+
         @media (max-width:768px){
             .room-tabs{flex-direction:column;align-items:stretch;}
             .room-tab{width:100%;justify-content:center;}
@@ -928,20 +1224,25 @@
         </video>
         <div class="container hero-inner">
             <div class="hero-badge">
-                <i class="fa-solid fa-check-circle"></i>
-                Professional Cleaning Standards
+                <i class="fa-solid fa-sparkles"></i>
+                Limpieza Profesional
             </div>
-            <h1 class="hero-title">Our Cleaning <span class="accent">Checklist</span></h1>
-            <p class="hero-lead">Know exactly what we clean. Every room, every detail, every visit. Our detailed checklist ensures consistency, quality, and attention to detail on every service.</p>
-            <a href="index.html#contacto" class="hero-cta">
-                <i class="fa-solid fa-arrow-right"></i>
-                Get a Free Quote
-            </a>
+            <h1 class="hero-title">Calidad y <span class="accent">Excelencia</span></h1>
+            <p class="hero-lead">Servicios de limpieza residencial y comercial con estándares profesionales. Espacios impecables, resultados garantizados.</p>
+            <p class="hero-checklist-text">Cada detalle cuenta. Nuestra lista de verificación garantiza que cada área sea revisada y atendida antes de finalizar el servicio.</p>
+            <div class="hero-buttons">
+                <button onclick="openQuoteModal()" class="hero-cta">
+                    COTIZAR
+                </button>
+                <a href="#checklist-section" class="hero-secondary">
+                    VER LA LISTA DE VERIFICACIÓN
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- WHAT'S INCLUDED SECTION -->
-    <section class="included-section">
+    <section class="included-section" id="checklist-section">
         <div class="container">
             <div class="section-head">
                 <div class="section-eyebrow">Complete Transparency</div>
@@ -1329,10 +1630,9 @@
         <div class="container different-content">
             <h2 class="different-title">Every Home is <span class="accent">Different</span></h2>
             <p class="different-text">Every home has unique cleaning needs. If there is a specific area you'd like us to focus on, let us know when requesting your quote.</p>
-            <a href="index.html#contacto" class="hero-cta">
-                <i class="fa-solid fa-arrow-right"></i>
-                Get a Free Quote
-            </a>
+            <button onclick="openQuoteModal()" class="hero-cta">
+                COTIZAR
+            </button>
         </div>
     </section>
 
@@ -1383,10 +1683,9 @@
         <div class="container final-cta-content">
             <h2 class="final-cta-title">Ready for a <span class="accent">Cleaner Home?</span></h2>
             <p class="final-cta-text">Tell us what your home needs and we'll help you create a cleaning plan that works for you.</p>
-            <a href="index.html#contacto" class="final-cta-btn">
-                <i class="fa-solid fa-arrow-right"></i>
-                Get a Free Quote
-            </a>
+            <button onclick="openQuoteModal()" class="final-cta-btn">
+                COTIZAR
+            </button>
         </div>
     </section>
 </main>
@@ -1443,10 +1742,10 @@
                     <span>Serving the greater metropolitan area</span>
                 </li>
             </ul>
-            <a href="index.html#contacto" class="btn-footer-cta">
+            <button onclick="openQuoteModal()" class="btn-footer-cta">
                 <i class="fa-solid fa-arrow-right"></i>
-                Get a Free Quote
-            </a>
+                COTIZAR
+            </button>
         </div>
     </div>
 </footer>
@@ -1501,6 +1800,107 @@
             <a href="#">Terms of Service</a>
         </div>
     </div>
+</div>
+
+<!-- MODAL DE COTIZACIÓN -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fa-solid fa-file-invoice"></i> SOLICITAR COTIZACIÓN</div>
+      <button class="modal-close-btn" onclick="closeQuoteModal()" aria-label="Cerrar modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-place-info" id="modalPlaceInfo" style="display:none;">
+        <i class="fa-solid fa-location-dot"></i>
+        <div><span style="font-size:11px;color:var(--text-sec);text-transform:uppercase;letter-spacing:.5px;">Lugar seleccionado</span><br><strong id="modalPlaceName"></strong></div>
+      </div>
+      <form id="quoteForm" onsubmit="event.preventDefault(); submitQuote();">
+        <div class="form-group">
+          <label class="form-label" for="qf-name">Nombre completo</label>
+          <input class="form-control" type="text" id="qf-name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-phone">Teléfono / WhatsApp</label>
+          <div class="phone-input-wrapper">
+            <div class="country-selector" id="countrySelector">
+              <span class="flag">🇺🇸</span>
+              <span class="dial-code">+1</span>
+              <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+            <input class="form-control" type="tel" id="qf-phone" placeholder="(555) 654-789" required>
+            <div class="country-dropdown" id="countryDropdown">
+              <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Buscar país..." id="countrySearch">
+              </div>
+              <div class="country-list" id="countryList">
+                <div class="country-item" data-country="co" data-dial="+57" data-flag="🇨🇴">
+                  <span class="country-flag">🇨🇴</span>
+                  <span class="country-name">Colombia</span>
+                  <span class="country-dial">+57</span>
+                </div>
+                <div class="country-item" data-country="mx" data-dial="+52" data-flag="🇲🇽">
+                  <span class="country-flag">🇲🇽</span>
+                  <span class="country-name">México</span>
+                  <span class="country-dial">+52</span>
+                </div>
+                <div class="country-item" data-country="ar" data-dial="+54" data-flag="🇦🇷">
+                  <span class="country-flag">🇦🇷</span>
+                  <span class="country-name">Argentina</span>
+                  <span class="country-dial">+54</span>
+                </div>
+                <div class="country-item" data-country="pe" data-dial="+51" data-flag="🇵🇪">
+                  <span class="country-flag">🇵🇪</span>
+                  <span class="country-name">Perú</span>
+                  <span class="country-dial">+51</span>
+                </div>
+                <div class="country-item" data-country="cl" data-dial="+56" data-flag="🇨🇱">
+                  <span class="country-flag">🇨🇱</span>
+                  <span class="country-name">Chile</span>
+                  <span class="country-dial">+56</span>
+                </div>
+                <div class="country-item" data-country="es" data-dial="+34" data-flag="🇪🇸">
+                  <span class="country-flag">🇪🇸</span>
+                  <span class="country-name">España</span>
+                  <span class="country-dial">+34</span>
+                </div>
+                <div class="country-item" data-country="us" data-dial="+1" data-flag="🇺🇸">
+                  <span class="country-flag">🇺🇸</span>
+                  <span class="country-name">Estados Unidos</span>
+                  <span class="country-dial">+1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-email">Correo electrónico</label>
+          <input class="form-control" type="email" id="qf-email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-service">Tipo de servicio</label>
+          <select class="form-control" id="qf-service" required>
+            <option value="">Selecciona un servicio</option>
+            <option>Limpieza residencial</option>
+            <option>Limpieza comercial</option>
+            <option>Limpieza industrial</option>
+            <option>Limpieza profunda</option>
+            <option>Limpieza de oficinas</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-date">Fecha deseada</label>
+          <input class="form-control" type="date" id="qf-date" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qf-message">Mensaje</label>
+          <textarea class="form-control" id="qf-message" placeholder="Cuéntanos más sobre tu solicitud..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fa-brands fa-whatsapp"></i> SOLICITAR COTIZACIÓN</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1592,6 +1992,107 @@
             }
         });
     });
+
+    // MODAL DE COTIZACIÓN - Desde ubicacion.html
+    let selectedPlace='';
+    function openQuoteModal(placeName){
+        selectedPlace=placeName||'';
+        const modal=document.getElementById('quoteModal');
+        const info=document.getElementById('modalPlaceInfo');
+        const name=document.getElementById('modalPlaceName');
+        if(placeName){info.style.display='flex';name.textContent=placeName;}
+        else{info.style.display='none';}
+        modal.classList.add('active');
+        document.body.style.overflow='hidden';
+        setTimeout(()=>{const fi=document.getElementById('qf-name');if(fi)fi.focus();},100);
+    }
+    function closeQuoteModal(){
+        document.getElementById('quoteModal').classList.remove('active');
+        document.body.style.overflow='';
+        document.getElementById('quoteForm').reset();
+    }
+    document.getElementById('quoteModal').addEventListener('click',function(e){if(e.target===this)closeQuoteModal();});
+    document.addEventListener('keydown',function(e){
+        if(e.key==='Escape'){const m=document.getElementById('quoteModal');if(m.classList.contains('active'))closeQuoteModal();}
+    });
+
+    // Custom Phone Field
+    const countrySelector = document.getElementById('countrySelector');
+    const countryDropdown = document.getElementById('countryDropdown');
+    const countryList = document.getElementById('countryList');
+    const countrySearch = document.getElementById('countrySearch');
+    const phoneInput = document.getElementById('qf-phone');
+
+    let selectedCountry = {
+        code: 'us',
+        dial: '+1',
+        flag: '🇺🇸',
+        placeholder: '(555) 654-789'
+    };
+
+    countrySelector.addEventListener('click', function(e) {
+        e.stopPropagation();
+        countryDropdown.classList.toggle('open');
+        countrySelector.classList.toggle('open');
+    });
+
+    countryList.addEventListener('click', function(e) {
+        const countryItem = e.target.closest('.country-item');
+        if (countryItem) {
+            selectedCountry = {
+                code: countryItem.dataset.country,
+                dial: countryItem.dataset.dial,
+                flag: countryItem.dataset.flag,
+                placeholder: countryItem.dataset.placeholder || '(555) 123-4567'
+            };
+            countrySelector.querySelector('.flag').textContent = selectedCountry.flag;
+            countrySelector.querySelector('.dial-code').textContent = selectedCountry.dial;
+            phoneInput.placeholder = selectedCountry.placeholder;
+            countryDropdown.classList.remove('open');
+            countrySelector.classList.remove('open');
+            phoneInput.focus();
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.phone-input-wrapper')) {
+            countryDropdown.classList.remove('open');
+            countrySelector.classList.remove('open');
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            countryDropdown.classList.remove('open');
+            countrySelector.classList.remove('open');
+        }
+    });
+
+    countrySearch.addEventListener('input', function(e) {
+        const search = e.target.value.toLowerCase();
+        const items = countryList.querySelectorAll('.country-item');
+        items.forEach(function(item) {
+            const name = item.querySelector('.country-name').textContent.toLowerCase();
+            const dial = item.querySelector('.country-dial').textContent;
+            if (name.includes(search) || dial.includes(search)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    function getPhoneNumber() {
+        const value = phoneInput.value.replace(/\D/g, '');
+        return selectedCountry.dial + value;
+    }
+
+    function submitQuote() {
+        // Aquí puedes agregar la lógica para enviar el formulario
+        // Por ahora solo mostramos un mensaje de éxito
+        alert('¡Gracias por tu solicitud! Nos pondremos en contacto contigo pronto.');
+        closeQuoteModal();
+    }
 </script>
 
 </body>

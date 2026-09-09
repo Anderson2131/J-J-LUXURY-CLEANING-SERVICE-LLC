@@ -68,6 +68,7 @@
     padding:6px 10px;border-radius:8px;transition:all .25s ease;white-space:nowrap;
   }
   .nav-cta a:hover{color:#fff;background:rgba(56,189,248,.1);}
+  .nav-link.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5);background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);}
   /* Header dropdown (Servicios) */
   .has-dropdown{position:relative;}
   .nav-dropdown{
@@ -828,8 +829,22 @@
     <div class="header-desktop-nav">
       <a href="index.html" class="nav-link">Inicio</a>
       <a href="nosotros.html" class="nav-link">Sobre nosotros</a>
-      <a href="servicios.html" class="nav-link">Servicios</a>
+      <div class="has-dropdown" id="serviciosDropdown">
+        <a href="servicios.html" class="nav-link has-dropdown-label" aria-expanded="false">Servicios</a>
+        <button class="dd-toggle" type="button" aria-label="Ver servicios" aria-expanded="false">
+          <i class="fa-solid fa-chevron-down dd-caret"></i>
+        </button>
+        <div class="nav-dropdown">
+          <a href="servicios.html#residencial"><i class="fa-solid fa-house"></i> Limpieza Residencial</a>
+          <a href="servicios.html#comercial"><i class="fa-solid fa-building"></i> Limpieza Comercial</a>
+          <a href="servicios.html#industrial"><i class="fa-solid fa-industry"></i> Limpieza Industrial</a>
+          <a href="servicios.html#vidrios"><i class="fa-solid fa-window-maximize"></i> Limpieza de Vidrios</a>
+          <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+      </div>
       <a href="ubicacion.html" class="nav-link">Ubicación</a>
+      <a href="checklist.html" class="nav-link">Checklist</a>
       <a href="index.html#contacto" class="nav-link nav-cta">Cotizar</a>
       <span class="nav-divider"></span>
       <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>

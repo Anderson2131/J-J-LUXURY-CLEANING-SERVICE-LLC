@@ -552,6 +552,87 @@
     color:#fff;box-shadow:0 4px 16px rgba(56,189,248,.3),0 0 12px rgba(56,189,248,.3);margin-left:6px;
   }
   .nav-link.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5),0 0 18px rgba(56,189,248,.45);background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);}
+  /* Header dropdown (Servicios) */
+  .header-desktop-nav .has-dropdown{position:relative;display:flex;align-items:center;}
+  .header-desktop-nav .has-dropdown::after{
+    content:'';
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    height:8px;
+  }
+  .header-desktop-nav .has-dropdown-label{
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  .header-desktop-nav .dd-toggle{
+    display:none;
+    align-items:center;justify-content:center;
+    width:28px;height:28px;flex-shrink:0;
+    background:rgba(56,189,248,.08);
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:6px;
+    color:#7DD3FC;
+    font-size:10px;cursor:pointer;
+    margin-left:2px;
+    transition:all .25s ease;
+    -webkit-tap-highlight-color:transparent;
+    padding:0;
+  }
+  .header-desktop-nav .dd-toggle:hover{background:rgba(56,189,248,.18);border-color:rgba(56,189,248,.5);}
+  .header-desktop-nav .dd-toggle .dd-caret{transition:transform .3s cubic-bezier(.2,.9,.3,1.05);display:inline-block;transform-origin:center;}
+  .header-desktop-nav .has-dropdown.open .dd-toggle .dd-caret{transform:rotate(180deg);}
+  .header-desktop-nav .nav-dropdown{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:50%;
+    transform:translateX(-50%) translateY(-8px);
+    min-width:220px;
+    background:rgba(11,18,32,.97);
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:12px;
+    padding:8px;
+    box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 0 1px rgba(56,189,248,.08);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    display:none;
+    z-index:1100;
+  }
+  .header-desktop-nav .nav-dropdown::before{
+    content:'';
+    position:absolute;
+    top:-6px;left:50%;
+    transform:translateX(-50%) rotate(45deg);
+    width:10px;height:10px;
+    background:rgba(11,18,32,.97);
+    border-left:1px solid rgba(56,189,248,.25);
+    border-top:1px solid rgba(56,189,248,.25);
+  }
+  .header-desktop-nav .nav-dropdown a{
+    display:flex !important;align-items:center;gap:10px;
+    padding:10px 14px !important;border-radius:8px;
+    font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+    text-decoration:none;width:100%;text-align:left;
+    background:none !important;border:none !important;position:static !important;
+    white-space:nowrap;transition:all .2s ease;
+  }
+  .header-desktop-nav .nav-dropdown a:hover{color:#fff;background:rgba(56,189,248,.1) !important;}
+  .header-desktop-nav .nav-dropdown a i{color:#38BDF8;font-size:13px;width:16px;text-align:center;}
+  .header-desktop-nav .has-dropdown:hover .nav-dropdown,
+  .header-desktop-nav .has-dropdown:focus-within .nav-dropdown,
+  .header-desktop-nav .has-dropdown.open .nav-dropdown{
+    display:block;
+    animation:navDropdownIn .18s ease forwards;
+  }
+  @media (hover: none){
+    .header-desktop-nav .has-dropdown:hover .nav-dropdown{display:none;}
+    .header-desktop-nav .has-dropdown.open .nav-dropdown{display:block;}
+    .header-desktop-nav .dd-toggle{display:inline-flex !important;}
+  }
+  @keyframes navDropdownIn{
+    from{opacity:0;transform:translateX(-50%) translateY(-10px);}
+    to{opacity:1;transform:translateX(-50%) translateY(0);}
+  }
   .nav-divider{width:1px;height:24px;background:rgba(56,189,248,.2);margin:0 6px;flex-shrink:0;}
   .nav-social{
     display:inline-flex;align-items:center;justify-content:center;
@@ -979,8 +1060,22 @@
     <div class="header-desktop-nav">
       <a href="index.html" class="nav-link">Inicio</a>
       <a href="nosotros.html" class="nav-link">Sobre nosotros</a>
-      <a href="servicios.html" class="nav-link">Servicios</a>
+      <div class="has-dropdown" id="serviciosDropdown">
+        <a href="servicios.html" class="nav-link has-dropdown-label" aria-expanded="false">Servicios</a>
+        <button class="dd-toggle" type="button" aria-label="Ver servicios" aria-expanded="false">
+          <i class="fa-solid fa-chevron-down dd-caret"></i>
+        </button>
+        <div class="nav-dropdown">
+          <a href="servicios.html#residencial"><i class="fa-solid fa-house"></i> Limpieza Residencial</a>
+          <a href="servicios.html#comercial"><i class="fa-solid fa-building"></i> Limpieza Comercial</a>
+          <a href="servicios.html#industrial"><i class="fa-solid fa-industry"></i> Limpieza Industrial</a>
+          <a href="servicios.html#vidrios"><i class="fa-solid fa-window-maximize"></i> Limpieza de Vidrios</a>
+          <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+      </div>
       <a href="ubicacion.html" class="nav-link">Ubicación</a>
+      <a href="checklist.html" class="nav-link">Checklist</a>
       <a href="#contacto" class="nav-link nav-cta">Cotizar</a>
       <span class="nav-divider"></span>
       <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
