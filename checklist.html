@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Cleaning Checklist - J & J Luxury Cleaning Service LLC</title>
+    <meta name="description" content="Know exactly what we clean. Every room, every detail, every visit. Professional cleaning checklist for residential and commercial services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root{
+            --bg-main:#081220;
+            --bg-sec:#0B1724;
+            --bg-card:#101E2C;
+            --bg-card2:#132333;
+            --blue:#2196F3;
+            --blue-bright:#25A7FF;
+            --blue-dark:#0D6EFD;
+            --blue-hover:#168BE6;
+            --green:#22C55E;
+            --white:#FFFFFF;
+            --text-main:#FFFFFF;
+            --text-sec:#A3B0C3;
+            --border:rgba(255,255,255,0.08);
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;background-color:var(--bg-main);}
+        body{
+            font-family:'Manrope','Inter',sans-serif;
+            background-color:var(--bg-main);
+            color:var(--text-main);
+            min-height:100vh;
+            line-height:1.6;
+            overflow-x:hidden;
+        }
+        a{text-decoration:none;color:inherit;}
+        button{font-family:'Manrope',sans-serif;cursor:pointer;border:none;background:none;color:inherit;}
+        img{max-width:100%;display:block;}
+
+        .container{width:min(94%, 1250px);margin:0 auto;}
+
+        /* HEADER - Consistent with other pages */
+        header{
+            position:fixed;top:0;left:0;right:0;z-index:1000;
+            background:rgba(0,0,0,.5);
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
+            border-bottom:1px solid rgba(56,189,248,.1);
+        }
+        header nav{
+            max-width:1180px;margin:0 auto;padding:0 28px;height:56px;
+            display:flex;align-items:center;justify-content:space-between;
+        }
+        .logo{
+            font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#fff;
+            display:flex;align-items:center;gap:10px;letter-spacing:-0.5px;
+            text-transform:uppercase;
+        }
+        .logo svg{color:#2196F3;}
+        .nav-cta{display:flex;align-items:center;gap:24px;}
+        .nav-cta a{
+            font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+            padding:8px 14px;border-radius:8px;transition:all .25s ease;white-space:nowrap;
+        }
+        .nav-cta a:hover{color:#fff;background:rgba(56,189,248,.1);}
+        .nav-link.nav-cta:hover{
+            transform:translateY(-1px);
+            box-shadow:0 6px 20px rgba(56,189,248,.5);
+            background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
+        }
+        .btn{
+            display:inline-flex;align-items:center;justify-content:center;gap:6px;
+            padding:10px 20px;border-radius:8px;font-family:'Manrope',sans-serif;
+            font-size:14px;font-weight:600;cursor:pointer;transition:all .25s ease;
+            border:none;text-decoration:none;
+        }
+        .header-social{
+            display:inline-flex;align-items:center;justify-content:center;
+            width:36px;height:36px;color:#A3B0C3;font-size:17px;
+            transition:all .3s ease;margin-right:2px;text-decoration:none;
+            background:transparent;border:none;
+        }
+        .header-social:hover{color:#fff;transform:translateY(-2px) scale(1.15);}
+        .header-social:has(.fa-whatsapp):hover{color:#25D366;text-shadow:0 0 12px rgba(37,211,102,.6);}
+        .header-social:has(.fa-facebook-f):hover{color:#1877F2;text-shadow:0 0 12px rgba(24,119,242,.6);}
+        .header-social:has(.fa-instagram):hover{color:#E4405F;text-shadow:0 0 12px rgba(225,48,108,.6);}
+        .header-divider{width:1px;height:24px;background:rgba(56,189,248,.2);margin:0 6px;}
+        .btn-primary{
+            background:linear-gradient(135deg,#2196F3,#25A7FF);
+            color:#0B1220;box-shadow:0 4px 16px rgba(56,189,248,.3);
+        }
+        .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(56,189,248,.5);}
+        .btn-ghost{background:transparent;color:#A3B0C3;}
+        .btn-ghost:hover{color:#fff;background:rgba(56,189,248,.1);}
+        .mobile-menu-btn{
+            display:none;align-items:center;justify-content:center;
+            width:48px;height:48px;min-width:48px;min-height:48px;
+            background:rgba(11,18,32,.95);border:1px solid rgba(56,189,248,.35);
+            border-radius:10px;color:#fff;cursor:pointer;flex-shrink:0;
+            box-shadow:0 4px 14px rgba(0,0,0,.45);
+            -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+            user-select:none;transition:all .15s ease;position:relative;z-index:1001;
+        }
+        .mobile-menu-btn:hover{background:rgba(56,189,248,.15);border-color:rgba(56,189,248,.6);}
+        .mobile-menu-btn:active{transform:scale(.92);background:rgba(56,189,248,.2);}
+        .mobile-menu-btn svg{width:22px;height:22px;transition:transform .2s ease;}
+        .mobile-menu-btn.active svg{transform:rotate(90deg);}
+        .mobile-social-section{display:none;}
+
+        /* Desktop dropdown */
+        .header-desktop-nav .has-dropdown{position:relative;display:flex;align-items:center;}
+        .header-desktop-nav .has-dropdown::after{
+            content:'';position:absolute;top:100%;left:0;right:0;height:8px;
+        }
+        .header-desktop-nav .has-dropdown-label{display:inline-flex;align-items:center;gap:4px;}
+        .header-desktop-nav .dd-toggle{
+            display:none;align-items:center;justify-content:center;
+            width:28px;height:28px;flex-shrink:0;
+            background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.25);
+            border-radius:6px;color:#7DD3FC;font-size:10px;cursor:pointer;
+            margin-left:2px;transition:all .25s ease;
+            -webkit-tap-highlight-color:transparent;padding:0;
+        }
+        .header-desktop-nav .dd-toggle:hover{background:rgba(56,189,248,.18);border-color:rgba(56,189,248,.5);}
+        .header-desktop-nav .dd-toggle .dd-caret{transition:transform .3s cubic-bezier(.2,.9,.3,1.05);display:inline-block;transform-origin:center;}
+        .header-desktop-nav .has-dropdown.open .dd-toggle .dd-caret{transform:rotate(180deg);}
+        .header-desktop-nav .nav-dropdown{
+            position:absolute;top:calc(100% + 8px);left:50%;
+            transform:translateX(-50%) translateY(-8px);min-width:220px;
+            background:rgba(11,18,32,.97);border:1px solid rgba(56,189,248,.25);
+            border-radius:12px;padding:8px;
+            box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 0 1px rgba(56,189,248,.08);
+            backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+            display:none;z-index:1100;
+        }
+        .header-desktop-nav .nav-dropdown::before{
+            content:'';position:absolute;top:-6px;left:50%;
+            transform:translateX(-50%) rotate(45deg);
+            width:10px;height:10px;
+            background:rgba(11,18,32,.97);
+            border-left:1px solid rgba(56,189,248,.25);
+            border-top:1px solid rgba(56,189,248,.25);
+        }
+        .header-desktop-nav .nav-dropdown a{
+            display:flex !important;align-items:center;gap:10px;
+            padding:10px 14px !important;border-radius:8px;
+            font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+            text-decoration:none;width:100%;text-align:left;
+            background:none !important;border:none !important;position:static !important;
+            white-space:nowrap;transition:all .2s ease;
+        }
+        .header-desktop-nav .nav-dropdown a:hover{color:#fff;background:rgba(56,189,248,.1) !important;}
+        .header-desktop-nav .has-dropdown:hover .nav-dropdown,
+        .header-desktop-nav .has-dropdown:focus-within .nav-dropdown,
+        .header-desktop-nav .has-dropdown.open .nav-dropdown{
+            display:block;
+            animation:navDropdownIn .18s ease forwards;
+        }
+        @keyframes navDropdownIn{
+            from{opacity:0;transform:translateX(-50%) translateY(-10px);}
+            to{opacity:1;transform:translateX(-50%) translateY(0);}
+        }
+
+        /* HERO SECTION */
+        .checklist-hero{
+            position:relative;
+            padding:140px 0 100px;
+            border-bottom:1px solid rgba(56,189,248,.12);
+            overflow:hidden;
+        }
+        .checklist-hero-video{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+            z-index:0;
+        }
+
+        @keyframes particleFloat{
+            0%,100%{opacity:1;transform:scale(1);}
+            50%{opacity:0.7;transform:scale(1.1);}
+        }
+        .hero-inner{
+            position:relative;z-index:2;max-width:800px;
+        }
+        .hero-badge{
+            display:inline-flex;align-items:center;gap:8px;
+            font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+            color:#25A7FF;text-transform:uppercase;letter-spacing:2px;
+            background:rgba(0,0,0,.7);border:1px solid rgba(37,167,255,.5);
+            padding:8px 16px;border-radius:100px;margin-bottom:24px;
+            backdrop-filter:blur(10px);
+        }
+        .hero-title{
+            font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,52px);
+            font-weight:800;line-height:1.1;color:#fff;letter-spacing:-1.5px;margin-bottom:20px;
+            text-shadow:0 2px 20px rgba(0,0,0,.8), 0 0 40px rgba(0,0,0,.6);
+        }
+        .hero-title .accent{
+            background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
+            -webkit-background-clip:text;background-clip:text;
+            -webkit-text-fill-color:transparent;color:transparent;
+            text-shadow:0 0 30px rgba(56,189,248,.3);
+        }
+        .hero-lead{
+            font-family:'Inter',sans-serif;font-size:17px;color:rgba(255,255,255,.95);
+            line-height:1.7;margin-bottom:32px;max-width:600px;
+            text-shadow:0 1px 10px rgba(0,0,0,.8);
+        }
+        .hero-cta{
+            display:inline-flex;align-items:center;gap:12px;
+            padding:14px 28px;background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
+            color:#fff;border-radius:12px;font-family:'Manrope',sans-serif;
+            font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+            transition:all .3s ease;box-shadow:0 4px 20px rgba(56,189,248,.3);
+        }
+        .hero-cta:hover{
+            transform:translateY(-2px);
+            background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
+            box-shadow:0 8px 30px rgba(56,189,248,.5);
+        }
+
+        /* WHAT'S INCLUDED SECTION */
+        .included-section{
+            padding:80px 0;position:relative;background-color:var(--bg-main);
+        }
+        .included-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),transparent);
+        }
+        .section-head{text-align:center;max-width:720px;margin:0 auto 50px;}
+        .section-eyebrow{
+            display:inline-flex;align-items:center;gap:8px;
+            font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+            color:#25A7FF;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;
+        }
+        .section-eyebrow::before, .section-eyebrow::after{
+            content:'';display:inline-block;width:24px;height:1px;background:#25A7FF;
+        }
+        .section-title{
+            font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);
+            font-weight:800;line-height:1.15;color:#fff;letter-spacing:-1px;margin-bottom:14px;
+        }
+        .section-sub{
+            font-family:'Inter',sans-serif;font-size:15.5px;color:rgba(255,255,255,.7);line-height:1.6;
+        }
+
+        /* TABS */
+        .room-tabs{
+            display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;
+        }
+        .room-tab{
+            padding:12px 24px;background:rgba(15,23,42,.6);
+            border:1px solid rgba(56,189,248,.2);border-radius:12px;
+            color:rgba(255,255,255,.85);font-family:'Manrope',sans-serif;
+            font-size:14px;font-weight:600;cursor:pointer;transition:all .3s ease;
+            display:flex;align-items:center;gap:8px;
+        }
+        .room-tab:hover{
+            background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.4);
+            color:#fff;
+        }
+        .room-tab.active{
+            background:linear-gradient(135deg,rgba(56,189,248,.2),rgba(37,167,255,.1));
+            border-color:#38BDF8;color:#fff;
+            box-shadow:0 0 20px rgba(56,189,248,.2);
+        }
+        .room-tab i{font-size:16px;}
+
+        /* CHECKLIST TABLE */
+        .checklist-table-container{
+            background:linear-gradient(160deg,#101E2C 0%,#0D1A28 100%);
+            border:1px solid rgba(56,189,248,.15);border-radius:20px;
+            padding:32px;box-shadow:0 20px 50px rgba(0,0,0,.3);
+            overflow:hidden;
+        }
+        .checklist-table{
+            width:100%;border-collapse:collapse;
+        }
+        .checklist-table thead{
+            border-bottom:2px solid rgba(56,189,248,.3);
+        }
+        .checklist-table th{
+            padding:16px;text-align:left;font-family:'Manrope',sans-serif;
+            font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;
+            letter-spacing:1px;
+        }
+        .checklist-table th:last-child{text-align:center;}
+        .checklist-table tbody tr{
+            border-bottom:1px solid rgba(56,189,248,.08);
+            transition:background .2s ease;
+        }
+        .checklist-table tbody tr:hover{
+            background:rgba(56,189,248,.05);
+        }
+        .checklist-table tbody tr:last-child{border-bottom:none;}
+        .checklist-table td{
+            padding:14px 16px;font-family:'Inter',sans-serif;
+            font-size:14px;color:rgba(255,255,255,.85);
+        }
+        .checklist-table td:last-child{text-align:center;}
+        .checklist-icon{
+            width:24px;height:24px;border-radius:50%;
+            display:inline-flex;align-items:center;justify-content:center;
+            font-size:12px;font-weight:700;
+        }
+        .checklist-icon.included{
+            background:rgba(34,197,94,.2);color:#22C55E;
+            border:1px solid rgba(34,197,94,.4);
+        }
+        .checklist-icon.not-included{
+            background:rgba(163,176,195,.1);color:#A3B0C3;
+            border:1px solid rgba(163,176,195,.3);
+        }
+        .checklist-icon.na{
+            background:rgba(56,189,248,.1);color:#38BDF8;
+            border:1px solid rgba(56,189,248,.3);
+        }
+
+        /* EXTRAS SECTION */
+        .extras-section{
+            padding:80px 0;background:var(--bg-sec);position:relative;
+        }
+        .extras-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),transparent);
+        }
+        .extras-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;
+        }
+        .extra-card{
+            background:linear-gradient(160deg,#101E2C 0%,#0D1A28 100%);
+            border:1px solid rgba(56,189,248,.15);border-radius:18px;
+            padding:28px 24px;transition:all .3s ease;
+            position:relative;overflow:hidden;
+        }
+        .extra-card:hover{
+            transform:translateY(-4px);border-color:rgba(56,189,248,.4);
+            box-shadow:0 20px 50px rgba(0,0,0,.4);
+        }
+        .extra-card::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(56,189,248,.6),transparent);
+            opacity:.6;transition:opacity .3s ease;
+        }
+        .extra-card:hover::before{opacity:1;}
+        .extra-icon{
+            width:52px;height:52px;border-radius:14px;
+            display:inline-flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(37,167,255,.08));
+            border:1px solid rgba(56,189,248,.3);color:#38BDF8;
+            font-size:22px;margin-bottom:18px;
+        }
+        .extra-title{
+            font-family:'Manrope',sans-serif;font-size:18px;font-weight:700;
+            color:#fff;margin-bottom:10px;letter-spacing:-0.5px;
+        }
+        .extra-desc{
+            font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.7);
+            line-height:1.6;
+        }
+
+        /* EVERY HOME DIFFERENT SECTION */
+        .different-section{
+            position:relative;padding:80px 0;
+            background:
+                linear-gradient(rgba(8,18,32,.88), rgba(8,18,32,.92)),
+                url('img/Fondo_Formulario.webp') center/cover no-repeat;
+            background-attachment:scroll;
+        }
+        .different-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(56,189,248,.3),transparent);
+        }
+        .different-content{
+            position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;
+        }
+        .different-title{
+            font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,42px);
+            font-weight:800;line-height:1.15;color:#fff;letter-spacing:-1px;margin-bottom:18px;
+        }
+        .different-title .accent{
+            background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
+            -webkit-background-clip:text;background-clip:text;
+            -webkit-text-fill-color:transparent;color:transparent;
+        }
+        .different-text{
+            font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.78);
+            line-height:1.7;margin-bottom:32px;
+        }
+
+        /* TRUST SECTION */
+        .trust-section{
+            padding:80px 0;background:var(--bg-main);position:relative;
+        }
+        .trust-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),transparent);
+        }
+        .trust-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;
+        }
+        .trust-card{
+            background:rgba(10,20,38,.55);border:1px solid rgba(56,189,248,.18);
+            border-radius:20px;padding:30px 26px;text-align:center;
+            transition:all .3s ease;
+        }
+        .trust-card:hover{
+            transform:translateY(-4px);border-color:rgba(56,189,248,.4);
+            background:rgba(14,28,52,.72);
+            box-shadow:0 20px 50px rgba(0,0,0,.4);
+        }
+        .trust-icon{
+            width:54px;height:54px;border-radius:14px;
+            display:inline-flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(37,167,255,.08));
+            border:1px solid rgba(56,189,248,.3);color:#38BDF8;
+            font-size:22px;margin-bottom:18px;
+        }
+        .trust-title{
+            font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;
+            color:#fff;margin-bottom:10px;letter-spacing:-0.5px;
+        }
+        .trust-desc{
+            font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.7);
+            line-height:1.6;
+        }
+
+        /* FINAL CTA SECTION */
+        .final-cta-section{
+            position:relative;padding:100px 0;
+            background:
+                linear-gradient(rgba(8,18,32,.88), rgba(8,18,32,.92)),
+                url('img/Fondo_Como Funciona.webp') center/cover no-repeat;
+            background-attachment:scroll;
+        }
+        .final-cta-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(56,189,248,.3),transparent);
+        }
+        .final-cta-content{
+            position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;
+        }
+        .final-cta-title{
+            font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,48px);
+            font-weight:800;line-height:1.1;color:#fff;letter-spacing:-1.5px;margin-bottom:20px;
+        }
+        .final-cta-title .accent{
+            background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
+            -webkit-background-clip:text;background-clip:text;
+            -webkit-text-fill-color:transparent;color:transparent;
+        }
+        .final-cta-text{
+            font-family:'Inter',sans-serif;font-size:17px;color:rgba(255,255,255,.78);
+            line-height:1.7;margin-bottom:36px;
+        }
+        .final-cta-btn{
+            display:inline-flex;align-items:center;gap:12px;
+            padding:16px 32px;background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
+            color:#fff;border-radius:14px;font-family:'Manrope',sans-serif;
+            font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+            transition:all .3s ease;box-shadow:0 6px 24px rgba(56,189,248,.4);
+        }
+        .final-cta-btn:hover{
+            transform:translateY(-2px);
+            background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
+            box-shadow:0 10px 40px rgba(56,189,248,.6);
+        }
+
+        /* FOOTER - From ubicacion.html */
+        .main-footer{
+            background:rgba(15,23,42,.98);padding:60px 0;
+            border-top:1px solid rgba(56,189,248,.1);width:100%;box-sizing:border-box;
+        }
+        .footer-grid{
+            display:grid;grid-template-columns:1.25fr 1.5fr 1.5fr 1.25fr;
+            gap:50px;width:100%;max-width:1250px;margin:0 auto;padding:0 30px;box-sizing:border-box;
+        }
+        .footer-column{display:flex;flex-direction:column;gap:14px;}
+        .footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+        .footer-logo svg{color:#38BDF8;flex-shrink:0;}
+        .footer-logo .brand-logo-img{height:38px;width:auto;max-width:48px;object-fit:contain;flex-shrink:0;display:block;}
+        .footer-logo span{
+            font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;
+            color:#fff;letter-spacing:-0.3px;line-height:1.15;
+        }
+        .footer-tagline{
+            font-family:'Inter',sans-serif;font-size:14px;font-weight:600;
+            color:var(--blue-bright);margin-bottom:4px;
+        }
+        .footer-description{
+            font-family:'Inter',sans-serif;font-size:13px;color:#A3B0C3;
+            line-height:1.6;margin-bottom:8px;
+        }
+        .footer-social{display:flex;gap:10px;margin-top:4px;}
+        .footer-social a{
+            display:flex;align-items:center;justify-content:center;
+            width:38px;height:38px;border-radius:10px;background:rgba(56,189,248,.1);
+            color:#38BDF8;font-size:16px;transition:all .25s ease;
+        }
+        .footer-social a:hover{background:rgba(56,189,248,.2);transform:translateY(-2px);}
+        .footer-title{
+            font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:#fff;
+            text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;
+        }
+        .footer-links{list-style:none;padding:0;margin:0;}
+        .footer-links li{margin-bottom:10px;}
+        .footer-links a{
+            font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+            transition:color .2s ease;
+        }
+        .footer-links a:hover{color:#38BDF8;}
+        .footer-contact{list-style:none;padding:0;margin:0 0 16px 0;}
+        .footer-contact li{
+            display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px;
+        }
+        .footer-contact i{color:#38BDF8;font-size:14px;width:18px;text-align:center;}
+        .footer-contact a, .footer-contact span{
+            font-family:'Inter',sans-serif;font-size:14px;color:#A3B0C3;
+            transition:color .2s ease;
+        }
+        .footer-contact a:hover{color:#38BDF8;}
+        .btn-footer-cta{
+            display:inline-flex;align-items:center;justify-content:center;gap:8px;
+            padding:12px 24px;background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);
+            color:#fff;border-radius:10px;font-family:'Manrope',sans-serif;
+            font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+            transition:all .3s ease;box-shadow:0 4px 16px rgba(56,189,248,.3),0 0 12px rgba(56,189,248,.25);
+            text-decoration:none;margin-top:18px;
+        }
+        .btn-footer-cta:hover{
+            transform:translateY(-2px);
+            background:linear-gradient(135deg,#7DD3FC 0%,#38BDF8 100%);
+            box-shadow:0 8px 24px rgba(56,189,248,.5),0 0 20px rgba(56,189,248,.4);
+        }
+        .footer-trust{
+            background:rgba(8,18,32,.95);border-top:1px solid rgba(56,189,248,.08);padding:28px 0;
+        }
+        .trust-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+            max-width:1250px;margin:0 auto;padding:0 30px;
+        }
+        .trust-item{
+            display:flex;align-items:center;gap:14px;position:relative;padding:0 12px;
+        }
+        .trust-item:not(:last-child)::after{
+            content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);
+            width:1px;height:60%;background:rgba(56,189,248,.15);
+        }
+        .trust-item:hover{opacity:0.9;}
+        .trust-icon-footer{flex-shrink:0;color:#38BDF8;}
+        .trust-icon-footer svg{width:36px;height:36px;}
+        .trust-content{flex:1;min-width:0;}
+        .trust-content h4{
+            font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;
+        }
+        .trust-content p{
+            font-family:'Inter',sans-serif;font-size:12px;color:#A3B0C3;line-height:1.4;
+        }
+        .footer-bottom{
+            background:rgba(15,23,42,1);border-top:1px solid rgba(56,189,248,.08);padding:18px 30px;
+        }
+        .footer-bottom-content{
+            display:flex;align-items:center;justify-content:space-between;
+            max-width:1250px;margin:0 auto;flex-wrap:wrap;gap:12px;
+        }
+        .footer-copyright{
+            font-family:'Inter',sans-serif;font-size:13px;color:#A3B0C3;
+        }
+        .footer-bottom-links{display:flex;align-items:center;gap:8px;}
+        .footer-bottom-links a{
+            font-family:'Inter',sans-serif;font-size:13px;color:#A3B0C3;
+            transition:color .2s ease;
+        }
+        .footer-bottom-links a:hover{color:#38BDF8;}
+        .footer-separator{color:rgba(163,176,195,.5);font-size:12px;}
+
+        /* RESPONSIVE */
+        @media (max-width:900px){
+            .header-social,.header-divider{display:none;}
+            .nav-cta{
+                display:none;position:absolute;top:56px;left:0;right:0;
+                background:rgba(5,6,8,.98);backdrop-filter:blur(20px);
+                -webkit-backdrop-filter:blur(20px);flex-direction:column;align-items:stretch;
+                padding:16px 20px;gap:8px;border-bottom:1px solid rgba(255,255,255,0.08);z-index:999;
+            }
+            .nav-cta.open{display:flex;}
+            .nav-cta a{padding:14px 16px;width:100%;text-align:center;border-radius:8px;}
+            .nav-cta{align-items:center;}
+            .nav-cta .btn-primary{width:fit-content;margin:0 auto;}
+            .has-dropdown{width:100%;}
+            .has-dropdown .btn{width:100%;justify-content:center;gap:8px;}
+            .has-dropdown .btn .dd-caret{margin-left:0 !important;}
+            .nav-dropdown{
+                position:static !important;transform:none !important;
+                background:rgba(5,6,8,.6) !important;border:1px solid rgba(56,189,248,.15) !important;
+                box-shadow:none !important;border-radius:10px !important;margin:4px 0 6px !important;
+                min-width:0 !important;padding:6px !important;display:none;animation:none !important;width:100% !important;
+            }
+            .nav-dropdown::before{display:none !important;}
+            .has-dropdown.open .nav-dropdown{display:block;}
+            .nav-dropdown a{justify-content:center !important;text-align:center !important;}
+            .mobile-menu-btn{display:flex;}
+            .mobile-social-section{
+                display:flex;flex-direction:column;align-items:center;gap:12px;
+                margin-top:8px;padding:16px 12px;background:rgba(56,189,248,.04);
+                border:1px solid rgba(56,189,248,.12);border-radius:12px;
+            }
+            .mobile-social-label{
+                font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;
+                color:rgba(255,255,255,.7);letter-spacing:1.5px;text-transform:uppercase;
+                display:flex;align-items:center;gap:8px;
+            }
+            .mobile-social-label::after{
+                content:'';display:inline-block;width:24px;height:2px;
+                background:linear-gradient(90deg,transparent,#38BDF8,transparent);margin-left:8px;vertical-align:middle;
+            }
+            .mobile-social-icons{display:flex;gap:12px;}
+            .mobile-social{
+                display:flex;align-items:center;justify-content:center;
+                width:46px;height:46px;border-radius:50%;background:rgba(15,23,42,.6);
+                border:1px solid rgba(56,189,248,.4);color:#fff;font-size:17px;
+                transition:all .2s ease;text-decoration:none;
+                -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+            }
+            .mobile-social:hover{
+                transform:scale(1.08);border-color:#38BDF8;box-shadow:0 0 14px rgba(56,189,248,.5);
+            }
+            .mobile-social:active{transform:scale(.95);}
+            .mobile-social:has(.fa-whatsapp):hover{
+                background:rgba(37,211,102,.2);color:#25D366;border-color:#25D366;
+            }
+            .mobile-social:has(.fa-facebook-f):hover{
+                background:rgba(24,119,242,.2);color:#1877F2;border-color:#1877F2;
+            }
+            .mobile-social:has(.fa-instagram):hover{
+                background:rgba(225,48,108,.2);color:#E4405F;border-color:#E4405F;
+            }
+            .nav-cta .header-social,.nav-cta .header-divider{display:none;}
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay{
+            position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;
+            background:url('img/Fondo_Menu.webp') no-repeat center center / cover;
+            backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+            z-index:9999;display:none;align-items:flex-start;justify-content:center;
+            overflow-y:auto;animation:mobileMenuFade .35s ease;
+        }
+        .mobile-menu-overlay[aria-hidden="false"],
+        .mobile-menu-overlay.open{display:flex;}
+        @keyframes mobileMenuFade{from{opacity:0}to{opacity:1}}
+        
+        .mobile-menu-close{
+            position:fixed;top:16px;right:16px;z-index:10000;
+            width:48px;height:48px;display:none;align-items:center;justify-content:center;
+            background:rgba(11,18,32,.85);border:1px solid rgba(56,189,248,.45);border-radius:50%;
+            color:#fff;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+            box-shadow:0 4px 18px rgba(0,0,0,.5),0 0 14px rgba(56,189,248,.25);
+            transition:all .25s ease;font-size:20px;padding:0;line-height:1;
+        }
+        .mobile-menu-overlay[aria-hidden="false"] .mobile-menu-close,
+        .mobile-menu-overlay.open .mobile-menu-close{display:flex;}
+        .mobile-menu-close:hover{
+            background:rgba(56,189,248,.2);border-color:rgba(56,189,248,.8);transform:rotate(90deg);
+        }
+        
+        .mobile-menu-content{
+            display:flex !important;flex-direction:column !important;
+            align-items:center !important;justify-content:flex-start !important;
+            gap:16px !important;width:100% !important;max-width:460px !important;
+            height:auto !important;min-height:100% !important;padding:60px 20px 30px 20px !important;
+            margin:0 auto !important;box-sizing:border-box !important;overflow-y:auto !important;
+            position:relative !important;
+        }
+        
+        .mobile-menu-header{
+            display:flex;flex-direction:column;align-items:center;gap:10px;
+            text-align:center;width:100%;
+        }
+        .mobile-menu-header .menu-logo,
+        .mobile-menu-header img.menu-logo{
+            width:62px;height:62px;border-radius:16px;
+            background:rgba(11,18,32,.7);border:1px solid rgba(56,189,248,.4);
+            box-shadow:0 0 24px rgba(56,189,248,.3),inset 0 0 18px rgba(56,189,248,.12);
+            padding:6px;object-fit:contain;
+        }
+        .mobile-menu-header h3{
+            margin:0;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;
+            color:#fff;letter-spacing:.5px;text-transform:uppercase;
+            text-shadow:0 0 16px rgba(56,189,248,.35);
+        }
+        .mobile-menu-header span{
+            font-family:'Inter',sans-serif;font-size:11px;font-weight:500;
+            color:rgba(56,189,248,.85);letter-spacing:1.8px;text-transform:uppercase;
+        }
+        
+        .mobile-menu-nav{
+            display:flex;flex-direction:column;gap:12px;width:100%;max-width:320px;align-items:center;
+            list-style:none;padding:0;
+        }
+        
+        .menu-btn,
+        .mobile-menu-link{
+            display:flex;align-items:center;justify-content:center;gap:12px;
+            padding:14px 18px;width:100%;
+            font-family:'Manrope',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.92);
+            text-decoration:none;text-transform:uppercase;letter-spacing:1.2px;
+            background:rgba(15,23,42,.55);border:1px solid rgba(56,189,248,.18);border-radius:14px;
+            transition:all .25s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+        }
+        .menu-btn i,
+        .mobile-menu-link i{color:rgba(56,189,248,.85);font-size:15px;width:18px;text-align:center;transition:all .25s ease;}
+        .menu-btn:hover,.menu-btn:active,
+        .mobile-menu-link:hover,.mobile-menu-link:active{
+            color:#fff;background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.65);
+            box-shadow:0 0 0 1px rgba(56,189,248,.4),0 0 26px rgba(56,189,248,.35),inset 0 0 18px rgba(56,189,248,.18);
+            text-shadow:0 0 12px rgba(56,189,248,.55);
+        }
+        .menu-btn:hover i,.menu-btn:active i,
+        .mobile-menu-link:hover i,.mobile-menu-link:active i{color:#7DD3FC;text-shadow:0 0 10px rgba(56,189,248,.7);}
+        
+        .services-accordion-wrapper,
+        .mobile-menu-services{
+            display:flex;gap:8px;width:100%;justify-content:center;align-items:stretch;
+        }
+        .services-accordion-wrapper .service-link,
+        .services-accordion-wrapper .menu-btn,
+        .mobile-menu-services .mobile-menu-link{flex:1;}
+        .services-accordion-wrapper .accordion-toggle-btn,
+        .mobile-menu-services-toggle{
+            flex-shrink:0;width:48px;display:flex;align-items:center;justify-content:center;padding:0;
+            background:rgba(15,23,42,.55);border:1px solid rgba(56,189,248,.3);border-radius:14px;
+            color:rgba(125,211,252,.9);cursor:pointer;font-size:13px;transition:all .25s ease;
+        }
+        .services-accordion-wrapper .accordion-toggle-btn i,
+        .mobile-menu-services-toggle i{transition:transform .3s ease;}
+        .services-accordion-wrapper .accordion-toggle-btn[aria-expanded="true"] i,
+        .mobile-menu-services-toggle[aria-expanded="true"] i{transform:rotate(180deg);}
+        .services-accordion-wrapper .accordion-toggle-btn:hover,
+        .mobile-menu-services-toggle:hover{background:rgba(56,189,248,.18);border-color:rgba(56,189,248,.7);color:#fff;box-shadow:0 0 18px rgba(56,189,248,.4);}
+        
+        .services-dropdown,
+        .mobile-menu-sublist{
+            list-style:none;padding:6px;display:none;flex-direction:column;gap:4px;width:100%;
+            background:rgba(5,8,15,.45);border:1px solid rgba(56,189,248,.1);border-radius:12px;
+        }
+        .services-dropdown.open,
+        .mobile-menu-sublist.open{display:flex;}
+        .services-dropdown a,
+        .mobile-menu-sublist a{
+            display:flex;align-items:center;gap:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;
+            color:rgba(255,255,255,.85);text-decoration:none;background:transparent;border:1px solid transparent;border-radius:10px;
+            letter-spacing:.8px;transition:all .2s ease;
+        }
+        .services-dropdown a:hover,
+        .mobile-menu-sublist a:hover{background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.35);color:#fff;}
+        .services-dropdown a i,
+        .mobile-menu-sublist a i{color:rgba(56,189,248,.85);font-size:13px;}
+        
+        .mobile-menu-cta{
+            display:flex;align-items:center;justify-content:center;width:100%;max-width:320px;margin-top:8px !important;
+        }
+        .btn-cotizar-mobile,
+        .mobile-menu-cta a{
+            display:flex;align-items:center;justify-content:center;gap:10px;
+            width:100%;padding:16px 36px;background:linear-gradient(135deg,#0EA5E9 0%,#2563EB 100%);
+            color:#fff;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;
+            letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:999px;cursor:pointer;
+            text-decoration:none;box-shadow:0 8px 26px rgba(14,165,233,.45),0 0 0 1px rgba(56,189,248,.55),inset 0 1px 0 rgba(255,255,255,.25);
+            transition:all .25s ease;text-shadow:0 1px 1px rgba(0,0,0,.25);
+        }
+        .btn-cotizar-mobile:hover,
+        .mobile-menu-cta a:hover{transform:translateY(-2px);background:linear-gradient(135deg,#38BDF8 0%,#0EA5E9 100%);box-shadow:0 12px 32px rgba(14,165,233,.65),0 0 0 1px rgba(125,211,252,.85),0 0 36px rgba(56,189,248,.55),inset 0 1px 0 rgba(255,255,255,.35);}
+        
+        .mobile-menu-divider{width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.55),transparent);margin:6px auto 10px;box-shadow:0 0 8px rgba(56,189,248,.4);}
+        
+        .mobile-menu-footer{
+            display:flex;flex-direction:column;align-items:center;gap:8px;
+            width:100%;max-width:320px;margin-top:15px !important;
+        }
+        .mobile-menu-footer p,
+        .mobile-menu-socials-label{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:rgba(125,211,252,.85);letter-spacing:2.5px;text-transform:uppercase;text-shadow:0 0 12px rgba(56,189,248,.45);margin:0;}
+        .social-icons,
+        .mobile-menu-socials-icons{display:flex;gap:14px;}
+        .social-icons a,
+        .mobile-menu-socials-icons a{
+            width:48px;height:48px;border-radius:50%;background:rgba(15,23,42,.6);
+            border:1px solid rgba(56,189,248,.4);color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;
+            text-decoration:none;transition:all .25s ease;box-shadow:0 0 0 1px rgba(56,189,248,.1);position:static !important;
+        }
+        .social-icons a:hover,
+        .mobile-menu-socials-icons a:hover{transform:translateY(-3px) scale(1.06);border-color:rgba(56,189,248,.85);box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(56,189,248,.55);color:#7DD3FC;}
+        .social-icons a:has(.fa-whatsapp):hover,
+        .mobile-menu-socials-icons a:has(.fa-whatsapp):hover{border-color:#25D366;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(37,211,102,.55);color:#25D366;}
+        .social-icons a:has(.fa-facebook-f):hover,
+        .mobile-menu-socials-icons a:has(.fa-facebook-f):hover{border-color:#1877F2;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(24,119,242,.55);color:#1877F2;}
+        .social-icons a:has(.fa-instagram):hover,
+        .mobile-menu-socials-icons a:has(.fa-instagram):hover{border-color:#E4405F;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(225,48,108,.55);color:#E4405F;}
+
+        @media (max-width:768px){
+            .room-tabs{flex-direction:column;align-items:stretch;}
+            .room-tab{width:100%;justify-content:center;}
+            .checklist-table-container{padding:20px;overflow-x:auto;}
+            .checklist-table{min-width:600px;}
+            .extras-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+            .trust-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+            .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;}
+            .trust-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+            .trust-item{padding:0;}
+            .trust-item:not(:last-child)::after{display:none;}
+        }
+
+        @media (max-width:480px){
+            .extras-grid{grid-template-columns:1fr;gap:16px;}
+            .trust-grid{grid-template-columns:1fr;gap:18px;}
+            .main-footer{padding:40px 0;}
+            .footer-grid{grid-template-columns:1fr;gap:28px;}
+            .footer-bottom-content{flex-direction:column;text-align:center;}
+            .footer-bottom-links{justify-content:center;}
+            .footer-grid,.trust-grid,.footer-bottom-content{padding:0 20px;}
+            .footer-logo span{font-size:13px;line-height:1.15;}
+            .footer-title{font-size:16px;}
+            .footer-links a,.footer-contact a,.footer-contact span{font-size:14px;}
+            .btn-footer-cta{width:100%;}
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="header-nav">
+    <a href="index.html" class="brand">
+      <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+      <span class="brand-text">J & J Luxury<br>Cleaning Service LLC</span>
+    </a>
+
+    <div class="header-desktop-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="nosotros.html" class="nav-link">Sobre nosotros</a>
+      <div class="has-dropdown" id="serviciosDropdown">
+        <a href="servicios.html" class="nav-link has-dropdown-label" aria-expanded="false">Servicios</a>
+        <button class="dd-toggle" type="button" aria-label="Ver servicios" aria-expanded="false">
+          <i class="fa-solid fa-chevron-down dd-caret"></i>
+        </button>
+        <div class="nav-dropdown">
+          <a href="servicios.html#residencial"><i class="fa-solid fa-house"></i> Limpieza Residencial</a>
+          <a href="servicios.html#comercial"><i class="fa-solid fa-building"></i> Limpieza Comercial</a>
+          <a href="servicios.html#industrial"><i class="fa-solid fa-industry"></i> Limpieza Industrial</a>
+          <a href="servicios.html#vidrios"><i class="fa-solid fa-window-maximize"></i> Limpieza de Vidrios</a>
+          <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+      </div>
+      <a href="ubicacion.html" class="nav-link">Ubicación</a>
+      <a href="checklist.html" class="nav-link">Checklist</a>
+      <a href="index.html#contacto" class="nav-link nav-cta">Cotizar</a>
+      <span class="nav-divider"></span>
+      <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="nav-social" href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="nav-social" href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" id="menuToggleBtn" aria-expanded="false">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
+    <video class="mobile-menu-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="videos/Fondo_Menu.mp4" type="video/mp4">
+    </video>
+    <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="menu-logo">
+        <h3>J &amp; J LUXURY CLEANING</h3>
+        <span>MENÚ PREMIUM</span>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="index.html" class="menu-btn"><i class="fa-solid fa-house"></i> INICIO</a>
+        <a href="nosotros.html" class="menu-btn"><i class="fa-regular fa-circle-user"></i> SOBRE NOSOTROS</a>
+        <div class="services-accordion-wrapper">
+          <a href="servicios.html" class="menu-btn service-link"><i class="fa-solid fa-broom"></i> SERVICIOS</a>
+          <button class="accordion-toggle-btn" type="button" id="toggleServices" aria-label="Ver subcategorías" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="services-dropdown" id="servicesDropdown">
+          <a href="servicios.html#residencial"><i class="fa-solid fa-house"></i> Limpieza Residencial</a>
+          <a href="servicios.html#comercial"><i class="fa-solid fa-building"></i> Limpieza Comercial</a>
+          <a href="servicios.html#industrial"><i class="fa-solid fa-industry"></i> Limpieza Industrial</a>
+          <a href="servicios.html#vidrios"><i class="fa-solid fa-window-maximize"></i> Limpieza de Vidrios</a>
+          <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
+          <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
+        </div>
+        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+        <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
+      </nav>
+      <div class="mobile-menu-cta">
+        <a href="index.html#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
+      </div>
+      <div class="mobile-menu-divider"></div>
+      <div class="mobile-menu-footer">
+        <p>SÍGUENOS</p>
+        <div class="social-icons">
+          <a href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+    <!-- HERO SECTION -->
+    <section class="checklist-hero">
+        <video class="checklist-hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="videos/Fondo_Hero_Checklist.mp4" type="video/mp4">
+        </video>
+        <div class="container hero-inner">
+            <div class="hero-badge">
+                <i class="fa-solid fa-check-circle"></i>
+                Professional Cleaning Standards
+            </div>
+            <h1 class="hero-title">Our Cleaning <span class="accent">Checklist</span></h1>
+            <p class="hero-lead">Know exactly what we clean. Every room, every detail, every visit. Our detailed checklist ensures consistency, quality, and attention to detail on every service.</p>
+            <a href="index.html#contacto" class="hero-cta">
+                <i class="fa-solid fa-arrow-right"></i>
+                Get a Free Quote
+            </a>
+        </div>
+    </section>
+
+    <!-- WHAT'S INCLUDED SECTION -->
+    <section class="included-section">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Complete Transparency</div>
+                <h2 class="section-title">What's Included in Every Clean</h2>
+                <p class="section-sub">Our detailed cleaning checklist helps ensure consistency, quality, and attention to detail on every visit.</p>
+            </div>
+
+            <!-- ROOM TABS -->
+            <div class="room-tabs">
+                <button class="room-tab active" data-room="kitchen">
+                    <i class="fa-solid fa-utensils"></i>
+                    Kitchen
+                </button>
+                <button class="room-tab" data-room="bathrooms">
+                    <i class="fa-solid fa-bath"></i>
+                    Bathrooms
+                </button>
+                <button class="room-tab" data-room="bedrooms">
+                    <i class="fa-solid fa-bed"></i>
+                    Bedrooms
+                </button>
+                <button class="room-tab" data-room="common">
+                    <i class="fa-solid fa-couch"></i>
+                    Common Areas
+                </button>
+            </div>
+
+            <!-- CHECKLIST TABLE -->
+            <div class="checklist-table-container">
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Routine Cleaning</th>
+                            <th>Deep Cleaning</th>
+                            <th>Move-In / Move-Out</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checklistBody">
+                        <!-- Kitchen Content -->
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Remove cobwebs</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Dust light fixtures</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean countertops</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean backsplash</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean microwave</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean stovetop</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean appliance exteriors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean sink</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Wipe tables and chairs</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean cabinet handles</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Empty trash</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Sweep, vacuum and mop floors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Clean oven hood</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="kitchen">
+                            <td>Wipe cabinet exteriors</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+
+                        <!-- Bathrooms Content -->
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean mirrors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean sinks</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean countertops</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean faucets</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean toilets</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean showers</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean tubs</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean shower glass</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean cabinet exteriors</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean light switches</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Clean doors and handles</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Empty trash</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bathrooms" style="display:none;">
+                            <td>Sweep and mop floors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+
+                        <!-- Bedrooms Content -->
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Dust furniture</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Dust lamps</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Dust décor</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Dust blinds</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Clean windowsills</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Clean mirrors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Make beds</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Wipe doors and handles</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Dust baseboards</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Vacuum floors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="bedrooms" style="display:none;">
+                            <td>Mop where applicable</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+
+                        <!-- Common Areas Content -->
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Dust furniture</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Dust décor</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Clean light fixtures</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Clean switches</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Clean door handles</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Clean windowsills</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Dust baseboards</td>
+                            <td><span class="checklist-icon not-included">—</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Vacuum carpets</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Sweep and mop floors</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                        <tr class="room-content" data-room="common" style="display:none;">
+                            <td>Empty trash</td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                            <td><span class="checklist-icon included">✓</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXTRAS SECTION -->
+    <section class="extras-section">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Add-On Services</div>
+                <h2 class="section-title">Extras You Can Add to Any Clean</h2>
+                <p class="section-sub">Enhance your cleaning service with these additional options for a more thorough clean.</p>
+            </div>
+
+            <div class="extras-grid">
+                <div class="extra-card">
+                    <div class="extra-icon">
+                        <i class="fa-solid fa-snowflake"></i>
+                    </div>
+                    <h3 class="extra-title">Inside of the Fridge</h3>
+                    <p class="extra-desc">Detailed cleaning of refrigerator interior, shelves, and drawers.</p>
+                </div>
+                <div class="extra-card">
+                    <div class="extra-icon">
+                        <i class="fa-solid fa-fire-burner"></i>
+                    </div>
+                    <h3 class="extra-title">Inside of the Oven</h3>
+                    <p class="extra-desc">Deep cleaning of oven racks, glass, and internal surfaces.</p>
+                </div>
+                <div class="extra-card">
+                    <div class="extra-icon">
+                        <i class="fa-solid fa-window-maximize"></i>
+                    </div>
+                    <h3 class="extra-title">Interior Windows</h3>
+                    <p class="extra-desc">Professional cleaning of interior glass surfaces and windows.</p>
+                </div>
+                <div class="extra-card">
+                    <div class="extra-icon">
+                        <i class="fa-solid fa-border-all"></i>
+                    </div>
+                    <h3 class="extra-title">Window Tracks & Sills</h3>
+                    <p class="extra-desc">Additional cleaning of tracks, frames, and windowsills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVERY HOME DIFFERENT SECTION -->
+    <section class="different-section">
+        <div class="container different-content">
+            <h2 class="different-title">Every Home is <span class="accent">Different</span></h2>
+            <p class="different-text">Every home has unique cleaning needs. If there is a specific area you'd like us to focus on, let us know when requesting your quote.</p>
+            <a href="index.html#contacto" class="hero-cta">
+                <i class="fa-solid fa-arrow-right"></i>
+                Get a Free Quote
+            </a>
+        </div>
+    </section>
+
+    <!-- TRUST SECTION -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Why Our Checklist Matters</div>
+                <h2 class="section-title">Professional Quality Standards</h2>
+                <p class="section-sub">Our checklist system ensures every service meets our high standards.</p>
+            </div>
+
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="trust-title">Attention to Detail</h3>
+                    <p class="trust-desc">We focus on the details that make a difference in every clean.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="trust-title">Consistent Quality</h3>
+                    <p class="trust-desc">Our checklist helps maintain consistent service standards across all visits.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3 class="trust-title">Professional Service</h3>
+                    <p class="trust-desc">Every visit is organized around a professional cleaning process.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="trust-title">Your Priorities</h3>
+                    <p class="trust-desc">We can focus on the areas that matter most to you and your family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta-section">
+        <div class="container final-cta-content">
+            <h2 class="final-cta-title">Ready for a <span class="accent">Cleaner Home?</span></h2>
+            <p class="final-cta-text">Tell us what your home needs and we'll help you create a cleaning plan that works for you.</p>
+            <a href="index.html#contacto" class="final-cta-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+                Get a Free Quote
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-column">
+            <div class="footer-logo">
+                <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+                <span>J & J Luxury Cleaning Service LLC</span>
+            </div>
+            <p class="footer-tagline">Professional Cleaning Services</p>
+            <p class="footer-description">Premium residential and commercial cleaning services with attention to detail and customer satisfaction.</p>
+            <div class="footer-social">
+                <a href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="nosotros.html">About Us</a></li>
+                <li><a href="servicios.html">Services</a></li>
+                <li><a href="checklist.html">Checklist</a></li>
+                <li><a href="ubicacion.html">Location</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-title">Our Services</h4>
+            <ul class="footer-links">
+                <li><a href="servicios.html#residencial">Residential Cleaning</a></li>
+                <li><a href="servicios.html#comercial">Commercial Cleaning</a></li>
+                <li><a href="servicios.html#industrial">Industrial Cleaning</a></li>
+                <li><a href="servicios.html#vidrios">Glass Cleaning</a></li>
+                <li><a href="servicios.html#desinfeccion">Disinfection</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-title">Contact Us</h4>
+            <ul class="footer-contact">
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+1 (555) 123-4567</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:info@jjluxurycleaning.com">info@jjluxurycleaning.com</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Serving the greater metropolitan area</span>
+                </li>
+            </ul>
+            <a href="index.html#contacto" class="btn-footer-cta">
+                <i class="fa-solid fa-arrow-right"></i>
+                Get a Free Quote
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div class="footer-trust">
+    <div class="trust-grid">
+        <div class="trust-item">
+            <div class="trust-icon-footer">
+                <i class="fa-solid fa-shield-check"></i>
+            </div>
+            <div class="trust-content">
+                <h4>Insured & Bonded</h4>
+                <p>Full coverage protection</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-footer">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="trust-content">
+                <h4>5-Star Rated</h4>
+                <p>Customer satisfaction guaranteed</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-footer">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="trust-content">
+                <h4>Flexible Scheduling</h4>
+                <p>Available 7 days a week</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-footer">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <div class="trust-content">
+                <h4>Eco-Friendly</h4>
+                <p>Safe cleaning products</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-bottom">
+    <div class="footer-bottom-content">
+        <p class="footer-copyright">&copy; 2026 J & J Luxury Cleaning Service LLC. All rights reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <a href="#">Terms of Service</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab switching functionality for room categories
+    document.querySelectorAll('.room-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            document.querySelectorAll('.room-tab').forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Get the selected room
+            const selectedRoom = tab.getAttribute('data-room');
+            
+            // Hide all room content rows
+            document.querySelectorAll('.room-content').forEach(row => {
+                row.style.display = 'none';
+            });
+            
+            // Show only the selected room content
+            document.querySelectorAll(`.room-content[data-room="${selectedRoom}"]`).forEach(row => {
+                row.style.display = 'table-row';
+            });
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    
+    if (menuToggleBtn && mobileMenu) {
+        menuToggleBtn.addEventListener('click', () => {
+            const isExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
+            menuToggleBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.setAttribute('aria-hidden', isExpanded);
+            menuToggleBtn.classList.toggle('active');
+        });
+    }
+    
+    if (mobileMenuClose && mobileMenu) {
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            if (menuToggleBtn) {
+                menuToggleBtn.setAttribute('aria-expanded', 'false');
+                menuToggleBtn.classList.remove('active');
+            }
+        });
+    }
+    
+    // Services accordion toggle for mobile
+    const toggleServices = document.getElementById('toggleServices');
+    const servicesDropdown = document.getElementById('servicesDropdown');
+    
+    if (toggleServices && servicesDropdown) {
+        toggleServices.addEventListener('click', () => {
+            const isExpanded = toggleServices.getAttribute('aria-expanded') === 'true';
+            toggleServices.setAttribute('aria-expanded', !isExpanded);
+            servicesDropdown.classList.toggle('open');
+        });
+    }
+
+    // Services dropdown toggle for mobile
+    const serviciosDropdown = document.getElementById('serviciosDropdown');
+    if (serviciosDropdown) {
+        serviciosDropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900) {
+                serviciosDropdown.classList.toggle('open');
+            }
+        });
+    }
+
+    // Smooth scroll for anchor links (only for same-page anchors)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            // Skip if it's just # or if it's meant to navigate to another page
+            if (href === '#' || href.startsWith('#contacto')) {
+                return; // Let default behavior handle navigation to index.html#contacto
+            }
+            
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
