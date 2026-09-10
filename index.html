@@ -829,7 +829,8 @@
   .mobile-menu-socials-icons a:has(.fa-facebook-f):hover{border-color:#1877F2;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(24,119,242,.55);color:#1877F2;}
   .social-icons a:has(.fa-instagram):hover,
   .mobile-menu-socials-icons a:has(.fa-instagram):hover{border-color:#E4405F;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 22px rgba(225,48,108,.55);color:#E4405F;}
-  @media (max-width:991px){
+  .mobile-menu-bg .mobile-menu-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(5,8,15,.7);z-index:0;}
+    @media (max-width:991px){
     .header-nav{padding:0 16px;}
     .brand{font-size:11px;gap:8px;}
     .brand-logo-img{height:34px;max-width:42px;}
@@ -1046,7 +1047,11 @@
     html,body{overflow-x:hidden !important;max-width:100% !important;}
     .brand-text{white-space:normal !important;overflow-wrap:anywhere;}
   }
-</style>
+video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -1091,9 +1096,12 @@
   </nav>
 
   <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
-    <video class="mobile-menu-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="videos/Fondo_Menu.mp4" type="video/mp4">
-    </video>
+    <div class="mobile-menu-bg">
+      <video autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nobuttons" class="mobile-menu-video" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1; pointer-events: none;">
+        <source src="videos/Fondo_Menu.mp4" type="video/mp4">
+      </video>
+      <div class="mobile-menu-overlay"></div>
+    </div>
     <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
       <i class="fa-solid fa-xmark"></i>
     </button>
@@ -1119,6 +1127,7 @@
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
         <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+        <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
       </nav>
       <div class="mobile-menu-cta">
         <a href="#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
@@ -1139,12 +1148,12 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-content">
-      <h1>
-        DEVUELVE EL<br>
-        <span class="accent">BRILLO</span><br>
-        A TUS<br>
-        ESPACIOS
-      </h1>
+       <h1 class="main-hero-title">
+         DEVUELVE EL<br>
+         <span class="highlight">BRILLO</span><br>
+         A TUS<br>
+         ESPACIOS
+       </h1>
       <p class="lead">Limpieza residencial, comercial e industrial con personal altamente capacitado. Atención <span class="highlight">inmediata</span>, resultados <span class="highlight">garantizados</span> y espacios impecables desde la primera visita.</p>
       <div class="hero-ctas">
         <a class="btn btn-ghost" href="servicios.html">
@@ -1210,16 +1219,17 @@
     </div>
     <div class="hero-right">
       <div class="whatsapp-widget">
-        <div class="whatsapp-header">
-          <img class="whatsapp-profile" src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC">
-          <div class="whatsapp-header-content">
-            <div class="whatsapp-name">J &amp; J Luxury Cleaning Service LLC</div>
-            <div class="whatsapp-status">
-              <span class="whatsapp-status-dot"></span>
-              En línea
-            </div>
-          </div>
-        </div>
+<div class="whatsapp-header">
+           <img class="whatsapp-profile" src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC">
+           <div class="whatsapp-header-content">
+             <div class="whatsapp-name">J &amp; J Luxury Cleaning Service LLC</div>
+             <div class="whatsapp-status">
+               <span class="whatsapp-status-dot"></span>
+               En línea
+             </div>
+           </div>
+           <button class="whatsapp-close-btn" aria-label="Cerrar chat"><i class="fa-solid fa-xmark"></i></button>
+         </div>
         <div class="whatsapp-chat-area">
           <div class="whatsapp-message">
             <div class="whatsapp-message-text">Hola</div>
@@ -1297,6 +1307,7 @@
       <div class="whatsapp-error" id="whatsappError">Por favor escribe tu consulta antes de continuar.</div>
     </div>
   </div>
+  <div class="whatsapp-modal-overlay"></div>
 </section>
 
 <section id="cta-final">
@@ -1322,11 +1333,11 @@
             <i class="fa-solid fa-check"></i>
             <span>SERVICIO PROFESIONAL</span>
           </div>
-          <h2 class="cta-title">
-            ¿NECESITAS<br>
-            SERVICIOS DE<br>
-            <span class="accent">LIMPIEZA</span>?
-          </h2>
+           <h2 class="cta-title hero-title">
+             ¿NECESITAS<br>
+             SERVICIOS DE<br>
+             <span class="highlight">LIMPIEZA</span>?
+           </h2>
           <p class="cta-subtitle">Solicita tu cotización gratuita ahora y transforma tus espacios.</p>
           <div class="cta-benefits">
             <div class="benefit-item">
@@ -1364,7 +1375,7 @@
 <section id="como-funciona">
   <div class="wrap">
     <div class="section-head">
-      <h2>¿CÓMO <span class="accent">FUNCIONA?</span></h2>
+       <h2 class="section-title">¿CÓMO <span class="highlight">FUNCIONA?</span></h2>
       <p>Cuatro pasos simples para obtener nuestros servicios de limpieza.</p>
     </div>
     <div class="process-timeline">
@@ -1426,7 +1437,7 @@
 <section id="por-que-elegirnos">
   <div class="wrap">
     <div class="section-head">
-      <h2>¿Por Qué <span class="accent">Elegirnos?</span></h2>
+       <h2 class="section-title">¿Por Qué <span class="highlight">Elegirnos?</span></h2>
       <p>Razones por las que somos tu mejor opción en limpieza profesional.</p>
     </div>
     <div class="engage-grid">
@@ -1481,7 +1492,7 @@
             </svg>
             <span>SERVICIO PROFESIONAL</span>
           </div>
-          <h2>¿LISTO PARA UN<br><span class="accent">ESPACIO IMPECABLE</span>?</h2>
+           <h2 class="hero-title">¿LISTO PARA UN<br><span class="highlight">ESPACIO IMPECABLE</span>?</h2>
           <p>Deja tus espacios en las mejores manos.</p>
           <span>Solicita tu cotización gratuita y déjanos transformar tu espacio.</span>
         </div>
@@ -1509,7 +1520,7 @@
 <section id="testimonios">
   <div class="wrap">
     <div class="section-head">
-      <h2>Lo que dicen nuestros <span class="accent">CLIENTES</span></h2>
+       <h2 class="section-title">Lo que dicen nuestros <span class="highlight">CLIENTES</span></h2>
       <p>Experiencias reales de nuestros servicios de limpieza.</p>
       <div class="section-separator"></div>
     </div>
@@ -1593,7 +1604,7 @@
 <section id="faq">
   <div class="wrap">
     <div class="section-head">
-      <h2>Preguntas <span class="accent">Frecuentes</span></h2>
+       <h2 class="section-title">Preguntas <span class="highlight">Frecuentes</span></h2>
       <p>Respuestas a las dudas más comunes sobre nuestros servicios.</p>
       <div class="section-separator"></div>
     </div>
@@ -1651,11 +1662,11 @@
             <i class="fa-solid fa-file-invoice"></i>
             <span>COTIZACIÓN GRATUITA</span>
           </div>
-          <h2 class="form-title">
-            SOLICITA TU<br>
-            <span class="accent">COTIZACIÓN</span><br>
-            GRATUITA
-          </h2>
+           <h2 class="form-title title-page">
+             SOLICITA TU<br>
+             <span class="highlight">COTIZACIÓN</span><br>
+             GRATUITA
+           </h2>
           <p class="form-subtitle">Cuéntanos qué necesitas y uno de nuestros asesores te contactará para ofrecerte la mejor solución de limpieza para tus espacios.</p>
           <div class="form-benefits">
             <div class="form-benefit">
@@ -1841,11 +1852,10 @@
 <footer class="main-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <!-- Columna 1: Marca -->
       <div class="footer-column">
         <div class="footer-brand">
           <div class="footer-logo">
-<img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
+            <img src="img/Logo.png" alt="J & J Luxury Cleaning Service LLC" class="brand-logo-img">
             <span>J &amp; J LUXURY CLEANING SERVICE LLC</span>
           </div>
           <p class="footer-tagline">Servicios Profesionales de Limpieza</p>
@@ -1863,22 +1873,18 @@
           </a>
         </div>
       </div>
-
-      <!-- Columna 2: Navegación -->
       <div class="footer-column">
         <h3 class="footer-title">ENLACES RÁPIDOS</h3>
         <ul class="footer-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="#como-funciona">Cómo funciona</a></li>
-          <li><a href="#por-que-elegirnos">Por qué elegirnos</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#faq">Preguntas frecuentes</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+          <li><a href="index.html#por-que-elegirnos">Por qué elegirnos</a></li>
+          <li><a href="index.html#testimonios">Testimonios</a></li>
+          <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </div>
-
-      <!-- Columna 3: Servicios -->
       <div class="footer-column">
         <h3 class="footer-title">NUESTROS SERVICIOS</h3>
         <ul class="footer-links">
@@ -1890,8 +1896,6 @@
           <li><a href="servicios.html">Mantenimiento</a></li>
         </ul>
       </div>
-
-      <!-- Columna 4: Contacto -->
       <div class="footer-column">
         <h3 class="footer-title">CONTACTO</h3>
         <ul class="footer-contact">
@@ -1918,12 +1922,11 @@
   </div>
 </footer>
 
-<!-- Barra de Confianza -->
 <section class="footer-trust">
   <div class="trust-grid">
     <div class="trust-item">
       <div class="trust-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
           <circle cx="8.5" cy="7" r="4"/>
           <polyline points="17 11 19 13 23 9"/>
@@ -1936,7 +1939,7 @@
     </div>
     <div class="trust-item">
       <div class="trust-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
         </svg>
       </div>
@@ -1947,7 +1950,7 @@
     </div>
     <div class="trust-item">
       <div class="trust-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
           <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
@@ -1959,7 +1962,7 @@
     </div>
     <div class="trust-item">
       <div class="trust-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
       </div>
@@ -1971,7 +1974,6 @@
   </div>
 </section>
 
-<!-- Footer Inferior -->
 <footer class="footer-bottom">
   <div class="footer-bottom-content">
     <p class="footer-copyright">© 2026 J &amp; J LUXURY CLEANING SERVICE LLC · Todos los derechos reservados.</p>
@@ -2731,13 +2733,74 @@ document.addEventListener('DOMContentLoaded', function(){
   lightbox.querySelector('.logo-lightbox-img').addEventListener('click', function(e){
     e.stopPropagation();
   });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-});
-</script>
+document.addEventListener('keydown', function(e){
+     if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+       lightbox.classList.remove('open');
+       document.body.style.overflow = '';
+     }
+   });
+
+/* WhatsApp modal: abrir/cerrar en móvil */
+    (function(){
+      const btnWhatsappHero = document.querySelector('.hero-ctas .btn-primary');
+      const whatsappWidget = document.querySelector('.whatsapp-widget');
+      const overlay = document.querySelector('.whatsapp-modal-overlay');
+      const closeBtn = document.querySelector('.whatsapp-close-btn');
+
+      function openWhatsappModal(){
+        whatsappWidget.classList.add('active-modal');
+        overlay.classList.add('active-modal');
+        document.body.classList.add('no-scroll');
+      }
+
+      function closeWhatsappModal(){
+        whatsappWidget.classList.remove('active-modal');
+        overlay.classList.remove('active-modal');
+        document.body.classList.remove('no-scroll');
+      }
+
+      if (btnWhatsappHero && whatsappWidget && overlay) {
+        btnWhatsappHero.addEventListener('click', function(e){
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            openWhatsappModal();
+          }
+        });
+      }
+
+      if (overlay) {
+        overlay.addEventListener('click', closeWhatsappModal);
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeWhatsappModal);
+      }
+
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && whatsappWidget.classList.contains('active-modal')) {
+          closeWhatsappModal();
+        }
+      });
+})();
+
+ /* Video autoplay fallback */
+ (function(){
+   const bgVideo = document.getElementById('hero-video');
+   if(bgVideo){
+     bgVideo.muted = true;
+     bgVideo.play().catch(function(error){
+       console.log("Autoplay bloqueado por el navegador:", error);
+     });
+   }
+ })();
+ });
+document.addEventListener('DOMContentLoaded', () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(v => {
+        v.muted = true;
+        v.play().catch(err => console.log('Autoplay ajustado:', err));
+      });
+    });
+  </script>
 </body>
 </html>

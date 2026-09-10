@@ -294,18 +294,9 @@
     background-attachment:fixed;
   }
   @media (max-width:768px){
-    .location-section{background-attachment:scroll;}
+.location-section{background-attachment:scroll;}
   }
-  .location-section::before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:1px;
-    background:linear-gradient(90deg, transparent, rgba(56,189,248,.3), transparent);
-  }
-
+  
   /* MAIN LAYOUT */
   .location-layout{
     display:grid;
@@ -1261,7 +1252,8 @@
   .footer-separator{color:rgba(163,176,195,.5);font-size:12px;}
 
   /* RESPONSIVE */
-  @media (max-width:1200px){
+.mobile-menu-bg .mobile-menu-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(5,8,15,.7);z-index:0;}
+   @media (max-width:1200px){
     .location-layout{
       grid-template-columns:1fr;
       grid-template-areas:
@@ -1934,26 +1926,40 @@
     background-image: none !important;
     background-color: #050810 !important;
   }
-  .mobile-menu-video{
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    z-index: 0;
-    pointer-events: none;
-    display: block;
-    background: url('img/Fondo_Menu.webp') no-repeat center center / cover;
-  }
-  .mobile-menu-overlay > .mobile-menu-close,
-  .mobile-menu-overlay > .mobile-menu-content{
-    position: relative;
-    z-index: 2;
-  }
-  @media (max-width: 768px){
-    .mobile-menu-video{ width: 100%; height: 100%; max-width: 100%; object-fit: cover; }
-  }
+.mobile-menu-video{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: -1 !important;
+      pointer-events: none !important;
+      display: block;
+      background: url('img/Fondo_Menu.webp') no-repeat center center / cover;
+    }
+#hero-video{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-1 !important;
+      pointer-events:none !important;
+      display:block;
+    }
+   #hero-video::-webkit-media-controls{display:none !important;}
+   #hero-video::-webkit-media-controls-enclosure{display:none !important;}
+   #hero-video::-webkit-media-controls-panel{display:none !important;}
+   .mobile-menu-overlay > .mobile-menu-close,
+   .mobile-menu-overlay > .mobile-menu-content{
+     position: relative;
+     z-index: 2;
+   }
+   @media (max-width: 768px){
+     .mobile-menu-video{ width: 100%; height: 100%; max-width: 100%; object-fit: cover; pointer-events:none !important; }
+   }
   @media (max-width: 430px){ .mobile-menu-video{ object-position: center center; } }
   @media (max-width: 414px){ .mobile-menu-video{ object-position: center center; } }
   @media (max-width: 390px){ .mobile-menu-video{ object-fit: cover; } }
@@ -2056,7 +2062,11 @@
     .location-service{ font-size: 11px; }
     .btn-edit{ padding: 9px 10px; font-size: 11px; }
   }
-</style>
+video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -2101,9 +2111,12 @@
   </nav>
 
   <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
-    <video class="mobile-menu-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="videos/Fondo_Menu.mp4" type="video/mp4">
-    </video>
+    <div class="mobile-menu-bg">
+      <video autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nobuttons" class="mobile-menu-video" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1; pointer-events: none;">
+        <source src="videos/Fondo_Menu.mp4" type="video/mp4">
+      </video>
+      <div class="mobile-menu-overlay"></div>
+    </div>
     <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
       <i class="fa-solid fa-xmark"></i>
     </button>
@@ -2129,6 +2142,7 @@
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
         <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+        <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
       </nav>
       <div class="mobile-menu-cta">
         <a href="#" class="btn-cotizar-mobile" id="mobileCtaUbicacion"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
@@ -2153,7 +2167,7 @@
         <div class="left-col">
           <div class="hero-content">
             <span class="hero-badge"><i class="fa-solid fa-location-dot"></i> UBICACIÓN Y COBERTURA</span>
-            <h1 class="hero-title">ENCUENTRA NUESTRO<br><span class="accent">SERVICIO CERCA DE TI</span></h1>
+            <h1 class="main-hero-title">ENCUENTRA NUESTRO<br><span class="highlight">SERVICIO CERCA DE TI</span></h1>
             <p class="hero-desc">Descubre nuestra cobertura y encuentra los lugares donde podemos llevar nuestros servicios de limpieza profesional.</p>
             <p class="hero-desc-secondary">Estamos ubicados en Lakewood, Washington, y atendemos clientes en ciudades y zonas cercanas.</p>
           </div>
@@ -2830,5 +2844,14 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('video');
+  videos.forEach(v => {
+    v.muted = true;
+    v.play().catch(err => console.log('Autoplay ajustado:', err));
+  });
+});
+</script>
 </body>
 </html>

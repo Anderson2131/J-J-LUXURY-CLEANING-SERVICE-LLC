@@ -155,71 +155,101 @@
 
   /* HERO ABOUT */
   .about-hero{
-    position:relative;
-    padding:140px 0 90px;
-    background:
-      linear-gradient(rgba(8,18,32,.88), rgba(8,18,32,.92)),
-      url('img/Fondo_Como Funciona.webp') center/cover no-repeat;
-    border-bottom:1px solid rgba(56,189,248,.12);
-    overflow:hidden;
+    position:relative !important;
+    overflow:hidden !important;
+    min-height:100vh !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:80px 20px 40px 20px !important;
+    box-sizing:border-box !important;
   }
-  .about-hero::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(56,189,248,.35),transparent);
+  .hero-bg-video{
+    position:absolute !important;
+    top:50% !important;
+    left:50% !important;
+    min-width:100% !important;
+    min-height:100% !important;
+    width:auto !important;
+    height:auto !important;
+    transform:translate(-50%,-50%) !important;
+    object-fit:cover !important;
+    z-index:1 !important;
+    pointer-events:none !important;
   }
-  .about-hero-inner{
-    display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;
+  .about-hero-container.single-column{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    max-width:850px !important;
+    width:90% !important;
+    margin:0 auto !important;
+    position:relative !important;
+    z-index:2 !important;
   }
-  .about-hero-content{max-width:620px;}
-  .about-badge{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
-    color:#25A7FF;text-transform:uppercase;letter-spacing:2px;
-    background:rgba(37,167,255,.1);border:1px solid rgba(37,167,255,.3);
-    padding:8px 16px;border-radius:100px;margin-bottom:20px;
+  .about-hero-text{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    width:100% !important;
   }
-  .about-title{
-    font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,52px);
-    font-weight:800;line-height:1.1;color:#fff;letter-spacing:-1.5px;margin-bottom:18px;
+   .sub-tag{
+     display:inline-block;
+     font-family:'Inter',sans-serif;
+     font-size:0.85rem;font-weight:700;
+     color:#ffffff;text-transform:uppercase;letter-spacing:1.5px;
+     background:rgba(0,0,0,0.65);border:1px solid rgba(0,168,255,0.4);
+     padding:6px 16px;border-radius:20px;margin-bottom:15px;
+     backdrop-filter:blur(4px);box-shadow:0 4px 10px rgba(0,0,0,0.3);
+   }
+    .main-hero-title{
+      font-family:'Manrope',sans-serif;font-size:3rem;
+      font-weight:900;line-height:1.15;color:#fff;
+      margin-bottom:20px;text-transform:uppercase;white-space:normal;
+      filter:none !important;
+      -webkit-text-stroke:0px transparent !important;
+      text-shadow:
+        1.5px 1.5px 0 #000000,
+       -1.5px 1.5px 0 #000000,
+        1.5px -1.5px 0 #000000,
+       -1.5px -1.5px 0 #000000,
+        0px 1.5px 0 #000000,
+        0px -1.5px 0 #000000,
+        1.5px 0px 0 #000000,
+       -1.5px 0px 0 #000000 !important;
+    }
+    .main-hero-title .highlight{
+      color:#00a8ff !important;
+      filter:none !important;
+      -webkit-text-stroke:0px transparent !important;
+    }
+   .hero-description{
+     color:#111827 !important;font-weight:700;
+     font-size:1.1rem;line-height:1.6;max-width:750px;
+     margin:0 auto 35px auto !important;
+     text-shadow:0 1px 2px rgba(255,255,255,0.6);
+   }
+  .hero-stats-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:700px;margin:0 auto;
   }
-  .about-title .accent{
-    background:linear-gradient(135deg,#7DD3FC 0%, #38BDF8 50%, #25A7FF 100%);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;color:transparent;
-    text-shadow:0 0 30px rgba(56,189,248,.3);
+  .stat-card{
+    background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.1);
+    border-radius:14px;padding:15px 10px;text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
   }
-  .about-lead{
-    font-family:'Inter',sans-serif;font-size:17px;color:rgba(255,255,255,.78);
-    line-height:1.7;margin-bottom:24px;
+  .stat-card strong{
+    font-family:'Manrope',sans-serif;font-size:1.8rem;font-weight:800;
+    color:#00a8ff;line-height:1;margin-bottom:6px;display:block;
   }
-  .about-hero-stats{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;
-  }
-  .about-stat{
-    background:rgba(15,23,42,.6);border:1px solid rgba(56,189,248,.18);
-    border-radius:14px;padding:18px 14px;text-align:center;
-  }
-  .about-stat-num{
-    font-family:'Manrope',sans-serif;font-size:30px;font-weight:800;
-    color:#fff;line-height:1;margin-bottom:6px;
-    background:linear-gradient(135deg,#38BDF8,#25A7FF);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .about-stat-label{
-    font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(255,255,255,.7);
+  .stat-card span{
+    font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:700;color:#1a202c;
     text-transform:uppercase;letter-spacing:1px;
   }
-  .about-hero-visual{
-    position:relative;border-radius:24px;overflow:hidden;
-    border:1px solid rgba(56,189,248,.18);
-    box-shadow:0 30px 80px rgba(0,0,0,.5);
-    aspect-ratio:4/5;max-height:560px;
-  }
-  .about-hero-visual img{width:100%;height:100%;object-fit:cover;object-position:70% 45% !important;}
-  .about-hero-visual::after{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(180deg,transparent 50%,rgba(8,18,32,.55) 100%);
-    pointer-events:none;
+  .about-hero-image{
+    display:none !important;
   }
 
   /* SECTION SHARED */
@@ -228,10 +258,6 @@
     background-color:var(--bg-main);
   }
   .about-section.alt{background-color:#0B1724;}
-  .about-section::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),transparent);
-  }
   /* MISSION / VISION - dedicated background image */
   .about-mv{
     position:relative;
@@ -264,7 +290,7 @@
     pointer-events:none;
   }
   .about-values > .container{position:relative;z-index:2;}
-  .section-head{text-align:center;max-width:720px;margin:0 auto 50px;}
+  .section-head{text-align:center;max-width:720px;margin:0 auto 50px;display:flex;flex-direction:column;align-items:center;}
   .section-eyebrow{
     display:inline-flex;align-items:center;gap:8px;
     font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
@@ -276,9 +302,32 @@
   .section-title{
     font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);
     font-weight:800;line-height:1.15;color:#fff;letter-spacing:-1px;margin-bottom:14px;
+    text-align:center;
   }
   .section-sub{
     font-family:'Inter',sans-serif;font-size:15.5px;color:rgba(255,255,255,.7);line-height:1.6;
+    text-align:center;margin:0 auto;
+  }
+
+  /* MISSION / VISION - Centered header */
+  .about-mv .section-head{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 40px auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .about-mv .section-eyebrow{
+    margin:0 auto 10px auto;
+  }
+  .about-mv .section-title{
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .about-mv .section-sub{
+    text-align:center;
+    margin:0 auto;
   }
 
   /* MISSION / VISION */
@@ -712,19 +761,20 @@
   .logo-lightbox-img{width:min(360px,70vw);height:min(360px,70vw);border-radius:50%;object-fit:cover;cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 6px rgba(56,189,248,.25);animation:logoLightboxPop .25s cubic-bezier(.2,.9,.3,1.2);background:#0B1426;}
   @keyframes logoLightboxPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
 
-  /* RESPONSIVE */
-  @media (max-width:1024px){
-    .about-hero-inner{grid-template-columns:1fr;gap:36px;}
-    .about-hero-visual{max-height:420px;aspect-ratio:4/3;}
-    .story-grid{grid-template-columns:1fr;gap:28px;}
+.mobile-menu-bg .mobile-menu-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(5,8,15,.7);z-index:0;}
+   /* RESPONSIVE */
+    @media (max-width:1024px){
+      .about-hero-container.single-column{max-width:90%;}
+      .about-hero-image{display:none !important;}
+      .story-grid{grid-template-columns:1fr;gap:28px;}
     .values-grid{grid-template-columns:repeat(2,1fr);}
     .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;}
     .trust-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
     .trust-item:not(:last-child)::after{display:none;}
   }
-  @media (max-width:600px){
-    .about-hero-visual{max-height:340px;aspect-ratio:16/10;margin:0 auto;max-width:480px;}
-  }
+   @media (max-width:600px){
+     .about-hero-image{display:none !important;}
+   }
   @media (max-width:1024px){
     .header-social,.header-divider{display:none;}
     .nav-cta{
@@ -787,14 +837,20 @@
     .footer-bottom-content{flex-direction:column;text-align:center;}
     .footer-bottom-links{justify-content:center;}
   }
-  @media (max-width:600px){
-    .container{width:calc(100% - 30px);}
-    .about-hero{padding:120px 0 70px;}
-    .about-hero-stats{grid-template-columns:repeat(3,1fr);gap:10px;}
-    .about-stat{padding:14px 8px;}
-    .about-stat-num{font-size:24px;}
-    .about-section{padding:70px 0;}
-    .about-cta{padding:60px 0;}
+    @media (max-width:992px){
+      .about-hero-container.single-column{max-width:95%;}
+      .about-hero-text{align-items:center;text-align:center;}
+      .about-hero-image{display:none !important;}
+   }
+   @media (max-width:600px){
+     .container{width:calc(100% - 30px);}
+     .about-hero{min-height:100vh;padding-top:80px;padding-bottom:40px;}
+     .main-hero-title{font-size:2.1rem !important;}
+     .hero-stats-grid{grid-template-columns:1fr;gap:12px;}
+     .stat-card{padding:14px 8px;}
+     .stat-card strong{font-size:24px;}
+     .about-section{padding:70px 0;}
+     .about-cta{padding:60px 0;}
   }
   @media (max-width:480px){
     header nav{padding:0 16px;}
@@ -806,8 +862,9 @@
     .footer-title{font-size:16px;}
     .footer-links a,.footer-contact a,.footer-contact span{font-size:14px;}
     .btn-footer-cta{width:100%;}
-    .values-grid{grid-template-columns:1fr;}
-    .mv-grid{grid-template-columns:1fr;}
+     .values-grid{grid-template-columns:1fr;}
+      .about-hero-container.single-column{grid-template-columns:1fr;}
+     .mv-grid{grid-template-columns:1fr;}
     .value-icon{width:60px;height:60px;font-size:23px;border-radius:14px;}
     .value-card{padding:26px 22px 24px;}
     .story-cards{grid-template-columns:1fr;}
@@ -815,7 +872,11 @@
     .story-stat-divider{width:60%;height:1px;
       background:linear-gradient(90deg, transparent, rgba(56,189,248,.3), transparent);}
   }
-</style>
+video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -860,9 +921,12 @@
   </nav>
 
   <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
-    <video class="mobile-menu-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="videos/Fondo_Menu.mp4" type="video/mp4">
-    </video>
+    <div class="mobile-menu-bg">
+      <video autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nobuttons" class="mobile-menu-video" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1; pointer-events: none;">
+        <source src="videos/Fondo_Menu.mp4" type="video/mp4">
+      </video>
+      <div class="mobile-menu-overlay"></div>
+    </div>
     <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
       <i class="fa-solid fa-xmark"></i>
     </button>
@@ -888,6 +952,7 @@
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
         <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+        <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
       </nav>
       <div class="mobile-menu-cta">
         <a href="index.html#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
@@ -909,29 +974,20 @@
 
   <!-- HERO -->
   <section class="about-hero">
-    <div class="container">
-      <div class="about-hero-inner">
-        <div class="about-hero-content">
-          <span class="about-badge"><i class="fa-solid fa-sparkles"></i> Sobre nosotros</span>
-          <h1 class="about-title">Limpieza profesional con un toque de <span class="accent">lujo y detalle</span></h1>
-          <p class="about-lead">En J &amp; J Luxury Cleaning Service LLC creemos que un espacio limpio transforma la vida de las personas. Por eso ofrecemos servicios de limpieza premium para hogares, oficinas y negocios, con un equipo capacitado, productos de calidad y un compromiso real con cada cliente.</p>
-          <div class="about-hero-stats">
-            <div class="about-stat">
-              <div class="about-stat-num">+5</div>
-              <div class="about-stat-label">Años de experiencia</div>
-            </div>
-            <div class="about-stat">
-              <div class="about-stat-num">+1K</div>
-              <div class="about-stat-label">Clientes felices</div>
-            </div>
-            <div class="about-stat">
-              <div class="about-stat-num">100%</div>
-              <div class="about-stat-label">Compromiso</div>
-            </div>
-          </div>
-        </div>
-        <div class="about-hero-visual">
-          <img src="img/limpieza_residencial.webp" alt="Servicio premium de limpieza residencial">
+    <video class="hero-bg-video" autoplay loop muted playsinline preload="metadata">
+      <source src="videos/Fondo_Nosotros_Hero.mp4" type="video/mp4">
+    </video>
+    <div class="about-hero-container single-column">
+      <div class="about-hero-text">
+        <span class="sub-tag">SOBRE NOSOTROS</span>
+        <h1 class="main-hero-title">LIMPIEZA PROFESIONAL<br>CON UN TOQUE DE <span class="highlight">LUJO Y DETALLE</span></h1>
+        <p class="hero-description">
+          En J &amp; J Luxury Cleaning Service LLC creemos que un espacio limpio transforma la vida de las personas. Por eso ofrecemos servicios de limpieza premium para hogares, oficinas y negocios, con un equipo capacitado, productos de calidad y un compromiso real con cada cliente.
+        </p>
+        <div class="hero-stats-grid">
+          <div class="stat-card"><strong>+5</strong><span>AÑOS DE EXPERIENCIA</span></div>
+          <div class="stat-card"><strong>+1K</strong><span>CLIENTES FELICES</span></div>
+          <div class="stat-card"><strong>100%</strong><span>COMPROMISO</span></div>
         </div>
       </div>
     </div>
@@ -1328,5 +1384,14 @@
   });
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('video');
+  videos.forEach(v => {
+    v.muted = true;
+    v.play().catch(err => console.log('Autoplay ajustado:', err));
+  });
+});
+</script>
 </body>
 </html>

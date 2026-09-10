@@ -427,8 +427,9 @@
     to{opacity:1;transform:translateX(-50%) translateY(0);}
   }
 
-  /* RESPONSIVE - Mobile menu */
-  @media (max-width:900px){
+.mobile-menu-bg .mobile-menu-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(5,8,15,.7);z-index:0;}
+    /* RESPONSIVE - Mobile menu */
+    @media (max-width:900px){
     .header-social,.header-divider{display:none;}
     .nav-cta{
       display:none;
@@ -538,7 +539,11 @@
     /* Ocultar los header-social originales en móvil */
     .nav-cta .header-social,.nav-cta .header-divider{display:none;}
   }
-</style>
+video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -583,9 +588,12 @@
   </nav>
 
   <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
-    <video class="mobile-menu-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="videos/Fondo_Menu.mp4" type="video/mp4">
-    </video>
+    <div class="mobile-menu-bg">
+      <video autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nobuttons" class="mobile-menu-video" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1; pointer-events: none;">
+        <source src="videos/Fondo_Menu.mp4" type="video/mp4">
+      </video>
+      <div class="mobile-menu-overlay"></div>
+    </div>
     <button class="mobile-menu-close" type="button" aria-label="Cerrar menú" id="mobileMenuClose">
       <i class="fa-solid fa-xmark"></i>
     </button>
@@ -611,6 +619,7 @@
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
         <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
+        <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
       </nav>
       <div class="mobile-menu-cta">
         <a href="#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
@@ -632,7 +641,7 @@
   <div class="wrap services-layout">
     <div class="services-left">
       <div class="section-head">
-        <h2>Servicios de<br><span class="accent">Limpieza</span></h2>
+        <h2 class="section-title">Servicios de<br><span class="highlight">Limpieza</span></h2>
         <p>Soluciones integrales de limpieza para espacios impecables con <span class="highlight">personal certificado</span> y resultados <span class="highlight">garantizados</span>.</p>
       </div>
       <div class="services-features">
@@ -1145,7 +1154,7 @@
             </svg>
             <span>SERVICIO PROFESIONAL</span>
           </div>
-          <h2>¿LISTO PARA UN<br><span class="accent">ESPACIO IMPECABLE</span>?</h2>
+           <h2 class="hero-title">¿LISTO PARA UN<br><span class="highlight">ESPACIO IMPECABLE</span>?</h2>
           <p>Deja tus espacios en las mejores manos.</p>
           <span>Solicita tu cotización gratuita y déjanos transformar tu espacio.</span>
         </div>
@@ -1194,11 +1203,11 @@
             <i class="fa-solid fa-file-invoice"></i>
             <span>COTIZACIÓN GRATUITA</span>
           </div>
-          <h2 class="form-title">
-            SOLICITA TU<br>
-            <span class="accent">COTIZACIÓN</span><br>
-            GRATUITA
-          </h2>
+           <h2 class="form-title title-page">
+             SOLICITA TU<br>
+             <span class="highlight">COTIZACIÓN</span><br>
+             GRATUITA
+           </h2>
           <p class="form-subtitle">Cuéntanos qué necesitas y uno de nuestros asesores te contactará para ofrecerte la mejor solución de limpieza para tus espacios.</p>
           <div class="form-benefits">
             <div class="form-benefit">
@@ -2500,6 +2509,13 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('DOMContentLoaded', openFromHash);
   window.addEventListener('hashchange', openFromHash);
 })();
-</script>
+document.addEventListener('DOMContentLoaded', () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(v => {
+        v.muted = true;
+        v.play().catch(err => console.log('Autoplay ajustado:', err));
+      });
+    });
+  </script>
 </body>
 </html>
