@@ -8020,6 +8020,26 @@ h1, h2 {
    -1.5px 0px 0 #000000 !important;
 }
 
+.checklist-hero .hero-title,
+.checklist-hero h1,
+.checklist-hero h2 {
+  color: #FFFFFF !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.8rem,6vw,4.5rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 20px !important;
+  -webkit-text-stroke: 0px transparent !important;
+  text-shadow: none !important;
+}
+
+.checklist-hero .hero-title .highlight,
+.checklist-hero h1 .highlight {
+  color: #00a8ff !important;
+  -webkit-text-stroke: 0px transparent !important;
+  text-shadow: 0 0 15px rgba(0,168,255,0.4) !important;
+}
+
 .main-hero-title .highlight,
 .hero-title .highlight,
 .section-title .highlight,
@@ -8046,7 +8066,19 @@ h1, h2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Checklist Hero - Eliminar recuadro, texto sobre video */
+/* Checklist Hero - Overlay and text styling */
+.checklist-hero .hero-overlay,
+.hero-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
 .checklist-hero .hero-content-box,
 .checklist-hero .hero-card,
 .hero-content-box {
@@ -8061,50 +8093,74 @@ h1, h2 {
   text-align: center !important;
 }
 
+.checklist-hero .hero-title,
+.checklist-hero h1,
+.checklist-hero h2 {
+  color: #FFFFFF !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.8rem,6vw,4.5rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 20px !important;
+  text-shadow:
+    2px 2px 0 rgba(0,0,0,0.5),
+   -2px 2px 0 rgba(0,0,0,0.5),
+    2px -2px 0 rgba(0,0,0,0.5),
+   -2px -2px 0 rgba(0,0,0,0.5),
+    0px 2px 4px rgba(0,0,0,0.6) !important;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.8) !important;
+}
+
+.checklist-hero .hero-title .highlight,
+.checklist-hero .hero-title .accent,
+.checklist-hero h1 .highlight {
+  color: #00a8ff !important;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.8) !important;
+  text-shadow:
+    2px 2px 0 rgba(0,0,0,0.5),
+   -2px 2px 0 rgba(0,0,0,0.5),
+    2px -2px 0 rgba(0,0,0,0.5),
+   -2px -2px 0 rgba(0,0,0,0.5),
+    0 0 20px rgba(0,168,255,0.5),
+    0 0 40px rgba(0,168,255,0.3) !important;
+}
+
+.checklist-hero .hero-lead,
+.checklist-hero .hero-checklist-text,
 .checklist-hero p,
 .checklist-hero .hero-subtitle,
-.checklist-hero .hero-description,
-.checklist-hero .hero-lead,
-.checklist-hero .hero-checklist-text {
-  color: #111827 !important;
-  font-weight: 700 !important;
+.checklist-hero .hero-description {
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
   font-size: 1.1rem !important;
   line-height: 1.6 !important;
   max-width: 750px !important;
   margin: 15px auto 30px auto !important;
-  text-shadow:
-    0.5px 0.5px 0 #ffffff,
-   -0.5px 0.5px 0 #ffffff,
-    0.5px -0.5px 0 #ffffff,
-   -0.5px -0.5px 0 #ffffff,
-    0px 0.5px 0 #ffffff,
-    0px -0.5px 0 #ffffff,
-    0.5px 0px 0 #ffffff,
-   -0.5px 0px 0 #ffffff !important;
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.8) !important;
+  -webkit-text-stroke: 0px transparent !important;
 }
 
 .checklist-hero .hero-secondary,
 .checklist-hero .hero-buttons a:last-child {
-  background: rgba(17, 24, 39, 0.85) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  padding: 12px 24px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  padding: 14px 24px !important;
   border-radius: 8px !important;
   font-weight: 700 !important;
-  font-size: 0.95rem !important;
+  font-size: 14px !important;
   letter-spacing: 0.5px !important;
   text-transform: uppercase !important;
   backdrop-filter: blur(5px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.3s ease !important;
 }
 
 .checklist-hero .hero-secondary:hover,
 .checklist-hero .hero-buttons a:last-child:hover {
-  background: #00a8ff !important;
-  color: #ffffff !important;
-  border-color: #00a8ff !important;
-  box-shadow: 0 6px 18px rgba(0, 168, 255, 0.4) !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3) !important;
 }
 
 .checklist-hero .hero-buttons,
