@@ -170,173 +170,278 @@
             to{opacity:1;transform:translateX(-50%) translateY(0);}
         }
 
-        /* HERO SECTION */
+/* HERO SECTION */
 .checklist-hero{
-             position:relative;
-             width:100%;
-             min-height:100svh;
-             min-height:100dvh;
-             display:flex;
-             align-items:center;
-             justify-content:center;
-             overflow:hidden;
-             padding-top:env(safe-area-inset-top, 0px);
-             padding-bottom:env(safe-area-inset-bottom, 0px);
-             background:#080f1a;
-             background-size:cover;
-             background-position:center;
-             background-repeat:no-repeat;
-         }
-.hero-bg-container{
-                position:absolute;
-                top:0;
-                left:0;
-                width:100%;
-                height:100%;
-                overflow:hidden;
-                z-index:0;
+                position:relative !important;
+                width:100% !important;
+                height:100vh !important;
+                height:100dvh !important;
+                display:flex !important;
+                align-items:center !important;
+                justify-content:center !important;
+                padding:60px 16px 20px 16px !important;
+                box-sizing:border-box !important;
+                overflow:hidden !important;
             }
-          .hero-video{
-                position:absolute;
-                top:0;
-                left:0;
-                width:100%;
-                height:100%;
-                object-fit:cover;
-                object-position:center;
-                z-index:0;
-                pointer-events:none !important;
-            }
-          .hero-video::-webkit-media-controls{display:none !important;}
-          .hero-video::-webkit-media-controls-enclosure{display:none !important;}
-          .hero-video::-webkit-media-controls-panel{display:none !important;}
+  .hero-bg-container{
+                  position:absolute !important;
+                  top:0 !important;
+                  left:0 !important;
+                  width:100% !important;
+                  height:100% !important;
+                  overflow:hidden !important;
+                  z-index:0 !important;
+              }
+            .hero-video{
+                  position:absolute !important;
+                  top:50% !important;
+                  left:50% !important;
+                  transform:translate(-50%,-50%) !important;
+                  min-width:100% !important;
+                  min-height:100% !important;
+                  width:100% !important;
+                  height:100% !important;
+                  object-fit:cover !important;
+                  object-position:center !important;
+                  z-index:1 !important;
+              }
+            .hero-video::-webkit-media-controls{display:none !important;}
+            .hero-video::-webkit-media-controls-enclosure{display:none !important;}
+            .hero-video::-webkit-media-controls-panel{display:none !important;}
 
-        @keyframes particleFloat{
-            0%,100%{opacity:1;transform:scale(1);}
-            50%{opacity:0.7;transform:scale(1.1);}
-        }
- .hero-overlay{
-              position:absolute;
-              top:0;left:0;right:0;bottom:0;
-              background-color:rgba(0,0,0,0.9);
-              z-index:1;
-              pointer-events:none;
+          @keyframes particleFloat{
+              0%,100%{opacity:1;transform:scale(1);}
+              50%{opacity:0.7;transform:scale(1.1);}
           }
-          .hero-inner{
-               position:relative;z-index:2;max-width:850px;
-               text-align:center;
-               display:flex;
-               flex-direction:column;
-               align-items:center;
-               gap:24px;
+.hero-overlay{
+                 position:absolute !important;
+                 top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;
+                 background-color:rgba(0,0,0,0.15) !important;
+                 z-index:1 !important;
+                 pointer-events:none !important;
+             }
+    .checklist-hero::before{
+                 display:block !important;
+                 content:"" !important;
+                 position:absolute !important;
+                 top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;
+                 background:rgba(0,0,0,0.15) !important;
+                 z-index:1 !important;
+                 pointer-events:none !important;
+             }
+  .checklist-hero-container,
+  .checklist-hero .hero-content{
+                 position:relative !important;
+                 z-index:3 !important;
+                 width:100% !important;
+                 max-width:800px !important;
+                 margin:0 auto !important;
+                 text-align:center !important;
+             }
+/* Restablecer tamaño del título según el diseño global */
+   .checklist-hero h1,
+   .checklist-hero .main-hero-title,
+   .checklist-hero .hero-title{
+                  font-size:clamp(2.2rem,5vw,3.5rem) !important;
+                  line-height:1.15 !important;
+                  margin-bottom:16px !important;
+              }
+   .checklist-hero p,
+   .checklist-hero .hero-subtitle,
+   .checklist-hero .hero-description{
+                  color:#111827 !important;
+                  font-weight:700 !important;
+                  font-size:clamp(0.9rem,2.5vw,1.1rem) !important;
+                  line-height:1.55 !important;
+                  max-width:750px !important;
+                  margin:14px auto 25px auto !important;
+                  text-shadow:none !important;
+                  filter:none !important;
+                  -webkit-text-stroke:0px transparent !important;
+              }
+  .checklist-hero .hero-buttons,
+  .checklist-hero .cta-buttons{
+                 display:flex !important;
+                 justify-content:center !important;
+                 align-items:center !important;
+                 gap:12px !important;
+             }
+  .checklist-hero .btn-primary,
+  .checklist-hero .hero-buttons a:first-child{
+                 background:#0077cc !important;
+                 color:#ffffff !important;
+                 font-weight:800 !important;
+                 font-size:0.9rem !important;
+                 padding:12px 24px !important;
+                 border-radius:8px !important;
+                 text-transform:uppercase !important;
+                 border:none !important;
+                 box-shadow:0 4px 14px rgba(0,119,204,0.4) !important;
+             }
+.checklist-hero .btn-secondary,
+   .checklist-hero a.btn-outline,
+   .checklist-hero .hero-buttons a:last-child{
+                  background:rgba(17,24,39,0.6) !important;
+                  color:#ffffff !important;
+                  font-weight:800 !important;
+                  font-size:0.9rem !important;
+                  padding:12px 24px !important;
+                  border-radius:8px !important;
+                  text-transform:uppercase !important;
+                  border:1px solid rgba(255,255,255,0.2) !important;
+                  backdrop-filter:blur(8px) !important;
+                  -webkit-backdrop-filter:blur(8px) !important;
+                  box-shadow:0 4px 12px rgba(0,0,0,0.25) !important;
+                  transition:all 0.3s ease !important;
+              }
+   .checklist-hero .btn-secondary:hover,
+   .checklist-hero a.btn-outline:hover,
+   .checklist-hero .hero-buttons a:last-child:hover{
+                  background:rgba(17,24,39,0.85) !important;
+              }
+/* Reducción proporcional en celulares manteniendo el tamaño amplio */
+   @media (max-width: 768px) {
+     .checklist-hero,
+     #checklist-hero {
+       padding-top:90px !important;
+       padding-bottom:20px !important;
+     }
+     .checklist-hero h1,
+     .checklist-hero .main-hero-title,
+     .checklist-hero .hero-title {
+       font-size:clamp(1.8rem,7vw,2.4rem) !important;
+       margin-bottom:12px !important;
+     }
+     .checklist-hero .hero-buttons {
+       flex-direction:column !important;
+       gap:10px !important;
+       width:100% !important;
+       max-width:280px !important;
+       margin:0 auto !important;
+     }
+     .checklist-hero .hero-buttons a {
+       width:100% !important;
+       padding:10px 16px !important;
+       text-align:center !important;
+     }
+   }
+.hero-inner{
+                position:relative;z-index:2;max-width:850px;
+                text-align:center;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                gap:16px;
                padding-left:16px;
                padding-right:16px;
                margin:0 auto;
            }
-          .hero-content-box{
-               background:transparent !important;
-               backdrop-filter:none !important;
-               -webkit-backdrop-filter:none !important;
-               border:none !important;
-               border-radius:0 !important;
-               padding:0 !important;
-               width:100%;
-               max-width:850px;
-               margin:0 auto;
-               text-align:center;
-               box-shadow:none !important;
+.hero-content-box{
+                background:transparent !important;
+                backdrop-filter:none !important;
+                -webkit-backdrop-filter:none !important;
+                border:none !important;
+                border-radius:0 !important;
+                padding:0 !important;
+                width:100%;
+                max-width:850px;
+                margin:0 auto;
+                text-align:center;
+                box-shadow:none !important;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                gap:12px;
+            }
+.hero-title{
+                 font-family:'Manrope',sans-serif;
+                 font-size:clamp(2.2rem,5vw,3.5rem);
+                 font-weight:900;
+                 line-height:1.15;
+                 letter-spacing:1.5px;
+                 margin-bottom:16px;
+                 color:#FFFFFF !important;
+                 text-align:center;
+                 filter:none !important;
+                 -webkit-text-stroke:0px transparent !important;
+                 text-shadow:none !important;
+             }
+             .hero-title .highlight{
+                 color:#00a8ff !important;
+                 filter:none !important;
+                 -webkit-text-stroke:0px transparent !important;
+                 text-shadow:0 0 15px rgba(0,168,255,0.4) !important;
+             }
+.hero-lead{
+                  font-family:'Inter',sans-serif;
+                  font-size:clamp(0.9rem,2.5vw,1.1rem);
+                  max-width:750px;
+                  margin-bottom:0;
+                  color:#FFFFFF !important;
+                  font-weight:700;
+                  line-height:1.55;
+                  text-align:center;
+                  text-shadow:none !important;
+              }
+              .hero-checklist-text{
+                  font-family:'Inter',sans-serif;font-size:clamp(0.9rem,2.5vw,1.1rem);
+                  color:#FFFFFF !important;
+                  font-weight:700;
+                  line-height:1.55;margin-bottom:0;max-width:750px;
+                  text-align:center;
+                  text-shadow:none !important;
+              }
+.hero-secondary{
+                 display:inline-flex;align-items:center;gap:10px;
+                 padding:14px 24px;
+                 background:rgba(128,128,128,0.3) !important;
+                 border:1px solid rgba(255,255,255,0.2) !important;
+                 color:#ffffff !important;
+                 border-radius:8px;
+                 font-family:'Manrope',sans-serif;
+                 font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+                 transition:all .3s ease;
+                 cursor:pointer;
+                 text-decoration:none;
+                 min-height:48px;
+                 backdrop-filter:blur(8px) !important;
+                 -webkit-backdrop-filter:blur(8px) !important;
+                 box-shadow:0 4px 12px rgba(0,0,0,0.25) !important;
+             }
+             .hero-secondary:hover{
+                 background:rgba(128,128,128,0.5) !important;
+                 color:#ffffff !important;
+                 border-color:rgba(255,255,255,0.2) !important;
+                 box-shadow:0 6px 20px rgba(0,0,0,0.3);
+             }
+           .hero-buttons{
                display:flex;
-               flex-direction:column;
+               justify-content:center;
                align-items:center;
-               gap:16px;
+               gap:12px;
+               flex-wrap:wrap;
+               width:100%;
+               margin-top:20px;
            }
-           .hero-title{
-               font-family:'Manrope',sans-serif;
-               font-size:clamp(2.8rem,6vw,4.5rem);
-               font-weight:900;
-               line-height:1.15;
-               letter-spacing:1.5px;
-               margin-bottom:20px;
-               color:#FFFFFF;
-               text-align:center;
-               filter:none !important;
-               -webkit-text-stroke:0px transparent !important;
-               text-shadow:none !important;
-           }
-           .hero-title .highlight{
-               color:#00a8ff !important;
-               filter:none !important;
-               -webkit-text-stroke:0px transparent !important;
-               text-shadow:0 0 15px rgba(0,168,255,0.4) !important;
-           }
-            .hero-lead{
-                font-family:'Inter',sans-serif;
-                font-size:16px;
-                max-width:750px;
-                margin-bottom:0;
-                color:#FFFFFF !important;
-                font-weight:500;
-                line-height:1.6;
-                text-align:center;
-                text-shadow:0px 2px 4px rgba(0,0,0,0.8) !important;
-            }
-            .hero-checklist-text{
-                font-family:'Inter',sans-serif;font-size:clamp(13px,1.8vw,17px);
-                color:#FFFFFF !important;
-                font-weight:500;
-                line-height:1.6;margin-bottom:0;max-width:750px;
-                text-align:center;
-                text-shadow:0px 2px 4px rgba(0,0,0,0.8) !important;
-            }
-           .hero-secondary{
-               display:inline-flex;align-items:center;gap:10px;
-               padding:14px 24px;
-               background:rgba(255,255,255,0.1);
-               border:2px solid rgba(255,255,255,0.6);
-               color:#FFFFFF;
-               border-radius:8px;
-               font-family:'Manrope',sans-serif;
-               font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-               transition:all .3s ease;
-               cursor:pointer;
-               text-decoration:none;
-               min-height:48px;
-               backdrop-filter:blur(5px);
-           }
-           .hero-secondary:hover{
-               background:#FFFFFF;
-               color:#000000;
-               border-color:#FFFFFF;
-               box-shadow:0 6px 20px rgba(255,255,255,0.3);
-           }
-          .hero-buttons{
-              display:flex;
-              justify-content:center;
-              align-items:center;
-              gap:15px;
-              flex-wrap:wrap;
-              width:100%;
-              margin-top:25px;
+          .hero-cta{
+              display:inline-flex;align-items:center;gap:12px;
+              padding:14px 28px;
+              background:linear-gradient(135deg,#2196F3,#25A7FF);
+              color:#fff;
+              border-radius:8px;
+              font-family:'Manrope',sans-serif;
+              font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+              transition:all .3s ease;
+              cursor:pointer;
+              border:none;
+              min-height:48px;
+              box-shadow:0 4px 16px rgba(33,150,243,.3);
           }
-         .hero-cta{
-             display:inline-flex;align-items:center;gap:12px;
-             padding:14px 28px;
-             background:linear-gradient(135deg,#2196F3,#25A7FF);
-             color:#fff;
-             border-radius:8px;
-             font-family:'Manrope',sans-serif;
-             font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-             transition:all .3s ease;
-             cursor:pointer;
-             border:none;
-             min-height:48px;
-             box-shadow:0 4px 16px rgba(33,150,243,.3);
-         }
-         .hero-cta:hover{
-             transform:translateY(-2px);
-             background:linear-gradient(135deg,#168BE6,#2196F3);
-             box-shadow:0 6px 20px rgba(33,150,243,.4),0 0 15px rgba(0,163,255,0.6);
-         }
+          .hero-cta:hover{
+              transform:translateY(-2px);
+              background:linear-gradient(135deg,#168BE6,#2196F3);
+              box-shadow:0 6px 20px rgba(33,150,243,.4),0 0 15px rgba(0,163,255,0.6);
+          }
 
         /* WHAT'S INCLUDED SECTION */
         .included-section{
@@ -1385,39 +1490,39 @@
                  grid-column: 2 !important;
                  text-align: left !important;
              }
-             /* Hero responsive adjustments */
-             .checklist-hero{padding-top:env(safe-area-inset-top, 0px);padding-bottom:env(safe-area-inset-bottom, 0px);}
-             .hero-content-box{padding:0;border-radius:0;gap:14px;}
-             .hero-title{font-size:clamp(2rem,6vw,3rem);letter-spacing:-1px;}
-             .hero-lead{font-size:clamp(14px,2.2vw,17px);}
-             .hero-checklist-text{font-size:clamp(12px,1.8vw,15px);}
-             .hero-buttons{flex-direction:column;gap:12px;width:100%;}
-             .hero-cta{width:100%;justify-content:center;}
-             .hero-secondary{width:100%;justify-content:center;}
-        }
+/* Hero responsive adjustments */
+              .checklist-hero{padding-top:env(safe-area-inset-top, 0px);padding-bottom:env(safe-area-inset-bottom, 0px);}
+              .hero-content-box{padding:0;border-radius:0;gap:10px;}
+              .hero-title{font-size:clamp(1.8rem,7vw,2.4rem);letter-spacing:-0.5px;}
+              .hero-lead{font-size:clamp(0.9rem,2.5vw,1.1rem);}
+              .hero-checklist-text{font-size:clamp(0.9rem,2.5vw,1.1rem);}
+              .hero-buttons{flex-direction:column;gap:10px;width:100%;}
+              .hero-cta{width:100%;justify-content:center;}
+              .hero-secondary{width:100%;justify-content:center;}
+         }
 
-        @media (max-width:480px){
-            .extras-grid{grid-template-columns:1fr;gap:16px;}
-            .trust-grid{grid-template-columns:1fr;gap:18px;}
-            .main-footer{padding:40px 0;}
-.footer-container{grid-template-columns:1fr;gap:28px;}
-.footer-features-grid,.footer-bottom-features{grid-template-columns:1fr 1fr !important;gap:15px 8px !important;padding:0 20px !important;}
-              .feature-card{padding:5px !important;}
-              .feature-card i{font-size:24px !important;}
-             .footer-bottom-copyright{padding:15px 20px;}
-             .footer-logo span{font-size:13px;line-height:1.15;}
-             .footer-col h4{font-size:16px;}
-             .footer-col ul li a,.footer-col p{font-size:14px;}
-            /* Hero responsive adjustments for small mobile */
-            .checklist-hero{padding-top:env(safe-area-inset-top, 0px);padding-bottom:env(safe-area-inset-bottom, 0px);}
-            .hero-content-box{padding:16px 18px;border-radius:10px;gap:12px;}
-            .hero-title{font-size:clamp(1.7rem,7vw,2.5rem);letter-spacing:-0.5px;}
-            .hero-lead{font-size:clamp(13px,2.5vw,15px);}
-            .hero-checklist-text{font-size:clamp(11px,2vw,14px);}
-            .hero-cta{padding:12px 24px;font-size:13px;}
-            .hero-secondary{padding:12px 20px;font-size:12px;}
-            .btn-footer-cta{width:100%;}
-        }
+         @media (max-width:480px){
+             .extras-grid{grid-template-columns:1fr;gap:16px;}
+             .trust-grid{grid-template-columns:1fr;gap:18px;}
+             .main-footer{padding:40px 0;}
+ .footer-container{grid-template-columns:1fr;gap:28px;}
+ .footer-features-grid,.footer-bottom-features{grid-template-columns:1fr 1fr !important;gap:15px 8px !important;padding:0 20px !important;}
+               .feature-card{padding:5px !important;}
+               .feature-card i{font-size:24px !important;}
+              .footer-bottom-copyright{padding:15px 20px;}
+              .footer-logo span{font-size:13px;line-height:1.15;}
+              .footer-col h4{font-size:16px;}
+              .footer-col ul li a,.footer-col p{font-size:14px;}
+             /* Hero responsive adjustments for small mobile */
+             .checklist-hero{padding-top:env(safe-area-inset-top, 0px);padding-bottom:env(safe-area-inset-bottom, 0px);}
+             .hero-content-box{padding:16px 18px;border-radius:10px;gap:10px;}
+             .hero-title{font-size:clamp(1.6rem,7vw,2.2rem);letter-spacing:-0.5px;}
+             .hero-lead{font-size:clamp(0.9rem,2.5vw,1.1rem);}
+             .hero-checklist-text{font-size:clamp(0.9rem,2.5vw,1.1rem);}
+             .hero-cta{padding:12px 24px;font-size:13px;}
+             .hero-secondary{padding:12px 20px;font-size:12px;}
+             .btn-footer-cta{width:100%;}
+         }
     video::-webkit-media-controls,
     video::-webkit-media-controls-enclosure {
       display: none !important;
@@ -1485,8 +1590,8 @@
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
       </div>
-      <a href="ubicacion.html" class="nav-link">Ubicación</a>
       <a href="checklist.html" class="nav-link">Checklist</a>
+      <a href="ubicacion.html" class="nav-link">Ubicación</a>
       <a href="index.html#contacto" class="nav-link nav-cta">Cotizar</a>
       <span class="nav-divider"></span>
       <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -1532,8 +1637,8 @@
           <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
-        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
         <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
+        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
       </nav>
       <div class="mobile-menu-cta">
         <a href="index.html#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>

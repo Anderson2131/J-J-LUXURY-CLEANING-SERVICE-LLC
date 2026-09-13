@@ -158,10 +158,11 @@
     position:relative !important;
     overflow:hidden !important;
     min-height:100vh !important;
+    min-height:100dvh !important;
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
-    padding:80px 20px 40px 20px !important;
+    padding:90px 16px 30px 16px !important;
     box-sizing:border-box !important;
   }
   .hero-bg-video{
@@ -170,8 +171,8 @@
     left:50% !important;
     min-width:100% !important;
     min-height:100% !important;
-    width:auto !important;
-    height:auto !important;
+    width:100% !important;
+    height:100% !important;
     transform:translate(-50%,-50%) !important;
     object-fit:cover !important;
     z-index:1 !important;
@@ -183,11 +184,23 @@
     align-items:center !important;
     justify-content:center !important;
     text-align:center !important;
-    max-width:850px !important;
-    width:90% !important;
+    max-width:800px !important;
+    width:100% !important;
     margin:0 auto !important;
     position:relative !important;
     z-index:2 !important;
+  }
+  .about-hero::before{
+    display:block !important;
+    content:"" !important;
+    position:absolute !important;
+    top:0 !important;
+    left:0 !important;
+    width:100% !important;
+    height:100% !important;
+    background:rgba(255,255,255,0.35) !important;
+    z-index:2 !important;
+    pointer-events:none !important;
   }
   .about-hero-text{
     display:flex !important;
@@ -226,27 +239,29 @@
       filter:none !important;
       -webkit-text-stroke:0px transparent !important;
     }
-   .hero-description{
-     color:#111827 !important;font-weight:700;
-     font-size:1.1rem;line-height:1.6;max-width:750px;
-     margin:0 auto 35px auto !important;
-     text-shadow:0 1px 2px rgba(255,255,255,0.6);
-   }
+.hero-description{
+      color:#111827 !important;font-weight:700;
+      font-size:1.1rem;line-height:1.6;max-width:750px;
+      margin:0 auto 35px auto !important;
+      text-shadow:none !important;filter:none !important;-webkit-text-stroke:0px transparent !important;
+    }
   .hero-stats-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:700px;margin:0 auto;
+    display:flex;gap:12px;width:100%;max-width:700px;margin:0 auto;
   }
   .stat-card{
-    background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.1);
-    border-radius:14px;padding:15px 10px;text-align:center;
+    flex:1;background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.1);
+    border-radius:14px;padding:14px 8px;text-align:center;
     box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-width:0;
   }
   .stat-card strong{
-    font-family:'Manrope',sans-serif;font-size:1.8rem;font-weight:800;
-    color:#00a8ff;line-height:1;margin-bottom:6px;display:block;
+    font-family:'Manrope',sans-serif;font-size:clamp(1.1rem,2.5vw,1.8rem);font-weight:800;
+    color:#00a8ff;line-height:1;margin-bottom:4px;display:block;
   }
   .stat-card span{
-    font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:700;color:#1a202c;
-    text-transform:uppercase;letter-spacing:1px;
+    font-family:'Inter',sans-serif;font-size:clamp(0.6rem,1.2vw,0.8rem);font-weight:700;color:#1a202c;
+    text-transform:uppercase;letter-spacing:0.5px;line-height:1.2;
   }
   .about-hero-image{
     display:none !important;
@@ -842,16 +857,18 @@
       .about-hero-text{align-items:center;text-align:center;}
       .about-hero-image{display:none !important;}
    }
-   @media (max-width:600px){
-     .container{width:calc(100% - 30px);}
-     .about-hero{min-height:100vh;padding-top:80px;padding-bottom:40px;}
-     .main-hero-title{font-size:2.1rem !important;}
-     .hero-stats-grid{grid-template-columns:1fr;gap:12px;}
-     .stat-card{padding:14px 8px;}
-     .stat-card strong{font-size:24px;}
-     .about-section{padding:70px 0;}
-     .about-cta{padding:60px 0;}
-  }
+@media (max-width:600px){
+      .container{width:calc(100% - 30px);}
+      .about-hero{padding-top:90px;padding-bottom:25px;}
+      .main-hero-title{font-size:clamp(1.4rem,6vw,2.1rem) !important;line-height:1.15 !important;margin-bottom:10px !important;}
+      .hero-description{font-size:clamp(0.8rem,3.2vw,0.95rem) !important;line-height:1.35 !important;margin-bottom:15px !important;max-width:95% !important;}
+      .hero-stats-grid{display:flex !important;flex-direction:column !important;gap:8px !important;width:100% !important;max-width:320px !important;}
+      .stat-card{padding:8px 10px !important;border-radius:10px !important;}
+      .stat-card strong{font-size:1.25rem !important;}
+      .stat-card span{font-size:0.7rem !important;}
+      .about-section{padding:70px 0;}
+      .about-cta{padding:60px 0;}
+    }
   @media (max-width:480px){
     header nav{padding:0 16px;}
     .logo{font-size:11px;gap:8px;}
@@ -904,8 +921,8 @@ video::-webkit-media-controls,
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
       </div>
-      <a href="ubicacion.html" class="nav-link">Ubicación</a>
       <a href="checklist.html" class="nav-link">Checklist</a>
+      <a href="ubicacion.html" class="nav-link">Ubicación</a>
       <a href="index.html#contacto" class="nav-link nav-cta">Cotizar</a>
       <span class="nav-divider"></span>
       <a class="nav-social" href="https://wa.me/5215512345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -951,8 +968,8 @@ video::-webkit-media-controls,
           <a href="servicios.html#desinfeccion"><i class="fa-solid fa-spray-can-sparkles"></i> Desinfección</a>
           <a href="servicios.html#mantenimiento"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</a>
         </div>
-        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
         <a href="checklist.html" class="menu-btn"><i class="fa-solid fa-clipboard-check"></i> CHECKLIST</a>
+        <a href="ubicacion.html" class="menu-btn"><i class="fa-solid fa-location-dot"></i> UBICACIÓN</a>
       </nav>
       <div class="mobile-menu-cta">
         <a href="index.html#contacto" class="btn-cotizar-mobile"><i class="fa-brands fa-whatsapp"></i> COTIZAR AHORA</a>
@@ -980,7 +997,7 @@ video::-webkit-media-controls,
     <div class="about-hero-container single-column">
       <div class="about-hero-text">
         <span class="sub-tag">SOBRE NOSOTROS</span>
-        <h1 class="main-hero-title">LIMPIEZA PROFESIONAL<br>CON UN TOQUE DE <span class="highlight">LUJO Y DETALLE</span></h1>
+        <h1 class="main-hero-title">LIMPIEZA PROFESIONAL<br>CON UN TOQUE DE<br><span class="highlight">LUJO Y DETALLE</span></h1>
         <p class="hero-description">
           En J &amp; J Luxury Cleaning Service LLC creemos que un espacio limpio transforma la vida de las personas. Por eso ofrecemos servicios de limpieza premium para hogares, oficinas y negocios, con un equipo capacitado, productos de calidad y un compromiso real con cada cliente.
         </p>

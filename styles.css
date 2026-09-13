@@ -615,7 +615,7 @@ body.no-scroll {
 .section-head h2 .accent{color:var(--blue);}
 .service-card h3 .accent{color:var(--blue);}
 .hero p.lead{font-size:16px;max-width:420px;margin-bottom:35px;color:var(--paper-dim);line-height:1.8;}
-.hero p.lead .highlight{color:var(--blue-bright);font-weight:600;}
+.hero p.lead .highlight{color:#00a8ff !important;font-weight:600 !important;}
 .hero-ctas{display:flex;gap:12px;margin-bottom:25px;align-items:center;min-height:56px;}
 .hero-ctas .btn{
   flex:1;
@@ -833,140 +833,353 @@ body.no-scroll {
 @keyframes blink{50%{opacity:0;}}
 #typed-line{color:var(--paper);}
 
-/* SECTIONS */
-section{padding:90px 0;border-bottom:none !important;}
-section.hero{padding:120px 0 100px !important;margin-top:0 !important;min-height:100svh;min-height:100dvh;}
-section::before,
-section::after{
-  border:none !important;
-  box-shadow:none !important;
+/* Hero de Servicios con Fondo de Video Adaptable */
+.services-hero {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 100px 20px 40px 20px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
-.section-head{
-  max-width:100%;
-  margin-bottom:40px;
+.services-hero .hero-video-bg {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
 }
-.section-head h2{
-  margin-bottom:16px;
-  font-size:clamp(2rem,4vw,3rem);
-  line-height:1.1;
-  color:var(--paper);
-  text-shadow:0 2px 30px rgba(0,0,0,.3);
-  -webkit-text-stroke:1px rgba(0,0,0,.3);
+.services-hero-overlay,
+.services-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
 }
-.section-head h2 .accent{
-  color:var(--blue-bright);
-  text-shadow:0 2px 30px rgba(56,189,248,.3);
+.services-hero-container {
+  position: relative !important;
+  z-index: 3 !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
 }
-.section-head p{
-  font-size:14px;
-  color:var(--paper-dim);
-  max-width:400px;
-  line-height:1.8;
+.services-hero .hero-title {
+  color: #FFFFFF !important;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 12px !important;
+  text-shadow:
+    1.5px 1.5px 0 #000000,
+    -1.5px 1.5px 0 #000000,
+    1.5px -1.5px 0 #000000,
+    -1.5px -1.5px 0 #000000,
+    0px 1.5px 0 #000000,
+    0px -1.5px 0 #000000,
+    1.5px 0px 0 #000000,
+    -1.5px 0px 0 #000000 !important;
+  filter: none !important;
+  -webkit-text-stroke: 0px transparent !important;
 }
-.section-head p .highlight{
-  color:var(--blue-bright);
-  font-weight:600;
+.services-hero .hero-title .highlight-cyan {
+  color: #00A3FF !important;
+  text-shadow: 0 0 16px rgba(0, 163, 255, 0.45) !important;
 }
-.services-features{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-bottom:32px;
+.services-hero .hero-subtitle {
+  color: #CBD5E1 !important;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem) !important;
+  line-height: 1.55 !important;
+  max-width: 650px !important;
+  margin-bottom: 30px !important;
 }
-.feature-item{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:13px;
-  color:var(--paper-dim);
-  font-weight:500;
+.services-hero .hero-subtitle .text-highlight {
+  color: #00A3FF !important;
+  font-weight: 600 !important;
 }
-.feature-icon{
-  width:32px;
-  height:32px;
-  border-radius:8px;
-  background:rgba(56,189,248,.1);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--blue);
+.services-hero .features-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 260px)) !important;
+  gap: 14px 18px !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-bottom: 36px !important;
 }
-.feature-icon svg{
-  width:16px;
-  height:16px;
+.services-hero .feature-card {
+  background: rgba(15, 23, 42, 0.45) !important;
+  border: 1px solid rgba(0, 163, 255, 0.25) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-radius: 8px !important;
+  padding: 7px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  color: #FFFFFF !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 163, 255, 0.1) !important;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1) !important;
 }
-.services-ctas{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+.services-hero .feature-card:hover {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border-color: rgba(0, 163, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 163, 255, 0.2), 0 0 15px rgba(0, 163, 255, 0.15) !important;
 }
-.services-ctas .btn{
-  width:100%;
-  justify-content:center;
+.services-hero .feature-card .icon {
+  font-size: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  background: rgba(0, 163, 255, 0.12) !important;
+  border-radius: 6px !important;
+  color: #00A3FF !important;
+  box-shadow: 0 0 8px rgba(0, 163, 255, 0.2) !important;
+}
+.services-hero .hero-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 16px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 520px !important;
+}
+.services-hero .btn-primary-cyan {
+  background: #00A3FF !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.5px !important;
+  padding: 14px 28px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  box-shadow: 0 0 16px rgba(0, 163, 255, 0.4) !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+}
+.services-hero .btn-primary-cyan:hover {
+  background: #008AD6 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 24px rgba(0, 163, 255, 0.7) !important;
+}
+.services-hero .btn-secondary-outline {
+  background: rgba(10, 15, 30, 0.5) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.5px !important;
+  padding: 13px 26px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  text-decoration: none !important;
+  backdrop-filter: blur(6px) !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+}
+.services-hero .btn-secondary-outline:hover {
+  border-color: #00A3FF !important;
+  color: #00A3FF !important;
+  transform: translateY(-2px) !important;
+}
+/* =======================================================
+   RESPONSIVE MÓVIL PERFECTO - HERO DE SERVICIOS
+   ======================================================= */
+
+@media (max-width: 768px) {
+  .services-hero {
+    min-height: 100dvh !important;
+    height: auto !important;
+    padding: 150px 16px 40px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+  .services-hero-container {
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin-top: 20px !important;
+  }
+  .services-hero .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+    word-break: break-word !important;
+  }
+  .services-hero .hero-subtitle {
+    font-size: clamp(0.85rem, 3.8vw, 0.98rem) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 22px !important;
+    padding: 0 4px !important;
+  }
+  .services-hero .features-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px 10px !important;
+    width: 100% !important;
+    margin-bottom: 26px !important;
+  }
+  .services-hero .feature-card {
+    padding: 8px 10px !important;
+    font-size: 0.75rem !important;
+    border-radius: 6px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.3 !important;
+  }
+  .services-hero .feature-card .icon {
+    font-size: 0.9rem !important;
+  }
+  .services-hero .hero-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .services-hero .btn-primary-cyan,
+  .services-hero .btn-secondary-outline {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 0.82rem !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
 }
 
-/* PROBLEM */
-.problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-@media (max-width:780px){.problem-grid{grid-template-columns:1fr;}}
-.problem-card{
-  background:var(--panel);border:1px solid var(--line);border-radius:10px;
-  padding:32px 28px;transition:border-color .2s,background .2s;
+@media (max-width: 400px) {
+  .services-hero .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px 8px !important;
+  }
+  .services-hero .feature-card {
+    padding: 6px 8px !important;
+    font-size: 0.7rem !important;
+  }
+  .services-hero .feature-card .icon {
+    font-size: 0.85rem !important;
+  }
 }
-.problem-card:hover{border-color:var(--purple);background:var(--panel-2);}
-.problem-card .icon{
-  width:48px;height:48px;border-radius:10px;
-  background:rgba(107,33,168,.1);border:1px solid rgba(107,33,168,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;margin-bottom:18px;
-}
-.problem-card h3{font-size:18px;margin-bottom:10px;color:var(--paper);}
-.problem-card p{font-size:14px;color:var(--slate);}
 
-/* SERVICES */
-#servicios{
-  background-image:url('img/fondo_servicios.webp');
-  background-size:cover;
-  background-position:center bottom;
-  background-attachment:fixed;
-  position:relative;
-  overflow:hidden;
+/* SECCIÓN INDEPENDIENTE DE TARJETAS (DEBAJO DEL HERO) */
+.services-grid-section {
+  width: 100% !important;
+  background-image: url('img/fondo_servicios.webp') !important;
+  background-color: #050b14 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  padding: 80px 20px !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  position: relative;
+  overflow: visible;
 }
-#servicios::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(5,6,8,.5);
-  z-index:1;
+.services-grid-section .services-cards-container,
+.services-grid-section .services-grid,
+.services-grid-section .services-container {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 28px !important;
 }
-#servicios .wrap{
-  position:relative;
-  z-index:2;
+.service-card {
+  position: relative !important;
+  z-index: 2 !important;
 }
-.services-layout{
-  display:grid;
-  grid-template-columns:0.35fr 0.65fr;
-  gap:40px;
-  align-items:start;
+
+/* Ajustes responsivos para pantallas móviles */
+@media (max-width: 992px) {
+  .services-grid-section .services-cards-container,
+  .services-grid-section .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
-.services-left{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
+
+@media (max-width: 768px) {
+  .services-grid-section {
+    padding: 50px 16px !important;
+    background-attachment: scroll !important;
+  }
+  .services-grid-section .services-cards-container,
+  .services-grid-section .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
 }
-.services-right{
-  display:flex;
-  flex-direction:column;
+
+@media (max-width: 768px) {
+  .services-hero {
+    padding-top: 85px !important;
+    padding-bottom: 25px !important;
+    justify-content: space-between !important;
+  }
+  .services-hero .hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
+    letter-spacing: 1px !important;
+  }
+  .services-hero .hero-ctas {
+    flex-direction: column !important;
+    gap: 10px !important;
+    max-width: 100% !important;
+  }
+  .services-hero .hero-cards {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  .services-hero .hero-card {
+    padding: 10px 14px !important;
+    gap: 8px !important;
+  }
+  .services-hero .hero-card-text {
+    font-size: 11px !important;
+  }
 }
 /* ============================================
-   SERVICE CARDS - PREMIUM DESIGN
-   ============================================ */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  width:100%;
-  align-items:stretch;
-}
+    SERVICE CARDS - PREMIUM DESIGN
+    ============================================ */
 .service-card{
   --card-accent:#38BDF8;
   --card-accent-rgb:56,189,248;
@@ -7984,14 +8197,50 @@ header .nav-cta .has-dropdown.open .nav-dropdown{
 }
 
 @media (max-width: 768px) {
+  .about-hero {
+    padding-top: 90px !important;
+    padding-bottom: 25px !important;
+  }
+  .sub-tag,
+  .section-subtitle-tag {
+    font-size: 0.75rem !important;
+    padding: 4px 12px !important;
+    margin-bottom: 10px !important;
+  }
   .main-hero-title {
-    font-size: 2.1rem !important;
+    font-size: clamp(1.4rem, 6vw, 2.1rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-description {
+    font-size: clamp(0.8rem, 3.2vw, 0.95rem) !important;
+    line-height: 1.35 !important;
+    margin-bottom: 15px !important;
+    max-width: 95% !important;
   }
   .hero-stats-grid {
-     grid-template-columns: 1fr !important;
-     gap: 12px !important;
-   }
- }
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+  .stat-card {
+    padding: 8px 10px !important;
+    border-radius: 10px !important;
+  }
+  .stat-card strong {
+    font-size: 1.25rem !important;
+  }
+  .stat-card span {
+    font-size: 0.7rem !important;
+  }
+  .about-hero-container.single-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10px !important;
+  }
+}
 
 /* Estilo Global para Títulos Principales en Todas las Páginas */
 .main-hero-title,
@@ -8025,29 +8274,88 @@ h1, h2 {
 .checklist-hero h2 {
   color: #FFFFFF !important;
   font-weight: 900 !important;
-  font-size: clamp(2.8rem,6vw,4.5rem) !important;
+  font-size: clamp(2.2rem,5vw,3.5rem) !important;
   line-height: 1.15 !important;
   letter-spacing: 1.5px !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 16px !important;
   -webkit-text-stroke: 0px transparent !important;
   text-shadow: none !important;
+  filter: none !important;
 }
 
-.checklist-hero .hero-title .highlight,
-.checklist-hero h1 .highlight {
+/* General .highlight - dark text for body content */
+.highlight {
+  color: #111827 !important;
+  filter: none !important;
+  -webkit-text-stroke: 0px transparent !important;
+}
+
+/* Section and hero title highlights - blue */
+.hero-title .highlight,
+.section-title .highlight,
+.title-page .highlight {
   color: #00a8ff !important;
+  filter: none !important;
   -webkit-text-stroke: 0px transparent !important;
   text-shadow: 0 0 15px rgba(0,168,255,0.4) !important;
 }
 
-.main-hero-title .highlight,
-.hero-title .highlight,
-.section-title .highlight,
-.title-page .highlight,
-.highlight {
+/* Corrección de tipografía uniforme para el título del Banner CTA en index y servicios */
+.cta-banner .hero-title,
+.cta-banner h2,
+.cta-section h2,
+.cta-content h2,
+.cta-title {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  font-size: clamp(1.8rem, 4vw, 2.6rem) !important;
+  text-shadow: 
+    1.5px 1.5px 0 #000000,
+   -1.5px 1.5px 0 #000000,
+    1.5px -1.5px 0 #000000,
+   -1.5px -1.5px 0 #000000 !important;
+}
+
+/* Forzar que las palabras resaltadas tengan EXACTAMENTE el mismo tamaño y estilo */
+.cta-banner .hero-title span,
+.cta-banner h2 span,
+.cta-section h2 span,
+.cta-content h2 span,
+.cta-title span,
+.cta-banner .hero-title .highlight,
+.cta-banner h2 .highlight,
+.cta-section h2 .highlight,
+.cta-content h2 .highlight {
+  color: #00a8ff !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+/* Section head paragraph highlights - blue */
+.section-head p .highlight {
+  color: #00a8ff !important;
+  font-weight: 600 !important;
+}
+
+/* Main hero title highlight - blue, must not be overridden by global .highlight */
+.main-hero-title .highlight {
   color: #00a8ff !important;
   filter: none !important;
   -webkit-text-stroke: 0px transparent !important;
+}
+
+/* Checklist hero highlight override - must come after global .highlight */
+.checklist-hero .main-hero-title .highlight {
+  color: #00a8ff !important;
+  -webkit-text-stroke: 0px transparent !important;
+  text-shadow: 0 0 15px rgba(0,168,255,0.4) !important;
+  filter: none !important;
 }
 
 .sub-tag,
@@ -8066,15 +8374,11 @@ h1, h2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Checklist Hero - Overlay and text styling */
+/* Checklist Hero - Overlay */
 .checklist-hero .hero-overlay,
 .hero-overlay {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  display: block !important;
+  background: rgba(0, 0, 0, 0.15) !important;
   z-index: 1 !important;
   pointer-events: none !important;
 }
@@ -8082,6 +8386,8 @@ h1, h2 {
 .checklist-hero .hero-content-box,
 .checklist-hero .hero-card,
 .hero-content-box {
+  position: relative !important;
+  z-index: 3 !important;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -8098,31 +8404,13 @@ h1, h2 {
 .checklist-hero h2 {
   color: #FFFFFF !important;
   font-weight: 900 !important;
-  font-size: clamp(2.8rem,6vw,4.5rem) !important;
+  font-size: clamp(2.2rem,5vw,3.5rem) !important;
   line-height: 1.15 !important;
   letter-spacing: 1.5px !important;
-  margin-bottom: 20px !important;
-  text-shadow:
-    2px 2px 0 rgba(0,0,0,0.5),
-   -2px 2px 0 rgba(0,0,0,0.5),
-    2px -2px 0 rgba(0,0,0,0.5),
-   -2px -2px 0 rgba(0,0,0,0.5),
-    0px 2px 4px rgba(0,0,0,0.6) !important;
-  -webkit-text-stroke: 1px rgba(0,0,0,0.8) !important;
-}
-
-.checklist-hero .hero-title .highlight,
-.checklist-hero .hero-title .accent,
-.checklist-hero h1 .highlight {
-  color: #00a8ff !important;
-  -webkit-text-stroke: 1px rgba(0,0,0,0.8) !important;
-  text-shadow:
-    2px 2px 0 rgba(0,0,0,0.5),
-   -2px 2px 0 rgba(0,0,0,0.5),
-    2px -2px 0 rgba(0,0,0,0.5),
-   -2px -2px 0 rgba(0,0,0,0.5),
-    0 0 20px rgba(0,168,255,0.5),
-    0 0 40px rgba(0,168,255,0.3) !important;
+  margin-bottom: 16px !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0px transparent !important;
+  filter: none !important;
 }
 
 .checklist-hero .hero-lead,
@@ -8131,28 +8419,43 @@ h1, h2 {
 .checklist-hero .hero-subtitle,
 .checklist-hero .hero-description {
   color: #FFFFFF !important;
-  font-weight: 500 !important;
-  font-size: 1.1rem !important;
-  line-height: 1.6 !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.9rem,2.5vw,1.1rem) !important;
+  line-height: 1.55 !important;
   max-width: 750px !important;
-  margin: 15px auto 30px auto !important;
-  text-shadow: 0px 2px 4px rgba(0,0,0,0.8) !important;
+  margin: 14px auto 25px auto !important;
+  text-shadow: none !important;
   -webkit-text-stroke: 0px transparent !important;
+  filter: none !important;
 }
 
 .checklist-hero .hero-secondary,
 .checklist-hero .hero-buttons a:last-child {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #FFFFFF !important;
-  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  background: rgba(128, 128, 128, 0.3) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   padding: 14px 24px !important;
   border-radius: 8px !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   letter-spacing: 0.5px !important;
   text-transform: uppercase !important;
-  backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
   transition: all 0.3s ease !important;
+}
+
+.checklist-hero .hero-secondary:hover,
+.checklist-hero .hero-buttons a:last-child:hover {
+  background: rgba(128, 128, 128, 0.5) !important;
+}
+
+.checklist-hero .hero-secondary:hover,
+.checklist-hero .hero-buttons a:last-child:hover {
+  background: rgba(17, 24, 39, 0.85) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .checklist-hero .hero-secondary:hover,
@@ -8171,3 +8474,290 @@ h1, h2 {
   gap: 15px !important;
   margin-top: 25px !important;
 }
+
+/* Contenedor principal Hero */
+.about-hero {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 90px 16px 30px 16px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Video a pantalla completa de borde a borde */
+.about-hero video,
+.about-hero .hero-video,
+#hero-video {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Capa blanca semitransparente sobre el video del Hero */
+.about-hero::before,
+.about-hero-overlay {
+  display: block !important;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Contenido sobre el video original */
+.about-hero-container {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* Quitar sombra y resplandor oscuro del subtítulo/descripción */
+.hero-description,
+.about-hero p,
+.about-hero-text p {
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-stroke: 0px transparent !important;
+  color: #111827 !important;
+}
+
+/* Video background hero with semi-transparent white overlay */
+.checklist-hero,
+#checklist-hero {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 60px 16px 20px 16px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Video a pantalla completa */
+.checklist-hero video,
+.checklist-hero .hero-video {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+}
+
+/* Semi-transparent black overlay */
+.checklist-hero::before,
+.checklist-hero-overlay {
+  display: block !important;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.hero-overlay {
+  display: block !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Contenido centrado */
+.checklist-hero-container,
+.checklist-hero .hero-content {
+  position: relative !important;
+  z-index: 3 !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* Restablecer tamaño del título según el diseño global */
+.checklist-hero h1,
+.checklist-hero .main-hero-title,
+.checklist-hero .hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 16px !important;
+}
+
+/* Subtítulo completamente negro sólido sin sombras ni bordes */
+.checklist-hero p,
+.checklist-hero .hero-subtitle,
+.checklist-hero .hero-description {
+  color: #111827 !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+  line-height: 1.55 !important;
+  max-width: 750px !important;
+  margin: 14px auto 25px auto !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-stroke: 0px transparent !important;
+}
+
+/* Contenedor de botones */
+.checklist-hero .hero-buttons,
+.checklist-hero .cta-buttons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* Botón Primario (COTIZAR): Azul oscuro potente */
+.checklist-hero .btn-primary,
+.checklist-hero .hero-buttons a:first-child {
+  background: #0077cc !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(0, 119, 204, 0.4) !important;
+}
+
+/* Botón Secundario (VER LA LISTA DE VERIFICACIÓN): Negro semitransparente */
+.checklist-hero .btn-secondary,
+.checklist-hero a.btn-outline,
+.checklist-hero .hero-buttons a:last-child {
+  background: rgba(17, 24, 39, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.checklist-hero .btn-secondary:hover,
+.checklist-hero a.btn-outline:hover,
+.checklist-hero .hero-buttons a:last-child:hover {
+  background: rgba(17, 24, 39, 0.85) !important;
+}
+
+/* Reducción proporcional en celulares manteniendo el tamaño amplio */
+@media (max-width: 768px) {
+  .checklist-hero,
+  #checklist-hero {
+    padding-top: 90px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .checklist-hero h1,
+  .checklist-hero .main-hero-title,
+  .checklist-hero .hero-title {
+    font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .checklist-hero .hero-buttons {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+
+  .checklist-hero .hero-buttons a {
+    width: 100% !important;
+    padding: 10px 16px !important;
+    text-align: center !important;
+  }
+}
+
+/* =======================================================
+   ELIMINAR RECUADRO EN EL CONTENEDOR DE TARJETAS
+   ======================================================= */
+
+/* 1. Reset del recuadro o caja externa de la sección */
+.services-grid-section,
+.services-section-wrapper,
+.services-container-box {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 80px 20px !important;
+  width: 100% !important;
+  background-image: url('img/fondo_servicios.webp') !important;
+  background-color: #050b14 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* 2. Disposición directa de las tarjetas flotando en la sección */
+.services-cards-container,
+.services-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 28px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* 3. Mantenimiento del estilo de las tarjetas individuales */
+.service-card {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* 4. Responsive para pantallas medianas y móviles */
+@media (max-width: 992px) {
+  .services-cards-container,
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-cards-container,
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+
